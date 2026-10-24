@@ -27,7 +27,7 @@
 | SPECIFICATION | [spec.md](../spec.md): problem, hedef kullanıcı, kapsam, başarı ölçütleri, beş kabul örneği, kişiselleştirme, Tutor ve DoD korunup güncellendi. |
 | DESIGN.MD | [DESIGN.md](../DESIGN.md): ilk palet, mevcut export farkları, mobil düzen, özgün ekranlar, yerel ikon font lisansı ve erişilebilirlik sınırları belgeli. |
 | PRODUCT DECISIONS | [docs/product-decisions.md](product-decisions.md): tam üç dışlama ve birer cümle gerekçe. |
-| GITHUB REPOSITORY | [Miku-erm/karr](https://github.com/Miku-erm/karr), `origin`, `main`; son kaynak/rapor commit'inin normal push doğrulaması aşağıdaki yayın kaydında güncellenir. Force-push yapılmaz. |
+| GITHUB REPOSITORY | [Miku-erm/karr](https://github.com/Miku-erm/karr), `origin`, `main`; kaynak ve teslim dosyaları normal push ile yayımlandı; uzak SHA doğrulandı. Force-push yapılmadı. |
 | AI STUDIO APPLICATION URL | [Dışa aktarımda bulunan URL](https://ai.studio/apps/075bc6dc-af43-479d-9c55-a4e8382a2d60); erişim/yayımlanan sürüm bu oturumda açılarak doğrulanmadı. |
 | KNOWN LIMITATIONS | İnsan incelemesi pending; gerçek öğrenci örneklemi yok; iki teknik doğruluk notu var; tam WCAG/çoklu tarayıcı denetimi yok; Studio sync/deploy doğrulanmadı; özgün tasarım paleti ilk brief'ten kısmen farklı; oturum yenilemede sıfırlanır. |
 | REMAINING USER ACTIONS | CSV'deki 20 ön etiketi insan değerlendiriciyle kontrol etmek; öğretmen gerçek öğrenci mesajı istiyorsa ayrıca bu veriyi toplamak; gerekiyorsa güncel kaynağı AI Studio projesine aktararak paylaşımı doğrulamak ve gerçek Stitch proje bağlantısını eklemek. Yerel test/video üretimi için ek kullanıcı işlemi kalmadı. |
@@ -42,4 +42,4 @@ Uygulama yeniden yazılmadı; mevcut bileşenler/dağıtım yapısı korundu. Ç
 
 ## GitHub yayın kaydı
 
-Kaynak commit'i hazırlanırken yayın doğrulaması henüz tamamlanmadı; başarılı normal push sonrası gerçek SHA ve uzak dal kontrolü bu bölümde güncellenecektir.
+Kaynak ve teslim commit’i [`6b4af93`](https://github.com/Miku-erm/karr/commit/6b4af9354c8ea8ef6ae6e27f51c998bafee63236) normal push ile `main` dalına gönderildi. `git ls-remote origin refs/heads/main` aynı SHA değerini döndürdü. [Yayın kanıtı](../evidence/github-publication.json). Bu kaynak commit’inden sonraki rapor commit’i yalnızca yayın doğrulamasını ve son dosya/güvenlik kontrolünü kaydeder; uygulama, testler, model sonuçları ve video değişmez.

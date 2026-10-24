@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-24T11:04:05.284Z",
+  "checkedAt": "2026-10-24T11:05:45.021Z",
   "requiredFiles": [
     "README.md",
     "spec.md",
@@ -48,7 +48,7 @@
     },
     {
       "name": "local delivery Markdown links resolve",
-      "count": 69,
+      "count": 70,
       "passed": true
     },
     {
