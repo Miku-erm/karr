@@ -32,6 +32,8 @@ export const BottomNav: React.FC<BottomNavProps> = ({
               key={item.id}
               type="button"
               onClick={() => onTabChange(item.id)}
+              data-testid={`nav-${item.id}`}
+              disabled={item.id === 'debrief' && !hasEnding}
               className={`flex flex-col items-center justify-center gap-0.5 min-w-[56px] min-h-[44px] transition-colors relative ${
                 isActive ? 'text-[#ffb870]' : 'text-[#8f9098] hover:text-[#c5c6ce]'
               }`}

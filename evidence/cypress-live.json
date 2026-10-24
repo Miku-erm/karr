@@ -1,0 +1,178 @@
+{
+  "browserName": "electron",
+  "browserPath": "",
+  "browserVersion": "138.0.7204.251",
+  "config": {
+    "viewportWidth": 390,
+    "viewportHeight": 844,
+    "video": true,
+    "videosFolder": "C:\\Users\\Emre\\Desktop\\nurettin\\0800-kritik-karar\\githuba at\\artifacts\\cypress\\videos",
+    "screenshotsFolder": "C:\\Users\\Emre\\Desktop\\nurettin\\0800-kritik-karar\\githuba at\\artifacts\\cypress\\screenshots",
+    "screenshotOnRunFailure": true,
+    "defaultCommandTimeout": 8000,
+    "requestTimeout": 18000,
+    "responseTimeout": 20000,
+    "retries": 0,
+    "baseUrl": "http://127.0.0.1:3000",
+    "supportFile": "C:\\Users\\Emre\\Desktop\\nurettin\\0800-kritik-karar\\githuba at\\cypress\\support\\e2e.ts",
+    "specPattern": "cypress/e2e/*.cy.ts",
+    "projectRoot": "C:\\Users\\Emre\\Desktop\\nurettin\\0800-kritik-karar\\githuba at",
+    "projectName": "githuba at",
+    "configFile": "cypress.config.ts",
+    "isTextTerminal": true,
+    "animationDistanceThreshold": 5,
+    "arch": "x64",
+    "blockHosts": null,
+    "chromeWebSecurity": true,
+    "clientCertificates": [],
+    "defaultBrowser": null,
+    "downloadsFolder": "C:\\Users\\Emre\\Desktop\\nurettin\\0800-kritik-karar\\githuba at\\cypress\\downloads",
+    "env": {},
+    "execTimeout": 60000,
+    "experimentalCspAllowList": false,
+    "experimentalInteractiveRunEvents": false,
+    "experimentalRunAllSpecs": false,
+    "experimentalMemoryManagement": false,
+    "experimentalModifyObstructiveThirdPartyCode": false,
+    "injectDocumentDomain": false,
+    "experimentalOriginDependencies": false,
+    "experimentalPromptCommand": false,
+    "experimentalSourceRewriting": false,
+    "experimentalSingleTabRunMode": false,
+    "experimentalWebKitSupport": false,
+    "fileServerFolder": "C:\\Users\\Emre\\Desktop\\nurettin\\0800-kritik-karar\\githuba at",
+    "fixturesFolder": "C:\\Users\\Emre\\Desktop\\nurettin\\0800-kritik-karar\\githuba at\\cypress\\fixtures",
+    "excludeSpecPattern": "*.hot-update.js",
+    "includeShadowDom": false,
+    "justInTimeCompile": true,
+    "keystrokeDelay": 0,
+    "modifyObstructiveCode": true,
+    "numTestsKeptInMemory": 0,
+    "platform": "win32",
+    "pageLoadTimeout": 60000,
+    "port": 55012,
+    "projectId": null,
+    "redirectionLimit": 20,
+    "reporter": "spec",
+    "reporterOptions": null,
+    "resolvedNodePath": "C:\\Program Files\\nodejs\\node.exe",
+    "resolvedNodeVersion": "22.16.0",
+    "slowTestThreshold": 10000,
+    "scrollBehavior": "top",
+    "taskTimeout": 60000,
+    "testIsolation": true,
+    "trashAssetsBeforeRuns": true,
+    "userAgent": null,
+    "videoCompression": false,
+    "waitForAnimations": true,
+    "watchForFileChanges": false,
+    "browsers": [
+      {
+        "channel": "stable",
+        "displayName": "Firefox",
+        "family": "firefox",
+        "majorVersion": "158",
+        "name": "firefox",
+        "path": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+        "version": "158.0.1"
+      },
+      {
+        "channel": "stable",
+        "displayName": "Edge",
+        "family": "chromium",
+        "majorVersion": "156",
+        "name": "edge",
+        "path": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+        "version": "156.0.4314.42"
+      },
+      {
+        "channel": "stable",
+        "displayName": "Electron",
+        "family": "chromium",
+        "majorVersion": 138,
+        "name": "electron",
+        "path": "",
+        "version": "138.0.7204.251"
+      }
+    ],
+    "cypressBinaryRoot": "C:\\Users\\Emre\\AppData\\Local\\Cypress\\Cache\\15.7.0\\Cypress\\resources\\app",
+    "hosts": null,
+    "isInteractive": true,
+    "version": "15.7.0",
+    "testingType": "e2e",
+    "browser": null,
+    "cypressInternalEnv": "production"
+  },
+  "cypressVersion": "15.7.0",
+  "endedTestsAt": "2026-10-24T10:53:29.829Z",
+  "osName": "win32",
+  "osVersion": "Microsoft Windows 10 Home - 10.0.19045",
+  "runs": [
+    {
+      "error": null,
+      "reporter": "spec",
+      "reporterStats": {
+        "suites": 1,
+        "tests": 1,
+        "passes": 1,
+        "pending": 0,
+        "failures": 0,
+        "start": "2026-10-24T10:53:21.428Z",
+        "end": "2026-10-24T10:53:29.830Z",
+        "duration": 8402
+      },
+      "screenshots": [
+        {
+          "height": 844,
+          "name": "live-gemini-tutor",
+          "path": "C:\\Users\\Emre\\Desktop\\nurettin\\0800-kritik-karar\\githuba at\\artifacts\\cypress\\screenshots\\live.cy.ts\\live-gemini-tutor.png",
+          "takenAt": "2026-10-24T10:53:29.378Z",
+          "width": 390
+        }
+      ],
+      "spec": {
+        "absolute": "C:/Users/Emre/Desktop/nurettin/0800-kritik-karar/githuba at/cypress/e2e/live.cy.ts",
+        "fileExtension": ".ts",
+        "fileName": "live",
+        "name": "live.cy.ts",
+        "relative": "cypress\\e2e\\live.cy.ts"
+      },
+      "stats": {
+        "duration": 8405,
+        "endedAt": "2026-10-24T10:53:29.829Z",
+        "failures": 0,
+        "passes": 1,
+        "pending": 0,
+        "skipped": 0,
+        "startedAt": "2026-10-24T10:53:21.424Z",
+        "suites": 1,
+        "tests": 1
+      },
+      "tests": [
+        {
+          "attempts": [
+            {
+              "state": "passed"
+            }
+          ],
+          "displayError": null,
+          "duration": 8401,
+          "state": "passed",
+          "title": [
+            "Genuine Gemini integration (no stubbing)",
+            "displays an actual model answer in the application"
+          ]
+        }
+      ],
+      "video": "C:\\Users\\Emre\\Desktop\\nurettin\\0800-kritik-karar\\githuba at\\artifacts\\cypress\\videos\\live.cy.ts.mp4"
+    }
+  ],
+  "startedTestsAt": "2026-10-24T10:53:21.424Z",
+  "totalDuration": 8405,
+  "totalFailed": 0,
+  "totalPassed": 1,
+  "totalPending": 0,
+  "totalSkipped": 0,
+  "totalSuites": 1,
+  "totalTests": 1
+}

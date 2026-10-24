@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   ActiveTab,
   ChoiceId,
@@ -52,6 +52,15 @@ export default function App() {
     currentDecision.localTutorQuestion
   );
   const [isTutorLoading, setIsTutorLoading] = useState(false);
+  const [tutorFallback, setTutorFallback] = useState(true);
+  const tutorAbort = useRef<AbortController | null>(null);
+  const tutorVersion = useRef(0);
+  const invalidateTutor = () => {
+    tutorVersion.current += 1;
+    tutorAbort.current?.abort();
+    setIsTutorLoading(false);
+    setTutorFallback(true);
+  };
   const [tutorMessages, setTutorMessages] = useState<TutorMessage[]>([
     {
       id: 'init_1',
@@ -64,6 +73,7 @@ export default function App() {
 
   // Start the simulation after onboarding
   const handleStartGame = (profile: UserProfile) => {
+    invalidateTutor();
     setUserProfile(profile);
     setCurrentDecisionIndex(0);
     setPendingChoice(null);
@@ -75,12 +85,14 @@ export default function App() {
 
   // Option selection before commit
   const handleSelectChoice = (choice: ChoiceId) => {
+    if (gameScreen !== 'DECISION' || finalizedChoices[currentDecisionId]) return;
     setPendingChoice(choice);
   };
 
   // Finalize selected option
   const handleFinalizeChoice = () => {
-    if (!pendingChoice) return;
+    if (!pendingChoice || gameScreen !== 'DECISION' || finalizedChoices[currentDecisionId]) return;
+    invalidateTutor();
 
     const updated = {
       ...finalizedChoices,
@@ -96,6 +108,8 @@ export default function App() {
 
   // Continue to next decision or show ending
   const handleContinue = () => {
+    if (gameScreen !== 'CONSEQUENCE' || !finalizedChoices[currentDecisionId]) return;
+    invalidateTutor();
     if (currentDecisionIndex < 2) {
       const nextIndex = currentDecisionIndex + 1;
       const nextId = DECISION_KEYS[nextIndex];
@@ -112,7 +126,11 @@ export default function App() {
 
   // Ask Socratic Tutor via real server API
   const handleAskTutor = async (query: string) => {
-    if (!query.trim()) return;
+    if (!query.trim() || isTutorLoading || !['DECISION', 'CONSEQUENCE'].includes(gameScreen)) return;
+    const requestVersion = ++tutorVersion.current;
+    const controller = new AbortController();
+    tutorAbort.current = controller;
+    const timeout = setTimeout(() => controller.abort(), 15000);
 
     const timeStr = new Date().toLocaleTimeString('tr-TR', {
       hour: '2-digit',
@@ -132,6 +150,7 @@ export default function App() {
 
     try {
       const res = await fetch('/api/tutor', {
+        signal: controller.signal,
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -151,7 +170,9 @@ export default function App() {
       }
 
       const data = await res.json();
+      if (requestVersion !== tutorVersion.current) return;
       const replyText = data.messageTr || currentDecision.localTutorQuestion;
+      setTutorFallback(!data.liveAi || Boolean(data.fallback));
 
       setTutorQuestion(replyText);
 
@@ -160,7 +181,7 @@ export default function App() {
         sender: 'tutor',
         text: replyText,
         decisionId: currentDecisionId,
-        isFallback: Boolean(data.fallback),
+        isFallback: !data.liveAi || Boolean(data.fallback),
         hintLevel: data.hintLevel,
         timestamp: new Date().toLocaleTimeString('tr-TR', {
           hour: '2-digit',
@@ -170,6 +191,8 @@ export default function App() {
 
       setTutorMessages((prev) => [...prev, tutorReplyMsg]);
     } catch {
+      if (requestVersion !== tutorVersion.current) return;
+      setTutorFallback(true);
       // Graceful fallback keeping deterministic story 100% playable
       const fallbackMsg: TutorMessage = {
         id: 'reply_' + Date.now(),
@@ -185,12 +208,16 @@ export default function App() {
       setTutorQuestion(currentDecision.localTutorQuestion);
       setTutorMessages((prev) => [...prev, fallbackMsg]);
     } finally {
-      setIsTutorLoading(false);
+      clearTimeout(timeout);
+      if (requestVersion === tutorVersion.current) setIsTutorLoading(false);
     }
   };
 
   // Full clean reset
   const handleRestartGame = () => {
+    invalidateTutor();
+    setUserProfile({ experience: 'intermediate', role: 'developer', goal: 'architecture' });
+    setTutorQuestion(DECISIONS.architecture.localTutorQuestion);
     setGameScreen('ONBOARDING');
     setActiveTab('vaka');
     setCurrentDecisionIndex(0);
@@ -198,15 +225,7 @@ export default function App() {
     setFinalizedChoices({});
     setChoices({ architecture: 'A', testing: 'A', privacy: 'A' });
     setSessionId('sess_' + Math.random().toString(36).substring(2, 9));
-    setTutorMessages([
-      {
-        id: 'reset_init',
-        sender: 'tutor',
-        text: 'Simülasyon sıfırlandı. Yeni profilinle tekrar başlayabilirsin.',
-        decisionId: 'architecture',
-        timestamp: '08:00',
-      },
-    ]);
+    setTutorMessages([]);
   };
 
   // Calculate deterministic ending when all 3 decisions are ready
@@ -221,7 +240,7 @@ export default function App() {
   const achievedEnding = ENDINGS[achievedEndingId] || ENDINGS.ENDING_SAFE;
 
   return (
-    <div className="w-full max-w-[480px] min-h-screen relative flex flex-col bg-[#15130e] text-[#e8e2d8] shadow-[0_0_50px_rgba(0,0,0,0.85)] mx-auto selection:bg-[#ffb870] selection:text-[#2c1600]">
+    <div data-testid="app-shell" data-screen={gameScreen} className="w-full max-w-[480px] min-h-screen relative flex flex-col bg-[#15130e] text-[#e8e2d8] shadow-[0_0_50px_rgba(0,0,0,0.85)] mx-auto selection:bg-[#ffb870] selection:text-[#2c1600]">
       {/* Top Header */}
       <Header
         timeLabel={
@@ -265,6 +284,7 @@ export default function App() {
                 onContinue={handleContinue}
                 tutorQuestion={tutorQuestion}
                 isTutorLoading={isTutorLoading}
+                tutorFallback={tutorFallback}
                 onAskTutor={handleAskTutor}
                 isLastDecision={currentDecisionIndex === 2}
               />
@@ -314,7 +334,11 @@ export default function App() {
       {/* Bottom Tab Navigation */}
       <BottomNav
         activeTab={activeTab}
-        onTabChange={(tab) => setActiveTab(tab)}
+        onTabChange={(tab) => {
+          if (tab === 'debrief' && gameScreen !== 'ENDING') return;
+          if (gameScreen === 'ONBOARDING' && tab !== 'vaka') return;
+          setActiveTab(tab);
+        }}
         hasEnding={gameScreen === 'ENDING'}
       />
     </div>

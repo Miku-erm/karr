@@ -1,0 +1,39 @@
+{
+  "file": "demo/se-primer-demo.mp4",
+  "verifiedAt": "2026-10-24T10:54:45.035Z",
+  "format": "mov,mp4,m4a,3gp,3g2,mj2",
+  "durationSeconds": 58,
+  "width": 1280,
+  "height": 1100,
+  "codec": "h264",
+  "fullDecode": "passed",
+  "representativeFrames": [
+    3,
+    10,
+    18,
+    28,
+    38,
+    48,
+    55
+  ],
+  "visualInspection": {
+    "reviewer": "Codex visual inspection, not independent human review",
+    "framesCheckedSeconds": [
+      3,
+      10,
+      18,
+      28,
+      38,
+      48,
+      55
+    ],
+    "observations": [
+      "Turkish glyphs visible and readable",
+      "Actual Cypress runner and mobile application visible",
+      "Real Gemini response visible at 18s",
+      "Actual consequences and safe ending visible",
+      "No secret values in inspected frames"
+    ],
+    "fullPlaybackHumanReviewed": false
+  }
+}

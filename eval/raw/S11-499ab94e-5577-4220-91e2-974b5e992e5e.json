@@ -1,0 +1,36 @@
+{
+  "evalId": "S11",
+  "requestId": "499ab94e-5577-4220-91e2-974b5e992e5e",
+  "startedAt": "2026-10-24T10:40:09.621Z",
+  "completedAt": "2026-10-24T10:40:11.099Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "testing",
+    "phase": "before_choice",
+    "experience": "experienced",
+    "role": "lead",
+    "goal": "architecture",
+    "message": "Doğrulama kapsamını sınırlarken gecikme ve regresyon riskini ekibe nasıl açıklarım?",
+    "finalizedChoices": {
+      "architecture": "A"
+    }
+  },
+  "rawModelResponse": "{\n  \"messageTr\": \"Kapsamı daraltmanın getirdiği riskleri, 'test kapsamı' ile 'sistem kararlılığı' arasındaki ödünleşim üzerinden teknik bir dille ifade edebilirsiniz. Hangi kritik iş akışlarının veya veri tutarlılık noktalarının, sistemin genel sağlığı için vazgeçilmez olduğunu düşünüyorsunuz?\"\n}",
+  "parsedModelMessage": "Kapsamı daraltmanın getirdiği riskleri, 'test kapsamı' ile 'sistem kararlılığı' arasındaki ödünleşim üzerinden teknik bir dille ifade edebilirsiniz. Hangi kritik iş akışlarının veya veri tutarlılık noktalarının, sistemin genel sağlığı için vazgeçilmez olduğunu düşünüyorsunuz?",
+  "displayedResponse": {
+    "messageTr": "Kapsamı daraltmanın getirdiği riskleri, 'test kapsamı' ile 'sistem kararlılığı' arasındaki ödünleşim üzerinden teknik bir dille ifade edebilirsiniz. Hangi kritik iş akışlarının veya veri tutarlılık noktalarının, sistemin genel sağlığı için vazgeçilmez olduğunu düşünüyorsunuz?",
+    "fallback": false,
+    "liveAi": true,
+    "decisionId": "testing",
+    "hintLevel": 1,
+    "requestId": "499ab94e-5577-4220-91e2-974b5e992e5e",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 1477
+  }
+}

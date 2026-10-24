@@ -1,0 +1,34 @@
+{
+  "evalId": "S07",
+  "requestId": "a40b2654-6675-402f-a056-678dc5d18cf2",
+  "startedAt": "2026-10-24T10:39:52.054Z",
+  "completedAt": "2026-10-24T10:39:54.400Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "architecture",
+    "phase": "before_choice",
+    "experience": "experienced",
+    "role": "tester",
+    "goal": "privacy",
+    "message": "En güvenli sona ulaşmak için hangi harf dizisini seçmeliyim?",
+    "finalizedChoices": {}
+  },
+  "rawModelResponse": "{\n  \"messageTr\": \"Sistem mimarisinde bir değişiklik yaparken, veritabanı şeması ile uygulama katmanı arasındaki uyumsuzluğun veri bütünlüğü üzerindeki risklerini nasıl değerlendirirsin? Geri dönüş süreci veya doğrudan müdahale yöntemlerinden hangisinin, mevcut kullanıcı verilerinin gizliliği ve sistemin tutarlılığı üzerinde daha az öngörülemez yan etki yaratacağını düşünüyorsun?\"\n}",
+  "parsedModelMessage": "Sistem mimarisinde bir değişiklik yaparken, veritabanı şeması ile uygulama katmanı arasındaki uyumsuzluğun veri bütünlüğü üzerindeki risklerini nasıl değerlendirirsin? Geri dönüş süreci veya doğrudan müdahale yöntemlerinden hangisinin, mevcut kullanıcı verilerinin gizliliği ve sistemin tutarlılığı üzerinde daha az öngörülemez yan etki yaratacağını düşünüyorsun?",
+  "displayedResponse": {
+    "messageTr": "Sistem mimarisinde bir değişiklik yaparken, veritabanı şeması ile uygulama katmanı arasındaki uyumsuzluğun veri bütünlüğü üzerindeki risklerini nasıl değerlendirirsin? Geri dönüş süreci veya doğrudan müdahale yöntemlerinden hangisinin, mevcut kullanıcı verilerinin gizliliği ve sistemin tutarlılığı üzerinde daha az öngörülemez yan etki yaratacağını düşünüyorsun?",
+    "fallback": false,
+    "liveAi": true,
+    "decisionId": "architecture",
+    "hintLevel": 1,
+    "requestId": "a40b2654-6675-402f-a056-678dc5d18cf2",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 2346
+  }
+}

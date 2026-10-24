@@ -1,0 +1,317 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectId": "0800-kritik-karar",
+  "title": "08:00 — Kritik Karar",
+  "subtitle": "SE Primer: Yazılım Mühendisliği, Oynanan Bir Kitap",
+  "locale": "tr-TR",
+  "status": "planning",
+  "fictionalDataOnly": true,
+  "scoring": { "enabled": false },
+  "opening": {
+    "day": "Pazartesi",
+    "time": "08:00",
+    "waitingPeopleApproximate": 300,
+    "playerRole": "Nöbetçi yazılım mühendisi",
+    "text": "Pazartesi, 08:00. Gece yayımlanan sürümün ardından hastanenin randevu sistemi durdu. Yaklaşık 300 kurgusal kişi hizmetin açılmasını bekliyor. Nöbetçi yazılım mühendisi olarak kurtarmayı koordine ediyorsun.",
+    "disclaimer": "Bu bölümdeki tüm kişiler ve kayıtlar kurgusaldır. Gerçek kişi bilgisi veya tıbbi teşhis kullanılmaz."
+  },
+  "assumptions": [
+    "Mimari A seçildiğinde uyumluluk incelemesi başarılıdır; önceki uygulama sürümü mevcut veritabanı şemasıyla veri kaybı olmadan çalışır.",
+    "Mimari B bu kurguda geçici toparlanma sağlar; doğrulanmamış üretim değişikliğinin izlenmesi ve kalıcılaştırılması gerekir.",
+    "Test B bu senaryoda kritik randevu akışındaki regresyonu kaçırır; tam trafik altında aynı arıza tekrar görünür.",
+    "Test A bu kurguda hedefli smoke ve entegrasyon kontrollerini geçirir; tüm olası hataları dışladığı iddia edilmez.",
+    "Gizlilik B'deki takım sohbeti olay için yetkilendirilmiş dar erişimli kanal değildir. Uygunsuz paylaşım kurgu içi olaydır; otomatik hukuki yaptırım hükmü değildir."
+  ],
+  "onboarding": {
+    "questionCount": 3,
+    "questions": [
+      {
+        "id": "EXPERIENCE",
+        "label": "Deneyim düzeyin nedir?",
+        "options": [
+          { "value": "beginner", "label": "Yeni başlayan" },
+          { "value": "intermediate", "label": "Orta seviye" },
+          { "value": "experienced", "label": "Deneyimli" }
+        ]
+      },
+      {
+        "id": "ROLE",
+        "label": "Hangi rolden bakmak istersin?",
+        "options": [
+          { "value": "developer", "label": "Yazılım geliştirici" },
+          { "value": "tester", "label": "Test mühendisi" },
+          { "value": "lead", "label": "Teknik ekip lideri" }
+        ]
+      },
+      {
+        "id": "GOAL",
+        "label": "Bu bölümde ne öğrenmek istersin?",
+        "options": [
+          { "value": "architecture", "label": "Mimari kararları öğrenmek" },
+          { "value": "testing", "label": "Test ve doğrulamayı öğrenmek" },
+          { "value": "privacy", "label": "Güvenlik ve KVKK'yı öğrenmek" }
+        ]
+      }
+    ]
+  },
+  "personalization": {
+    "changes": ["vocabulary", "optionalHints", "rolePerspective", "goalEmphasis", "simulatedPressureCopy"],
+    "neverChanges": ["decisionOrder", "availableChoices", "technicalFacts", "endingRules", "combinations"],
+    "composition": "sharedScene + experienceExplanation + rolePerspective + finalizedGoalConsequence",
+    "realTimeCountdown": false,
+    "profilesCreateStoryBranches": false,
+    "experience": {
+      "beginner": {
+        "style": "Kısa cümleler, ilk kullanımda kavram açıklaması ve isteğe bağlı kavram ipucu.",
+        "introductoryCopy": "Geri alma, çalışan önceki sürüme dönmektir.",
+        "optionalHints": true
+      },
+      "intermediate": {
+        "style": "Standart teknik sözcükler ve kanıt odaklı açıklamalar.",
+        "optionalHints": true
+      },
+      "experienced": {
+        "style": "Uyumluluk, etki alanı ve doğrulama kapsamı üzerine daha derin ödünleşim soruları.",
+        "simulatedPressureCopy": "Operasyon ekibi bir sonraki durum güncellemesini bekliyor.",
+        "optionalHints": true
+      }
+    },
+    "role": {
+      "developer": "Sürüm/şema bağımlılığı, hata izi ve değişiklik kapsamı.",
+      "tester": "Kritik akış, kanıt, regresyon ve test sınırı.",
+      "lead": "Koordinasyon, sorumluluk, erişim sınırı ve kararın gerekçelendirilmesi."
+    },
+    "goal": {
+      "architecture": { "emphasizeDecision": "architecture", "summaryHeading": "Mimari odağın" },
+      "testing": { "emphasizeDecision": "testing", "summaryHeading": "Test odağın" },
+      "privacy": { "emphasizeDecision": "privacy", "summaryHeading": "Veri koruma odağın" }
+    }
+  },
+  "decisionOrder": ["architecture", "testing", "privacy"],
+  "decisionFlow": {
+    "requiresFinalization": true,
+    "requiresConsequenceAcknowledgement": true,
+    "allowBacktrackingAfterFinalization": false,
+    "skipDecision": false,
+    "selectingChoiceCommitsImmediately": false
+  },
+  "decisions": [
+    {
+      "id": "architecture",
+      "order": 1,
+      "progress": "1 / 3",
+      "title": "Önce sistemi nasıl toparlarsın?",
+      "scene": "Yeni sürümün ardından randevu istekleri hata veriyor. Uygulama sürümü ile veritabanı şeması arasındaki ilişkiyi ve değişikliğin etki alanını düşünmelisin.",
+      "learningObjectives": ["Geri alma uyumluluğu", "Yayına alma riski", "Mimari ödünleşimler"],
+      "localTutorQuestion": "Bir değişikliğin sistemin diğer parçalarına etkisini hangi kanıtlarla değerlendirebilirsin?",
+      "beginnerHint": "Uygulama kodu ve veritabanının beklediği yapı birlikte çalışır; birindeki değişiklik diğerini etkileyebilir.",
+      "choices": [
+        {
+          "id": "A",
+          "label": "Veritabanı uyumluluğunu kontrol et ve son kararlı sürüme geri dön.",
+          "consequence": {
+            "id": "ARCH_ROLLBACK_COMPATIBLE",
+            "title": "Uyumluluğu doğrulanmış geri dönüş",
+            "immediate": "İnceleme, mevcut veritabanı şemasının önceki sürümle uyumlu olduğunu gösterdi. Son kararlı sürüme veri kaybı olmadan dönüldü; hata oranı azaldı.",
+            "cause": "Geri dönüşten önce kodun mevcut şemayla çalışabileceğini doğrulaman, kurtarma işleminin yeni bir uyumsuzluk üretmesini önledi.",
+            "caveat": "Gerçek bir olayda yıkıcı şema değişiklikleri geri dönüşü engelleyebilir; uyumluluk varsayılmamalıdır.",
+            "technicalEffect": "verified_rollback",
+            "summary": "Şema uyumluluğu doğrulandı ve son kararlı uygulama sürümüne dönüldü."
+          },
+          "nextDecision": "testing"
+        },
+        {
+          "id": "B",
+          "label": "Doğrudan üretim ortamına acil bir hotfix uygula.",
+          "consequence": {
+            "id": "ARCH_UNVERIFIED_HOTFIX",
+            "title": "Hızlı ama henüz kararlı olmayan toparlanma",
+            "immediate": "Acil düzeltme görünen hatayı azalttı. Normal yayına alma doğrulamasının dışındaki bu değişikliğin etkileri henüz tam bilinmiyor.",
+            "cause": "Üretimde doğrudan değişiklik yapmak beklemeyi azalttı, ancak etki alanının sınırlı olduğuna dair kanıtı da azalttı.",
+            "caveat": "Acil hotfix her durumda yanlış değildir; bu kurguda izleme, kalıcı düzeltme ve olay sonrası inceleme gerektirir.",
+            "technicalEffect": "hotfix_monitoring_required",
+            "summary": "Üretime hotfix uygulandı; etki alanı için izleme ve kalıcı stabilizasyon ihtiyacı kaldı."
+          },
+          "nextDecision": "testing"
+        }
+      ]
+    },
+    {
+      "id": "testing",
+      "order": 2,
+      "progress": "2 / 3",
+      "title": "Trafiği açmadan önce neyi doğrularsın?",
+      "scene": "Sistem toparlanıyor gibi görünüyor. Operasyon ekibi hizmetin açılmasını bekliyor; birkaç başarılı istek tüm randevu akışının çalıştığını kanıtlamıyor.",
+      "learningObjectives": ["Smoke testi", "Entegrasyon doğrulaması", "Regresyon riski", "Test kapsamının sınırları"],
+      "localTutorQuestion": "Sistemin toparlandığını söylemek için birkaç başarılı isteğin dışında hangi kanıta ihtiyaç duyarsın?",
+      "beginnerHint": "Smoke testi temel işlevlerin ayağa kalktığını, entegrasyon testi ise parçaların birlikte çalışmasını kontrol eder.",
+      "choices": [
+        {
+          "id": "A",
+          "label": "Tam trafiği açmadan önce hedefli smoke ve entegrasyon testlerini çalıştır.",
+          "consequence": {
+            "id": "TEST_TARGETED_VERIFICATION",
+            "title": "Kritik akış için doğrulama kanıtı",
+            "immediate": "Randevu arama, kurgusal randevu oluşturma ve uygulama-veritabanı bağlantısı hedefli kontrollerden geçti. Tam trafik kontrollü biçimde açıldı.",
+            "cause": "Temel işlevleri ve bileşenler arası iletişimi doğrulamak, yalnızca sistemin yanıt vermesinden daha güçlü bir yayına dönüş kanıtı sağladı.",
+            "caveat": "Bu sınırlı testler tüm hata türlerini veya hotfix'in tüm uzun vadeli etkilerini dışlamaz.",
+            "technicalEffect": "targeted_flow_verified",
+            "summary": "Tam trafik öncesinde kritik randevu akışı smoke ve entegrasyon testleriyle doğrulandı."
+          },
+          "nextDecision": "privacy"
+        },
+        {
+          "id": "B",
+          "label": "Hizmeti hemen açmak için testleri atla.",
+          "consequence": {
+            "id": "TEST_REGRESSION_RETURNS",
+            "title": "Görünmeyen regresyon yeniden ortaya çıktı",
+            "immediate": "Trafik hemen açıldı. Doğrulanmayan kritik randevu akışındaki regresyon yük altında yeniden göründü ve hizmet tekrar kesildi. Olayı incelerken logların nasıl paylaşılacağına yine karar vermelisin.",
+            "cause": "Sadece ilk toparlanma sinyaline güvenildi; hedefli doğrulama yapılmadığından akıştaki arıza kullanıcı trafiğine taşındı.",
+            "caveat": "Bu senaryoda tekrar eden kesinti deterministiktir; her gerçek test atlamasının kesin kesinti yaratacağı anlamına gelmez.",
+            "technicalEffect": "recurring_outage",
+            "summary": "Testler atlandı; kritik akıştaki regresyon tam trafikte tekrar kesinti yarattı."
+          },
+          "nextDecision": "privacy"
+        }
+      ]
+    },
+    {
+      "id": "privacy",
+      "order": 3,
+      "progress": "3 / 3",
+      "title": "Tanılama loglarını nasıl paylaşırsın?",
+      "scene": "Tanılama kayıtlarında kurgusal adlar ve tanımlayıcılar var. Takım sohbetinin erişimi olay incelemesinde gerekli kişilerle sınırlı değil. Teknik inceleme için kayıtları paylaşman gerekiyor.",
+      "fictionalLogExample": {
+        "name": "Kurgu Kişi 01",
+        "identifier": "KURGU-001",
+        "event": "appointment_request_failed",
+        "maskedName": "[AD_MASKELENDİ]",
+        "maskedIdentifier": "[KİMLİK_MASKELENDİ]"
+      },
+      "learningObjectives": ["Veri azaltma", "Erişim kontrolü", "Olay yönetimi", "KVKK farkındalığı"],
+      "localTutorQuestion": "İnceleme için hangi alanlar gerçekten gerekli ve bu bilgilere kimlerin erişmesi gerekiyor?",
+      "beginnerHint": "Bir log, teknik olay bilgisinin yanında kişiyi tanıtabilecek alanlar da içerebilir. Alanların gerekliliğini ayrı ayrı düşün.",
+      "choices": [
+        {
+          "id": "A",
+          "label": "Paylaşmadan önce kişisel tanımlayıcıları maskele ve erişimi sınırla.",
+          "consequence": {
+            "id": "PRIVACY_MINIMIZED_RESTRICTED",
+            "title": "Gerekli veri, gerekli erişim",
+            "immediate": "Ad ve tanımlayıcılar maskelendi. Teknik olay alanları korundu ve kayıt yalnızca olay incelemesinde görevli kişilerin erişebildiği kanalda paylaşıldı.",
+            "cause": "Veri miktarını ve erişebilen kişi sayısını birlikte azaltman, teknik incelemeyi sürdürürken gereksiz kişisel veri yayılımını sınırladı.",
+            "caveat": "Maskeleme tek başına tam anonimleştirme garantisi değildir; başka alanlarla yeniden tanımlama olasılığı da değerlendirilir.",
+            "technicalEffect": "minimized_and_restricted",
+            "summary": "Tanımlayıcılar maskelendi ve log erişimi olay ekibiyle sınırlandı."
+          },
+          "nextDecision": null
+        },
+        {
+          "id": "B",
+          "label": "Ham, maskelenmemiş logları takım sohbetine gönder.",
+          "consequence": {
+            "id": "PRIVACY_UNMASKED_SHARED",
+            "title": "Ham kayıtlar gereğinden geniş paylaşıldı",
+            "immediate": "Kurgusal ad ve tanımlayıcılar geniş erişimli takım sohbetine gönderildi. Bu paylaşım senaryonun erişim sınırlarını aştı ve ayrı bir gizlilik olayı oluşturdu.",
+            "cause": "Sorunu çözmek için gerekli olmayan tanımlayıcıların geniş bir kanala taşınması, veri yayılımını ve erişim riskini artırdı.",
+            "caveat": "Gerçek bir olayın hukuki niteliği, etkilenen veriler, erişim ve diğer koşullar incelenerek değerlendirilir; bu seçim tek başına kesin ceza veya otomatik bildirim yükümlülüğü hükmü değildir.",
+            "technicalEffect": "privacy_incident",
+            "summary": "Ham loglar geniş takım sohbetine gönderildi; erişimi sınırlama, yayılımı inceleme ve kurumun olay sürecini işletme ihtiyacı doğdu."
+          },
+          "nextDecision": null
+        }
+      ]
+    }
+  ],
+  "endingEvaluation": {
+    "owner": "deterministic_application_logic",
+    "input": "finalizedChoices",
+    "requiredDecisions": ["architecture", "testing", "privacy"],
+    "allowedChoiceValues": ["A", "B"],
+    "rejectMissingOrInvalidChoices": true,
+    "strategy": "first_match_by_ascending_priority",
+    "conditionSemantics": "condition.all içindeki her decision için kesinleşmiş seçim equals değerine eşit olmalıdır; priority küçükten büyüğe değerlendirilir.",
+    "modelMaySetEnding": false,
+    "summaryComposition": "opening + three finalized choice consequences in decisionOrder + selected ending + goal emphasis",
+    "preserveAllConsequencesWhenEndingOverrides": true
+  },
+  "endingRules": [
+    {
+      "priority": 1,
+      "endingId": "ENDING_PRIVACY_INCIDENT",
+      "condition": { "all": [{ "decision": "privacy", "equals": "B" }] }
+    },
+    {
+      "priority": 2,
+      "endingId": "ENDING_RECURRING_OUTAGE",
+      "condition": { "all": [{ "decision": "testing", "equals": "B" }] }
+    },
+    {
+      "priority": 3,
+      "endingId": "ENDING_FRAGILE",
+      "condition": { "all": [{ "decision": "architecture", "equals": "B" }] }
+    },
+    {
+      "priority": 4,
+      "endingId": "ENDING_SAFE",
+      "condition": {
+        "all": [
+          { "decision": "architecture", "equals": "A" },
+          { "decision": "testing", "equals": "A" },
+          { "decision": "privacy", "equals": "A" }
+        ]
+      }
+    }
+  ],
+  "endings": [
+    {
+      "id": "ENDING_SAFE",
+      "title": "Güvenli kurtarma",
+      "summary": "Uyumlu sürüme dönüş ve hedefli doğrulama sayesinde randevu hizmeti güvenle yeniden açıldı. Log paylaşımında tanımlayıcılar maskelendi ve erişim sınırlandı.",
+      "reflection": "Hangi kanıtlar kurtarma kararına güvenmeni sağladı?",
+      "followUp": "Kontrollü izlemeyi sürdür ve olayın teknik öğrenimlerini kaydet.",
+      "doesNotImply": "Sistemin gelecekte hiç hata vermeyeceği veya tüm hukuki gerekliliklerin otomatik karşılandığı iddiası yoktur."
+    },
+    {
+      "id": "ENDING_FRAGILE",
+      "title": "Kırılgan kurtarma",
+      "summary": "Acil hotfix ile hizmet açıldı ve hedefli testler geçti. Üretimdeki acil değişikliğin uzun vadeli etkileri için izleme ve kalıcı stabilizasyon hâlâ gerekiyor. Loglar sınırlandırılarak paylaşıldı.",
+      "reflection": "Kısa vadeli toparlanmayı sürdürülebilir bir düzeltmeye nasıl dönüştürürdün?",
+      "followUp": "Hotfix'i gözden geçir, izleme kapsamını netleştir ve normal süreçte kalıcılaştır."
+    },
+    {
+      "id": "ENDING_RECURRING_OUTAGE",
+      "title": "Kesinti geri döndü",
+      "summary": "Testler atlandığından kritik akıştaki regresyon tam trafikte yeniden ortaya çıktı. Logların maskelenmesi ve erişimin sınırlandırılması veri paylaşım riskini azalttı; hizmeti doğrulama ihtiyacını ortadan kaldırmadı.",
+      "reflection": "Trafiği açmadan önce hangi kritik akışı kanıtlamak isterdin?",
+      "followUp": "Trafiği kontrollü sınırla, sorunu yeniden üret ve düzeltmeyi hedefli testlerle doğrula."
+    },
+    {
+      "id": "ENDING_PRIVACY_INCIDENT",
+      "title": "Gizlilik olayı",
+      "summary": "Hizmetin teknik durumundan bağımsız olarak ham loglar gereğinden geniş paylaşıldı. Veri yayılımını inceleme ve erişimi sınırlandırma gereği doğdu. Teknik hizmet durumu aşağıdaki üç kararın özetiyle birlikte okunmalıdır.",
+      "reflection": "İncelemeyi sürdürebilmek için hangi veri alanları ve erişim sınırı yeterli olurdu?",
+      "followUp": "Paylaşıma erişimi sınırla, yayılımı incele ve kurumun olay yönetimi sürecini işlet; hukuki değerlendirmeyi yetkili sorumlulara bırak.",
+      "doesNotImply": "Otomatik hukuki ihlal, kesin ceza veya her olayda aynı bildirim yükümlülüğü sonucu çıkarılmaz."
+    }
+  ],
+  "combinations": [
+    { "path": "AAA", "choices": { "architecture": "A", "testing": "A", "privacy": "A" }, "expectedEnding": "ENDING_SAFE" },
+    { "path": "AAB", "choices": { "architecture": "A", "testing": "A", "privacy": "B" }, "expectedEnding": "ENDING_PRIVACY_INCIDENT" },
+    { "path": "ABA", "choices": { "architecture": "A", "testing": "B", "privacy": "A" }, "expectedEnding": "ENDING_RECURRING_OUTAGE" },
+    { "path": "ABB", "choices": { "architecture": "A", "testing": "B", "privacy": "B" }, "expectedEnding": "ENDING_PRIVACY_INCIDENT" },
+    { "path": "BAA", "choices": { "architecture": "B", "testing": "A", "privacy": "A" }, "expectedEnding": "ENDING_FRAGILE" },
+    { "path": "BAB", "choices": { "architecture": "B", "testing": "A", "privacy": "B" }, "expectedEnding": "ENDING_PRIVACY_INCIDENT" },
+    { "path": "BBA", "choices": { "architecture": "B", "testing": "B", "privacy": "A" }, "expectedEnding": "ENDING_RECURRING_OUTAGE" },
+    { "path": "BBB", "choices": { "architecture": "B", "testing": "B", "privacy": "B" }, "expectedEnding": "ENDING_PRIVACY_INCIDENT" }
+  ],
+  "restart": {
+    "availableFrom": ["decision", "consequence", "ending"],
+    "target": "ONBOARDING",
+    "clear": ["profile", "pendingChoice", "finalizedChoices", "consequences", "ending", "tutorHistory", "tutorStatus"],
+    "cancelPendingTutorRequests": true,
+    "invalidatePreviousSessionId": true,
+    "pageReloadBehavior": "same_as_restart"
+  }
+}

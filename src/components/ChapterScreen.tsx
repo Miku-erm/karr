@@ -17,6 +17,7 @@ interface ChapterScreenProps {
   onContinue: () => void;
   tutorQuestion: string;
   isTutorLoading: boolean;
+  tutorFallback: boolean;
   onAskTutor: (query: string) => void;
   isLastDecision: boolean;
 }
@@ -31,6 +32,7 @@ export const ChapterScreen: React.FC<ChapterScreenProps> = ({
   onContinue,
   tutorQuestion,
   isTutorLoading,
+  tutorFallback,
   onAskTutor,
   isLastDecision,
 }) => {
@@ -57,7 +59,7 @@ export const ChapterScreen: React.FC<ChapterScreenProps> = ({
   const personalized = getPersonalizedFeedback(userProfile, decision.id);
 
   return (
-    <div className="flex flex-col w-full pb-8 space-y-4">
+    <div data-testid="chapter" data-decision={decision.id} className="flex flex-col w-full pb-8 space-y-4">
       {/* 1. Telemetry Bar & Context Badge */}
       <section className="flex flex-col gap-2.5">
         <div className="flex items-center justify-between">
@@ -69,7 +71,7 @@ export const ChapterScreen: React.FC<ChapterScreenProps> = ({
             <span className="w-1.5 h-1.5 rounded-full bg-[#ffb870] animate-pulse"></span>
             <span className="font-mono text-[11px] font-medium">{decision.timeLabel}</span>
             <span className="text-[#8f9098] text-[10px]">•</span>
-            <span className="font-mono text-[11px] text-[#c5c6ce]">{decision.progress}</span>
+            <span data-testid="story-progress" className="font-mono text-[11px] text-[#c5c6ce]">{decision.progress}</span>
           </div>
         </div>
 
@@ -116,6 +118,12 @@ export const ChapterScreen: React.FC<ChapterScreenProps> = ({
 
       {/* 3. Decision Section (When in DECISION mode) */}
       {screenState === 'DECISION' && (
+        <p data-testid="experience-explanation" className="text-sm leading-relaxed text-[#c5c6ce]">
+          {userProfile.experience === 'beginner' ? `${decision.id === 'architecture' ? 'Geri alma, çalışan önceki sürüme dönmektir. ' : ''}${decision.beginnerHint}` : personalized.experienceNote}
+          {userProfile.experience === 'experienced' && ' Operasyon ekibi bir sonraki durum güncellemesini bekliyor. Süre sınırı yok.'}
+        </p>
+      )}
+      {screenState === 'DECISION' && (
         <section className="flex flex-col gap-3">
           <div className="flex items-center gap-2 px-1">
             <span className="w-1.5 h-3.5 bg-[#ffb870] rounded-full"></span>
@@ -126,6 +134,10 @@ export const ChapterScreen: React.FC<ChapterScreenProps> = ({
 
           {/* Option A */}
           <div
+            role="button"
+            tabIndex={0}
+            aria-pressed={selectedChoice === 'A'}
+            onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelectChoice('A'); } }}
             onClick={() => onSelectChoice('A')}
             data-testid="decision-a"
             className={`p-4 rounded-xl transition-all cursor-pointer relative border ${
@@ -186,6 +198,10 @@ export const ChapterScreen: React.FC<ChapterScreenProps> = ({
 
           {/* Option B */}
           <div
+            role="button"
+            tabIndex={0}
+            aria-pressed={selectedChoice === 'B'}
+            onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelectChoice('B'); } }}
             onClick={() => onSelectChoice('B')}
             data-testid="decision-b"
             className={`p-4 rounded-xl transition-all cursor-pointer relative border ${
@@ -265,10 +281,10 @@ export const ChapterScreen: React.FC<ChapterScreenProps> = ({
 
             {/* Socratic Prompt & Question */}
             <div className="p-2.5 rounded bg-[#100e09]/90 text-[#e8e2d8] border border-[#2c2a24]">
-              <p className="font-body text-[13px] leading-relaxed">
-                <span className="text-[#89d4cd] font-semibold">Sokratik Soru: </span>
+              <p data-testid="tutor-response" data-origin={tutorFallback ? 'local_fallback' : 'gemini'} aria-live="polite" className="font-body text-[13px] leading-relaxed">
+                <span className="text-[#89d4cd] font-semibold">{tutorFallback ? 'Yerel ipucu: ' : 'Gerçek AI yanıtı: '}</span>
                 {isTutorLoading ? (
-                  <span className="italic text-[#c5c6ce] animate-pulse">
+                  <span data-testid="tutor-loading" className="italic text-[#c5c6ce] animate-pulse">
                     Danışman analiz ediyor...
                   </span>
                 ) : (
@@ -287,19 +303,21 @@ export const ChapterScreen: React.FC<ChapterScreenProps> = ({
             {/* Compact Input Bar */}
             <form onSubmit={handleAskSubmit} className="flex items-center gap-2 bg-[#100e09] border border-[#2c2a24] rounded-lg p-1.5">
               <input
+                aria-label="AI eğitmene sor"
+                maxLength={1000}
                 type="text"
                 value={userQuery}
                 onChange={(e) => setUserQuery(e.target.value)}
                 placeholder="Tutor'a sor: 'Geriye uyumlu migrasyon adımları...'"
                 data-testid="tutor-input"
-                className="bg-transparent text-[#e8e2d8] placeholder:text-[#8f9098] font-body text-[13px] flex-1 px-2 focus:outline-none"
+                className="bg-transparent text-[#e8e2d8] placeholder:text-[#8f9098] font-body text-[13px] flex-1 min-w-0 px-2 focus:outline-none"
               />
               <button
                 type="submit"
                 disabled={isTutorLoading || !userQuery.trim()}
                 aria-label="Soruyu Gönder"
                 data-testid="ask-tutor"
-                className="w-7 h-7 rounded-md bg-[#89d4cd] hover:bg-[#a5f0e9] text-[#003734] flex items-center justify-center shrink-0 disabled:opacity-40 transition-opacity"
+                className="w-11 h-11 rounded-md bg-[#89d4cd] hover:bg-[#a5f0e9] text-[#003734] flex items-center justify-center shrink-0 disabled:opacity-40 transition-opacity"
               >
                 <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
               </button>
@@ -312,6 +330,12 @@ export const ChapterScreen: React.FC<ChapterScreenProps> = ({
               type="button"
               disabled={!selectedChoice}
               onClick={onFinalizeChoice}
+              onKeyDown={event => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  event.preventDefault();
+                  if (selectedChoice) onFinalizeChoice();
+                }
+              }}
               data-testid="finalize-decision"
               className={`w-full h-12 rounded-xl font-body text-[15px] font-bold flex items-center justify-center gap-2 shadow-lg active:scale-[0.99] transition-all cursor-pointer ${
                 selectedChoice
@@ -332,7 +356,7 @@ export const ChapterScreen: React.FC<ChapterScreenProps> = ({
 
       {/* 4. Consequence / Feedback State (After Choice Finalized) */}
       {screenState === 'CONSEQUENCE' && activeChoice && (
-        <section className="flex flex-col gap-4">
+        <section data-testid="consequence" data-choice={selectedChoice} data-effect={activeChoice.consequence.technicalEffect} className="flex flex-col gap-4">
           {/* Confirmed Decision Card */}
           <div className="p-4 rounded-xl bg-[#211f19] border-2 border-[#89d4cd] shadow-xl flex flex-col gap-3">
             <div className="flex items-center justify-between">
@@ -367,7 +391,7 @@ export const ChapterScreen: React.FC<ChapterScreenProps> = ({
           </div>
 
           {/* Personalization Lens Box */}
-          <div className="p-3.5 rounded-xl bg-[#1d1b16] border border-[#2c2a24] flex flex-col gap-2 font-body text-xs">
+          <div data-testid="personalized-feedback" className="p-3.5 rounded-xl bg-[#1d1b16] border border-[#2c2a24] flex flex-col gap-2 font-body text-xs">
             <div className="flex items-center gap-1.5 text-[#ffb870] font-mono font-semibold">
               <span className="material-symbols-outlined text-[15px]">badge</span>
               <span>Kişiselleştirilmiş Bakış Açısı</span>

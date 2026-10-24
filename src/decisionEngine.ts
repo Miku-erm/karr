@@ -16,7 +16,7 @@ export interface FinalizedChoices {
  * Priority 4: A-A-A -> ENDING_SAFE
  */
 export function calculateEnding(choices: FinalizedChoices): EndingId {
-  if (!choices.architecture || !choices.testing || !choices.privacy) {
+  if (Object.keys(choices).length !== 3 || !['architecture', 'testing', 'privacy'].every(key => ['A', 'B'].includes(choices[key as DecisionId] || ''))) {
     throw new Error('Eksik karar: Tüm 3 karar tamamlanmadan son hesaplanamaz.');
   }
 

@@ -1,0 +1,10 @@
+{
+  "checkedAt": "2026-10-24T11:04:07.125Z",
+  "filesScanned": 146,
+  "productionBundleScanned": true,
+  "historyScanned": true,
+  "localEnvironmentIgnored": true,
+  "credentialValuesPrinted": false,
+  "passed": true,
+  "violationPaths": []
+}

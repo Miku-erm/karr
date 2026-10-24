@@ -1,0 +1,14 @@
+
+> 0800-kritik-karar@0.0.0 build
+> vite build
+
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 26 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   1.62 kB │ gzip:  0.74 kB
+dist/assets/index-DJZMlPac.css   31.99 kB │ gzip:  6.64 kB
+dist/assets/index-QgTpYxug.js   296.48 kB │ gzip: 88.17 kB
+
+✓ built in 177ms

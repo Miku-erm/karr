@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ChoiceId, EndingDefinition, EndingId, UserProfile } from '../types';
-import { ENDINGS } from '../storyData';
+import { DECISIONS, getPersonalizedFeedback } from '../storyData';
 
 interface EndingScreenProps {
   achievedEnding: EndingDefinition;
@@ -16,10 +16,10 @@ export const EndingScreen: React.FC<EndingScreenProps> = ({
   onRestart,
 }) => {
   // Allow inspecting other permutations while showing achieved ending as active
-  const [activeEndingId, setActiveEndingId] = useState<EndingId>(achievedEnding.id);
+  const activeEndingId = achievedEnding.id;
   const [copiedToast, setCopiedToast] = useState(false);
 
-  const currentEnding = ENDINGS[activeEndingId] || achievedEnding;
+  const currentEnding = achievedEnding;
 
   const isAchieved = activeEndingId === achievedEnding.id;
 
@@ -32,6 +32,7 @@ Nöbetçi Mühendis: ${userProfile.role.toUpperCase()} (${userProfile.experience
 ## 1. SONUÇ
 Nihai Durum: ${currentEnding.badgeTitle}
 Epilog: ${currentEnding.summary}
+Sonuç kodu: ${currentEnding.id}
 
 ## 2. TRIYAJ VE KARAR PATİKASI
 - Karar 1 (Mimari): ${choices.architecture === 'A' ? 'A (Eski sürüme dön / Rollback)' : 'B (Canlıda acil yama / Hotfix)'}
@@ -41,7 +42,7 @@ Epilog: ${currentEnding.summary}
 ## 3. MÜHENDİSLİK DERSLERİ (DEBRIEF)
 1. Mimari: Expand & Contract deseni ile şema ve kod bağımsızlığı.
 2. Test: Yük altında transaction kilitlenmelerini simüle eden kaos testleri.
-3. Güvenlik: Hata loglarında kişisel sağlık verilerinin (PII) maskelenmesi.
+3. Güvenlik: Kurgusal loglarda veri azaltma ve erişim sınırı.
 
 SIM_ID: MED-PROD-2024-0800 • v1.4.2
 `;
@@ -88,43 +89,6 @@ SIM_ID: MED-PROD-2024-0800 • v1.4.2
             </span>
           </div>
 
-          {/* Ending Permutations Capsule Switcher */}
-          <div className="w-full overflow-x-auto pb-1 -mx-1 px-1">
-            <div className="flex items-center gap-1.5 bg-[#100e09] border border-[#211f19] p-1 rounded-lg w-max min-w-full">
-              {(
-                [
-                  { id: 'ENDING_SAFE', label: 'Güvenli Kurtarma', color: 'bg-[#89d4cd]' },
-                  { id: 'ENDING_FRAGILE', label: 'Kırılgan Kurtarma', color: 'bg-[#ffb870]' },
-                  { id: 'ENDING_RECURRING_OUTAGE', label: 'Tekrarlayan Kesinti', color: 'bg-[#ffb4ab]' },
-                  { id: 'ENDING_PRIVACY_INCIDENT', label: 'KVKK İhlali', color: 'bg-[#ff5555]' },
-                ] as const
-              ).map((item) => {
-                const isSelected = activeEndingId === item.id;
-                const isUserOutcome = achievedEnding.id === item.id;
-                return (
-                  <button
-                    key={item.id}
-                    type="button"
-                    onClick={() => setActiveEndingId(item.id)}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md font-mono text-[11px] whitespace-nowrap transition-all ${
-                      isSelected
-                        ? 'bg-[#37352e] text-[#e8e2d8] shadow-sm font-semibold'
-                        : 'text-[#8f9098] hover:text-[#e8e2d8] opacity-75'
-                    }`}
-                  >
-                    <span className={`w-2 h-2 rounded-full ${item.color}`}></span>
-                    <span>{item.label}</span>
-                    {isUserOutcome && (
-                      <span className="text-[9px] px-1 py-0.2 rounded bg-[#ffb870] text-[#2c1600] font-bold">
-                        ★
-                      </span>
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
           {/* Narrative Epilogue */}
           <div className="flex flex-col gap-2 pt-1">
             <div className="flex items-center gap-2">
@@ -141,36 +105,8 @@ SIM_ID: MED-PROD-2024-0800 • v1.4.2
             </p>
           </div>
 
-          {/* Telemetry Recovered Metrics Row */}
-          <div className="grid grid-cols-3 gap-2 pt-2">
-            <div className="flex flex-col bg-[#211f19] border border-[#37352e] p-2.5 rounded-lg shadow-sm">
-              <span className="font-mono text-[11px] text-[#8f9098]">DB Kilidi</span>
-              <span className="font-mono text-[12px] text-[#89d4cd] font-semibold mt-0.5">
-                {currentEnding.metrics.dbLock}
-              </span>
-              <span className="font-mono text-[10px] text-[#89d4cd]/75">
-                {currentEnding.metrics.dbLockSub}
-              </span>
-            </div>
-            <div className="flex flex-col bg-[#211f19] border border-[#37352e] p-2.5 rounded-lg shadow-sm">
-              <span className="font-mono text-[11px] text-[#8f9098]">Kuyruk</span>
-              <span className="font-mono text-[12px] text-[#89d4cd] font-semibold mt-0.5">
-                {currentEnding.metrics.queue}
-              </span>
-              <span className="font-mono text-[10px] text-[#c5c6ce]">
-                {currentEnding.metrics.queueSub}
-              </span>
-            </div>
-            <div className="flex flex-col bg-[#211f19] border border-[#37352e] p-2.5 rounded-lg shadow-sm">
-              <span className="font-mono text-[11px] text-[#8f9098]">Hasta Kaybı</span>
-              <span className="font-mono text-[12px] text-[#89d4cd] font-semibold mt-0.5">
-                {currentEnding.metrics.patientLoss}
-              </span>
-              <span className="font-mono text-[10px] text-[#89d4cd]/75">
-                {currentEnding.metrics.patientLossSub}
-              </span>
-            </div>
-          </div>
+          <p data-testid="ending-code" className="font-mono text-xs text-[#89d4cd]">{achievedEnding.id}</p>
+          <p className="text-xs text-[#c5c6ce]">{achievedEnding.doesNotImply || 'Bu sonuç yalnızca kurgusal olayın sonucudur.'}</p>
         </div>
       </div>
 
@@ -189,83 +125,15 @@ SIM_ID: MED-PROD-2024-0800 • v1.4.2
         </div>
 
         <div className="flex flex-col gap-2.5">
-          {/* Step 1 */}
-          <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#211f19] border border-[#2c2a24] shadow-md">
-            <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-lg bg-[#2c2a24] text-[#ffb870] font-mono text-[12px] font-semibold">
-              01
-            </div>
-            <div className="flex flex-col gap-1 min-w-0 flex-1">
-              <div className="flex items-center justify-between gap-2">
-                <span className="font-mono text-[11px] text-[#ffb870] font-medium">08:00 • Adım 1</span>
-                <span className="inline-flex items-center gap-1 font-mono text-[11px] text-[#89d4cd]">
-                  <span className="material-symbols-outlined text-[14px]">check_circle</span>
-                  {choices.architecture === 'A' ? 'Mimari Refleks' : 'Hotfix Riski'}
-                </span>
-              </div>
-              <p className="font-body text-[14px] text-[#e8e2d8] font-medium">
-                {choices.architecture === 'A'
-                  ? 'Şema doğrulama sonrası kontrollü rollback'
-                  : 'Canlı ortamda plansız acil yama (Hotfix)'}
-              </p>
-              <p className="font-body text-[12px] text-[#c5c6ce] leading-relaxed">
-                {choices.architecture === 'A'
-                  ? 'Ham drop yerine çift yönlü migrasyon uyumu gözetildi, hasta kayıt blokajı çözüldü.'
-                  : 'Kilitli indeksler silinerek kuyruk boşaltıldı; fakat derin mimari risk ve bellek baskısı kaldı.'}
-              </p>
-            </div>
-          </div>
-
-          {/* Step 2 */}
-          <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#211f19] border border-[#2c2a24] shadow-md">
-            <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-lg bg-[#2c2a24] text-[#ffb870] font-mono text-[12px] font-semibold">
-              02
-            </div>
-            <div className="flex flex-col gap-1 min-w-0 flex-1">
-              <div className="flex items-center justify-between gap-2">
-                <span className="font-mono text-[11px] text-[#ffb870] font-medium">08:20 • Adım 2</span>
-                <span className="inline-flex items-center gap-1 font-mono text-[11px] text-[#89d4cd]">
-                  <span className="material-symbols-outlined text-[14px]">check_circle</span>
-                  {choices.testing === 'A' ? 'Kaskad Engellendi' : 'Regresyon Kaçırıldı'}
-                </span>
-              </div>
-              <p className="font-body text-[14px] text-[#e8e2d8] font-medium">
-                {choices.testing === 'A'
-                  ? 'Hedefli smoke ve entegrasyon testleri başarıyla tamamlandı'
-                  : 'Testler atlandı ve doğrudan tam trafik açıldı'}
-              </p>
-              <p className="font-body text-[12px] text-[#c5c6ce] leading-relaxed">
-                {choices.testing === 'A'
-                  ? 'Yeniden deneme fırtınası (retry storm) durduruldu; veritabanı havuzu tükenmeden teyit edildi.'
-                  : 'Sadece yüzeysel toparlanmaya güvenildi; doğrulanmayan randevu akışı ikinci bir kesintiye yol açtı.'}
-              </p>
-            </div>
-          </div>
-
-          {/* Step 3 */}
-          <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#211f19] border border-[#2c2a24] shadow-md">
-            <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-lg bg-[#2c2a24] text-[#ffb870] font-mono text-[12px] font-semibold">
-              03
-            </div>
-            <div className="flex flex-col gap-1 min-w-0 flex-1">
-              <div className="flex items-center justify-between gap-2">
-                <span className="font-mono text-[11px] text-[#ffb870] font-medium">08:35 • Adım 3</span>
-                <span className="inline-flex items-center gap-1 font-mono text-[11px] text-[#89d4cd]">
-                  <span className="material-symbols-outlined text-[14px]">check_circle</span>
-                  {choices.privacy === 'A' ? 'Veri Güvenliği' : 'KVKK İhlali'}
-                </span>
-              </div>
-              <p className="font-body text-[14px] text-[#e8e2d8] font-medium">
-                {choices.privacy === 'A'
-                  ? "KVKK log maskelemesi ve yetkili olay triyaj kanalı kullanımı"
-                  : "Ham, maskelenmemiş hasta loglarının genel takıma gönderilmesi"}
-              </p>
-              <p className="font-body text-[12px] text-[#c5c6ce] leading-relaxed">
-                {choices.privacy === 'A'
-                  ? 'Hata izleme (APM) kayıtlarına ham kimlik ve sağlık verisinin sızması kesin bir filtrelemeyle durduruldu.'
-                  : 'Tanı kodları ve kimlikler 120 kişilik kanala yayıldı; ayrı bir resmi adli soruşturma başladı.'}
-              </p>
-            </div>
-          </div>
+          {(['architecture', 'testing', 'privacy'] as const).map((id, index) => {
+            const choice = DECISIONS[id].choices[choices[id]];
+            const personalized = getPersonalizedFeedback(userProfile, id);
+            return <article key={id} data-testid={`summary-${id}`} data-choice={choices[id]} className="p-4 rounded-xl bg-[#211f19] border border-[#2c2a24] space-y-2">
+              <h3 className="text-[#ffb870] font-semibold">{index + 1}. {choice.label} ({choices[id]})</h3>
+              <p className="text-sm leading-relaxed">{choice.consequence.summary}</p>
+              {personalized.goalEmphasis && <p className="text-xs text-[#89d4cd]">{personalized.goalEmphasis}</p>}
+            </article>;
+          })}
         </div>
       </div>
 
@@ -381,24 +249,8 @@ SIM_ID: MED-PROD-2024-0800 • v1.4.2
           </div>
           <p className="font-body text-[13px] text-[#c5c6ce] leading-relaxed">
             <strong className="text-[#e8e2d8] font-semibold">Hata Loglarında Hassas Veri Koruması: </strong>
-            Kriz anında loglara düşen stack trace'lerde TC Kimlik ve hasta tanı kodlarının maskelenmiş (redacted) kalması, olası bir resmi veri ihlali soruşturmasını ve ağır idari yaptırımları engelledi.
+            Kriz anında loglara düşen stack trace'lerde kurgusal ad ve tanımlayıcıların maskelenmesi, erişimin sınırlandırılmasıyla birlikte gereksiz veri yayılımını azaltır. Gerçek bir olayın hukuki niteliği koşulları incelenerek değerlendirilir.
           </p>
-        </div>
-      </div>
-
-      {/* 5. Narrative Certificate Card */}
-      <div className="p-4 rounded-xl bg-[#1d1b16] border border-[#2c2a24] flex items-center gap-3.5 shadow-md">
-        <div className="w-12 h-12 rounded-full bg-[#ffb870]/10 border border-[#ffb870]/30 flex items-center justify-center flex-shrink-0 text-[#ffb870]">
-          <span className="material-symbols-outlined text-[26px]">military_tech</span>
-        </div>
-        <div className="flex flex-col">
-          <span className="font-mono text-[10px] text-[#8f9098] uppercase tracking-wider">Kıdem Seviyesi</span>
-          <span className="font-body text-[15px] text-[#e8e2d8] font-semibold">
-            {currentEnding.rankTitle}
-          </span>
-          <span className="font-body text-[12px] text-[#c5c6ce]">
-            {currentEnding.rankDesc}
-          </span>
         </div>
       </div>
 
@@ -412,7 +264,7 @@ SIM_ID: MED-PROD-2024-0800 • v1.4.2
           className="w-full flex items-center justify-center gap-2 h-12 rounded-xl bg-[#ffb870] hover:bg-[#ffdcbe] text-[#2c1600] font-body text-[15px] font-bold tracking-wide shadow-lg active:scale-[0.98] transition-all cursor-pointer"
         >
           <span className="material-symbols-outlined text-[20px]">replay</span>
-          <span>Tekrar Oyna (Farklı Senaryoları Keşfet)</span>
+          <span>Yeniden başlat</span>
         </button>
 
         {/* Export Post-Mortem */}

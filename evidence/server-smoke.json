@@ -1,0 +1,28 @@
+{
+  "executedAt": "2026-10-24T10:57:25.472Z",
+  "checks": [
+    {
+      "name": "production page without key",
+      "passed": true,
+      "tutorConfigured": false
+    },
+    {
+      "name": "invalid Tutor input rejected",
+      "passed": true
+    },
+    {
+      "name": "genuine missing-key server fallback (no stubbing)",
+      "passed": true,
+      "errorCode": "MISSING_API_KEY"
+    },
+    {
+      "name": "production page with local secret",
+      "passed": true,
+      "tutorConfigured": true
+    },
+    {
+      "name": "invalid Tutor input rejected",
+      "passed": true
+    }
+  ]
+}

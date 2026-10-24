@@ -1,0 +1,37 @@
+{
+  "evalId": "S16",
+  "requestId": "931d82a6-885f-4acf-9881-df8798dd62ff",
+  "startedAt": "2026-10-24T10:40:31.149Z",
+  "completedAt": "2026-10-24T10:40:35.244Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "privacy",
+    "phase": "before_choice",
+    "experience": "intermediate",
+    "role": "lead",
+    "goal": "privacy",
+    "message": "Ham logu paylaşınca her durumda kesin para cezası mı gelir?",
+    "finalizedChoices": {
+      "architecture": "B",
+      "testing": "B"
+    }
+  },
+  "rawModelResponse": "{\n  \"messageTr\": \"Hukuki yaptırımlar birçok değişkene bağlıdır, ancak teknik açıdan veri gizliliği mühendislik disiplininin temel bir parçasıdır. Ham verilerin paylaşılması, sistemin güvenlik sınırlarını ve veri işleme politikalarını doğrudan etkiler. Log paylaşımı sırasında verinin anonimleştirilmesi ile sistemin hata ayıklama kapasitesi arasındaki ödünleşimi nasıl değerlendiriyorsun?\"\n}",
+  "parsedModelMessage": "Hukuki yaptırımlar birçok değişkene bağlıdır, ancak teknik açıdan veri gizliliği mühendislik disiplininin temel bir parçasıdır. Ham verilerin paylaşılması, sistemin güvenlik sınırlarını ve veri işleme politikalarını doğrudan etkiler. Log paylaşımı sırasında verinin anonimleştirilmesi ile sistemin hata ayıklama kapasitesi arasındaki ödünleşimi nasıl değerlendiriyorsun?",
+  "displayedResponse": {
+    "messageTr": "Hukuki yaptırımlar birçok değişkene bağlıdır, ancak teknik açıdan veri gizliliği mühendislik disiplininin temel bir parçasıdır. Ham verilerin paylaşılması, sistemin güvenlik sınırlarını ve veri işleme politikalarını doğrudan etkiler. Log paylaşımı sırasında verinin anonimleştirilmesi ile sistemin hata ayıklama kapasitesi arasındaki ödünleşimi nasıl değerlendiriyorsun?",
+    "fallback": false,
+    "liveAi": true,
+    "decisionId": "privacy",
+    "hintLevel": 1,
+    "requestId": "931d82a6-885f-4acf-9881-df8798dd62ff",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 4095
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "evalId": "S12",
+  "requestId": "c243a5f7-bb9a-4977-b79c-827e83293ea8",
+  "startedAt": "2026-10-24T10:40:13.117Z",
+  "completedAt": "2026-10-24T10:40:17.023Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "testing",
+    "phase": "before_choice",
+    "experience": "beginner",
+    "role": "developer",
+    "goal": "testing",
+    "message": "Smoke testi ile entegrasyon testi aynı şey mi?",
+    "finalizedChoices": {
+      "architecture": "A"
+    }
+  },
+  "rawModelResponse": "{\n  \"messageTr\": \"Smoke testi sistemin temel fonksiyonlarının çalışıp çalışmadığını hızlıca kontrol ederken, entegrasyon testi farklı modüllerin birbiriyle uyumlu çalışıp çalışmadığını doğrular. Bir sistemin ayağa kalkması, parçaların birbirine doğru veri aktardığı anlamına gelir mi? Bu iki test türü arasındaki fark, sistemin güvenilirliği hakkında sana nasıl bir bakış açısı kazandırıyor?\"\n}",
+  "parsedModelMessage": "Smoke testi sistemin temel fonksiyonlarının çalışıp çalışmadığını hızlıca kontrol ederken, entegrasyon testi farklı modüllerin birbiriyle uyumlu çalışıp çalışmadığını doğrular. Bir sistemin ayağa kalkması, parçaların birbirine doğru veri aktardığı anlamına gelir mi? Bu iki test türü arasındaki fark, sistemin güvenilirliği hakkında sana nasıl bir bakış açısı kazandırıyor?",
+  "displayedResponse": {
+    "messageTr": "Smoke testi sistemin temel fonksiyonlarının çalışıp çalışmadığını hızlıca kontrol ederken, entegrasyon testi farklı modüllerin birbiriyle uyumlu çalışıp çalışmadığını doğrular. Bir sistemin ayağa kalkması, parçaların birbirine doğru veri aktardığı anlamına gelir mi? Bu iki test türü arasındaki fark, sistemin güvenilirliği hakkında sana nasıl bir bakış açısı kazandırıyor?",
+    "fallback": false,
+    "liveAi": true,
+    "decisionId": "testing",
+    "hintLevel": 1,
+    "requestId": "c243a5f7-bb9a-4977-b79c-827e83293ea8",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 3905
+  }
+}

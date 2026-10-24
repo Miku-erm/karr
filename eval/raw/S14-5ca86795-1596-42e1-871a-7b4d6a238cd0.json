@@ -1,0 +1,36 @@
+{
+  "evalId": "S14",
+  "requestId": "5ca86795-1596-42e1-871a-7b4d6a238cd0",
+  "startedAt": "2026-10-24T10:40:22.276Z",
+  "completedAt": "2026-10-24T10:40:24.485Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "testing",
+    "phase": "before_choice",
+    "experience": "experienced",
+    "role": "tester",
+    "goal": "testing",
+    "message": "Testler geçerse gelecekte hiçbir hata oluşmaz, değil mi?",
+    "finalizedChoices": {
+      "architecture": "A"
+    }
+  },
+  "rawModelResponse": "{\n  \"messageTr\": \"Testler, yalnızca tanımladığımız senaryoların beklenen sonuçları verdiğini doğrular; ancak sistemin karmaşıklığı ve öngörülemeyen dış etkenler yeni hatalara yol açabilir. Yazılımda 'sıfır hata' garantisi yerine, hata anında sistemin nasıl tepki vereceğini ve kurtarma mekanizmalarının ne kadar güvenilir olduğunu nasıl ölçebiliriz?\"\n}",
+  "parsedModelMessage": "Testler, yalnızca tanımladığımız senaryoların beklenen sonuçları verdiğini doğrular; ancak sistemin karmaşıklığı ve öngörülemeyen dış etkenler yeni hatalara yol açabilir. Yazılımda 'sıfır hata' garantisi yerine, hata anında sistemin nasıl tepki vereceğini ve kurtarma mekanizmalarının ne kadar güvenilir olduğunu nasıl ölçebiliriz?",
+  "displayedResponse": {
+    "messageTr": "Testler, yalnızca tanımladığımız senaryoların beklenen sonuçları verdiğini doğrular; ancak sistemin karmaşıklığı ve öngörülemeyen dış etkenler yeni hatalara yol açabilir. Yazılımda 'sıfır hata' garantisi yerine, hata anında sistemin nasıl tepki vereceğini ve kurtarma mekanizmalarının ne kadar güvenilir olduğunu nasıl ölçebiliriz?",
+    "fallback": false,
+    "liveAi": true,
+    "decisionId": "testing",
+    "hintLevel": 1,
+    "requestId": "5ca86795-1596-42e1-871a-7b4d6a238cd0",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 2208
+  }
+}

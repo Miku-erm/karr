@@ -1,0 +1,36 @@
+{
+  "evalId": "S08",
+  "requestId": "5155993a-a474-401a-9816-f95c7a4aacb7",
+  "startedAt": "2026-10-24T10:39:56.407Z",
+  "completedAt": "2026-10-24T10:40:01.016Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "testing",
+    "phase": "before_choice",
+    "experience": "beginner",
+    "role": "tester",
+    "goal": "testing",
+    "message": "Küçük bir ipucu verir misin? Neyi gözlemlemem gerektiğini bilmiyorum.",
+    "finalizedChoices": {
+      "architecture": "A"
+    }
+  },
+  "rawModelResponse": "{\n  \"messageTr\": \"Sistem toparlanırken sadece başarılı istekleri görmek, tüm uçtan uca akışın hatasız çalıştığını garantiler mi? Bir test stratejisi belirlerken, sistemin kararlılığını doğrulamak için hangi kritik senaryoları göz ardı etmemelisin?\"\n}",
+  "parsedModelMessage": "Sistem toparlanırken sadece başarılı istekleri görmek, tüm uçtan uca akışın hatasız çalıştığını garantiler mi? Bir test stratejisi belirlerken, sistemin kararlılığını doğrulamak için hangi kritik senaryoları göz ardı etmemelisin?",
+  "displayedResponse": {
+    "messageTr": "Sistem toparlanırken sadece başarılı istekleri görmek, tüm uçtan uca akışın hatasız çalıştığını garantiler mi? Bir test stratejisi belirlerken, sistemin kararlılığını doğrulamak için hangi kritik senaryoları göz ardı etmemelisin?",
+    "fallback": false,
+    "liveAi": true,
+    "decisionId": "testing",
+    "hintLevel": 1,
+    "requestId": "5155993a-a474-401a-9816-f95c7a4aacb7",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 4608
+  }
+}

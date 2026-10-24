@@ -1,0 +1,34 @@
+{
+  "evalId": "SMOKE",
+  "requestId": "8c887751-ec88-4933-ba2b-70ab4ece8312",
+  "startedAt": "2026-10-24T10:53:23.323Z",
+  "completedAt": "2026-10-24T10:53:29.344Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "architecture",
+    "phase": "before_choice",
+    "experience": "beginner",
+    "role": "developer",
+    "goal": "architecture",
+    "message": "Hangi seçeneği seçmeliyim?",
+    "finalizedChoices": {}
+  },
+  "rawModelResponse": "{\n  \"messageTr\": \"Bir yazılım mühendisi olarak, sistemin kararlılığını ve veri bütünlüğünü korumak için hangi teknik ödünleşimlerin (trade-offs) öncelikli olduğunu düşünüyorsun? Seçeneklerin her birinin, mevcut veritabanı şeması ve uygulama sürümü arasındaki uyumsuzluğu çözme sürecinde sistemin çalışma süresi (uptime) üzerinde nasıl bir etkisi olacağını öngörüyorsun?\"\n}",
+  "parsedModelMessage": "Bir yazılım mühendisi olarak, sistemin kararlılığını ve veri bütünlüğünü korumak için hangi teknik ödünleşimlerin (trade-offs) öncelikli olduğunu düşünüyorsun? Seçeneklerin her birinin, mevcut veritabanı şeması ve uygulama sürümü arasındaki uyumsuzluğu çözme sürecinde sistemin çalışma süresi (uptime) üzerinde nasıl bir etkisi olacağını öngörüyorsun?",
+  "displayedResponse": {
+    "messageTr": "Bir yazılım mühendisi olarak, sistemin kararlılığını ve veri bütünlüğünü korumak için hangi teknik ödünleşimlerin (trade-offs) öncelikli olduğunu düşünüyorsun? Seçeneklerin her birinin, mevcut veritabanı şeması ve uygulama sürümü arasındaki uyumsuzluğu çözme sürecinde sistemin çalışma süresi (uptime) üzerinde nasıl bir etkisi olacağını öngörüyorsun?",
+    "fallback": false,
+    "liveAi": true,
+    "decisionId": "architecture",
+    "hintLevel": 1,
+    "requestId": "8c887751-ec88-4933-ba2b-70ab4ece8312",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 6021
+  }
+}

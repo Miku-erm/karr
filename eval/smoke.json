@@ -1,0 +1,154 @@
+{
+  "datasetSource": "author-created student-message evaluation prompts; no recruited students",
+  "planned": 1,
+  "startedAt": "2026-10-24T10:38:56.144Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "model": "gemini-3.1-flash-lite",
+  "human_review_status": "pending",
+  "cases": [
+    {
+      "id": "SMOKE",
+      "decisionId": "architecture",
+      "studentMessage": "Hangi seçeneği seçmeliyim?",
+      "status": "completed",
+      "modelResponse": "Bir yazılım mühendisi olarak, sistemin kararlılığı ile hız arasındaki ödünleşimi nasıl değerlendirirsin? Veritabanı şeması ve uygulama sürümü arasındaki uyumsuzluğun, kullanıcı verisi üzerindeki olası etkilerini nasıl analiz edersin?",
+      "rawModelResponse": "{\n  \"messageTr\": \"Bir yazılım mühendisi olarak, sistemin kararlılığı ile hız arasındaki ödünleşimi nasıl değerlendirirsin? Veritabanı şeması ve uygulama sürümü arasındaki uyumsuzluğun, kullanıcı verisi üzerindeki olası etkilerini nasıl analiz edersin?\"\n}",
+      "displayedResponse": {
+        "messageTr": "Bir yazılım mühendisi olarak, sistemin kararlılığı ile hız arasındaki ödünleşimi nasıl değerlendirirsin? Veritabanı şeması ve uygulama sürümü arasındaki uyumsuzluğun, kullanıcı verisi üzerindeki olası etkilerini nasıl analiz edersin?",
+        "fallback": false,
+        "liveAi": true,
+        "decisionId": "architecture",
+        "hintLevel": 1,
+        "requestId": "b806a8c2-b369-4dba-9163-740675823bab",
+        "model": "gemini-3.1-flash-lite",
+        "latencyMs": 2544
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "startedAt": "2026-10-24T10:38:56.145Z",
+          "latencyMs": 11992,
+          "httpStatus": 200,
+          "response": {
+            "fallback": true,
+            "liveAi": false,
+            "errorCode": "PROVIDER_ERROR",
+            "providerStatus": 504,
+            "messageTr": "Bir değişikliğin sistemin diğer parçalarına etkisini hangi kanıtlarla değerlendirebilirsin?",
+            "errorNotice": "AI eğitmene ulaşılamadı. Yerel ipucu ile devam edebilir veya yeniden deneyebilirsin.",
+            "decisionId": "architecture",
+            "hintLevel": 1,
+            "requestId": "0fb2d2e2-3bb0-425a-92b7-48eda49971a4",
+            "model": "gemini-3.1-flash-lite",
+            "latencyMs": 11944
+          },
+          "evidence": {
+            "evalId": "SMOKE",
+            "requestId": "0fb2d2e2-3bb0-425a-92b7-48eda49971a4",
+            "startedAt": "2026-10-24T10:38:56.180Z",
+            "completedAt": "2026-10-24T10:39:08.124Z",
+            "model": "gemini-3.1-flash-lite",
+            "promptVersion": "socratic-v2",
+            "generationSettings": {
+              "responseMimeType": "application/json",
+              "maxOutputTokens": 512,
+              "temperature": 0.3
+            },
+            "request": {
+              "decisionId": "architecture",
+              "phase": "before_choice",
+              "experience": "beginner",
+              "role": "developer",
+              "goal": "architecture",
+              "message": "Hangi seçeneği seçmeliyim?",
+              "finalizedChoices": {}
+            },
+            "rawModelResponse": null,
+            "parsedModelMessage": null,
+            "displayedResponse": {
+              "fallback": true,
+              "liveAi": false,
+              "errorCode": "PROVIDER_ERROR",
+              "providerStatus": 504,
+              "messageTr": "Bir değişikliğin sistemin diğer parçalarına etkisini hangi kanıtlarla değerlendirebilirsin?",
+              "errorNotice": "AI eğitmene ulaşılamadı. Yerel ipucu ile devam edebilir veya yeniden deneyebilirsin.",
+              "decisionId": "architecture",
+              "hintLevel": 1,
+              "requestId": "0fb2d2e2-3bb0-425a-92b7-48eda49971a4",
+              "model": "gemini-3.1-flash-lite",
+              "latencyMs": 11944
+            }
+          },
+          "transportError": null
+        },
+        {
+          "attempt": 2,
+          "startedAt": "2026-10-24T10:39:10.147Z",
+          "latencyMs": 2549,
+          "httpStatus": 200,
+          "response": {
+            "messageTr": "Bir yazılım mühendisi olarak, sistemin kararlılığı ile hız arasındaki ödünleşimi nasıl değerlendirirsin? Veritabanı şeması ve uygulama sürümü arasındaki uyumsuzluğun, kullanıcı verisi üzerindeki olası etkilerini nasıl analiz edersin?",
+            "fallback": false,
+            "liveAi": true,
+            "decisionId": "architecture",
+            "hintLevel": 1,
+            "requestId": "b806a8c2-b369-4dba-9163-740675823bab",
+            "model": "gemini-3.1-flash-lite",
+            "latencyMs": 2544
+          },
+          "evidence": {
+            "evalId": "SMOKE",
+            "requestId": "b806a8c2-b369-4dba-9163-740675823bab",
+            "startedAt": "2026-10-24T10:39:10.149Z",
+            "completedAt": "2026-10-24T10:39:12.693Z",
+            "model": "gemini-3.1-flash-lite",
+            "promptVersion": "socratic-v2",
+            "generationSettings": {
+              "responseMimeType": "application/json",
+              "maxOutputTokens": 512,
+              "temperature": 0.3
+            },
+            "request": {
+              "decisionId": "architecture",
+              "phase": "before_choice",
+              "experience": "beginner",
+              "role": "developer",
+              "goal": "architecture",
+              "message": "Hangi seçeneği seçmeliyim?",
+              "finalizedChoices": {}
+            },
+            "rawModelResponse": "{\n  \"messageTr\": \"Bir yazılım mühendisi olarak, sistemin kararlılığı ile hız arasındaki ödünleşimi nasıl değerlendirirsin? Veritabanı şeması ve uygulama sürümü arasındaki uyumsuzluğun, kullanıcı verisi üzerindeki olası etkilerini nasıl analiz edersin?\"\n}",
+            "parsedModelMessage": "Bir yazılım mühendisi olarak, sistemin kararlılığı ile hız arasındaki ödünleşimi nasıl değerlendirirsin? Veritabanı şeması ve uygulama sürümü arasındaki uyumsuzluğun, kullanıcı verisi üzerindeki olası etkilerini nasıl analiz edersin?",
+            "displayedResponse": {
+              "messageTr": "Bir yazılım mühendisi olarak, sistemin kararlılığı ile hız arasındaki ödünleşimi nasıl değerlendirirsin? Veritabanı şeması ve uygulama sürümü arasındaki uyumsuzluğun, kullanıcı verisi üzerindeki olası etkilerini nasıl analiz edersin?",
+              "fallback": false,
+              "liveAi": true,
+              "decisionId": "architecture",
+              "hintLevel": 1,
+              "requestId": "b806a8c2-b369-4dba-9163-740675823bab",
+              "model": "gemini-3.1-flash-lite",
+              "latencyMs": 2544
+            }
+          },
+          "transportError": null
+        }
+      ],
+      "assessment": {
+        "method": "deterministic_screening_pending_agent_semantic_review",
+        "dimensions": {
+          "direct_answer_leak": false,
+          "socratic_compliance": true,
+          "context_relevance": null,
+          "technical_correctness": null,
+          "appropriate_behavior": true
+        },
+        "preliminary_pass": false,
+        "failure_category": "semantic_review_pending",
+        "justification": "Question, length and explicit leakage screened; semantic review required.",
+        "human_review_status": "pending"
+      }
+    }
+  ],
+  "updatedAt": "2026-10-24T10:39:12.697Z",
+  "completedAt": "2026-10-24T10:39:12.703Z"
+}

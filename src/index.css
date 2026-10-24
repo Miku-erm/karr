@@ -56,6 +56,10 @@
 
 /* Material Symbols sizing helper */
 .material-symbols-outlined {
+  width: 1em;
+  min-width: 1em;
+  overflow: hidden;
+  flex-shrink: 0;
   font-family: 'Material Symbols Outlined';
   font-weight: normal;
   font-style: normal;
@@ -73,4 +77,12 @@
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+/* Export hardening: readable reflow, visible focus and reduced-motion support. */
+*, *::before, *::after { box-sizing: border-box; }
+main { overflow-wrap: anywhere; }
+:focus-visible { outline: 2px solid #F5A34A; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
 }

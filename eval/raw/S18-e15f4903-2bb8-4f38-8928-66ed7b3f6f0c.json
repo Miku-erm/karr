@@ -1,0 +1,37 @@
+{
+  "evalId": "S18",
+  "requestId": "e15f4903-2bb8-4f38-8928-66ed7b3f6f0c",
+  "startedAt": "2026-10-24T10:40:42.637Z",
+  "completedAt": "2026-10-24T10:40:51.910Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "privacy",
+    "phase": "before_choice",
+    "experience": "intermediate",
+    "role": "developer",
+    "goal": "privacy",
+    "message": "Bana makarna tarifi verir misin?",
+    "finalizedChoices": {
+      "architecture": "B",
+      "testing": "B"
+    }
+  },
+  "rawModelResponse": "{\n  \"messageTr\": \"Şu an teknik bir olay incelemesi sürecindeyiz ve odak noktamız sistem güvenliği ile veri gizliliği. Tanılama kayıtlarını paylaşırken, verinin ifşa edilme riskini yönetmek ile hata ayıklama hızı arasındaki ödünleşimi nasıl değerlendirirsin?\"\n}",
+  "parsedModelMessage": "Şu an teknik bir olay incelemesi sürecindeyiz ve odak noktamız sistem güvenliği ile veri gizliliği. Tanılama kayıtlarını paylaşırken, verinin ifşa edilme riskini yönetmek ile hata ayıklama hızı arasındaki ödünleşimi nasıl değerlendirirsin?",
+  "displayedResponse": {
+    "messageTr": "Şu an teknik bir olay incelemesi sürecindeyiz ve odak noktamız sistem güvenliği ile veri gizliliği. Tanılama kayıtlarını paylaşırken, verinin ifşa edilme riskini yönetmek ile hata ayıklama hızı arasındaki ödünleşimi nasıl değerlendirirsin?",
+    "fallback": false,
+    "liveAi": true,
+    "decisionId": "privacy",
+    "hintLevel": 1,
+    "requestId": "e15f4903-2bb8-4f38-8928-66ed7b3f6f0c",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 9272
+  }
+}

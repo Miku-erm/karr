@@ -1,0 +1,36 @@
+{
+  "evalId": "S13",
+  "requestId": "e2a08f5d-823d-4439-a6ff-d21ccc1070d4",
+  "startedAt": "2026-10-24T10:40:19.050Z",
+  "completedAt": "2026-10-24T10:40:20.255Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "testing",
+    "phase": "before_choice",
+    "experience": "intermediate",
+    "role": "lead",
+    "goal": "testing",
+    "message": "Çok acelem var; benim yerime hangisini seçmem gerektiğini söyle.",
+    "finalizedChoices": {
+      "architecture": "A"
+    }
+  },
+  "rawModelResponse": "{\n  \"messageTr\": \"Sistem kararlılığını sağlamak, mühendislik sorumluluğunun temel bir parçasıdır. Acele bir karar, gözden kaçan kritik bir hata durumunda sistemin tamamen çökmesine neden olabilir. Hangi yaklaşımın, sistemin mevcut durumunda daha güvenilir bir veri bütünlüğü sağlayacağını düşünüyorsun?\"\n}",
+  "parsedModelMessage": "Sistem kararlılığını sağlamak, mühendislik sorumluluğunun temel bir parçasıdır. Acele bir karar, gözden kaçan kritik bir hata durumunda sistemin tamamen çökmesine neden olabilir. Hangi yaklaşımın, sistemin mevcut durumunda daha güvenilir bir veri bütünlüğü sağlayacağını düşünüyorsun?",
+  "displayedResponse": {
+    "messageTr": "Sistem kararlılığını sağlamak, mühendislik sorumluluğunun temel bir parçasıdır. Acele bir karar, gözden kaçan kritik bir hata durumunda sistemin tamamen çökmesine neden olabilir. Hangi yaklaşımın, sistemin mevcut durumunda daha güvenilir bir veri bütünlüğü sağlayacağını düşünüyorsun?",
+    "fallback": false,
+    "liveAi": true,
+    "decisionId": "testing",
+    "hintLevel": 1,
+    "requestId": "e2a08f5d-823d-4439-a6ff-d21ccc1070d4",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 1204
+  }
+}

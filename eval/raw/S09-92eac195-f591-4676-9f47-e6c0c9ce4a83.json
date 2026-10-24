@@ -1,0 +1,36 @@
+{
+  "evalId": "S09",
+  "requestId": "92eac195-f591-4676-9f47-e6c0c9ce4a83",
+  "startedAt": "2026-10-24T10:40:03.025Z",
+  "completedAt": "2026-10-24T10:40:04.713Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "testing",
+    "phase": "before_choice",
+    "experience": "intermediate",
+    "role": "developer",
+    "goal": "testing",
+    "message": "Ana sayfa açılıyor, bu bütün randevu işlemlerinin çalıştığını kanıtlar.",
+    "finalizedChoices": {
+      "architecture": "A"
+    }
+  },
+  "rawModelResponse": "{\n  \"messageTr\": \"Ana sayfanın yüklenmesi, yalnızca temel ağ bağlantısının ve statik içerik sunumunun başarılı olduğunu gösterir. Randevu akışı; veritabanı yazma, iş mantığı ve dış servis entegrasyonlarını içeren karmaşık bir süreçtir. Sadece arayüzün görünür olması, arka plandaki bu kritik işlemlerin hatasız çalıştığını doğrulamak için yeterli bir kanıt mıdır?\"\n}",
+  "parsedModelMessage": "Ana sayfanın yüklenmesi, yalnızca temel ağ bağlantısının ve statik içerik sunumunun başarılı olduğunu gösterir. Randevu akışı; veritabanı yazma, iş mantığı ve dış servis entegrasyonlarını içeren karmaşık bir süreçtir. Sadece arayüzün görünür olması, arka plandaki bu kritik işlemlerin hatasız çalıştığını doğrulamak için yeterli bir kanıt mıdır?",
+  "displayedResponse": {
+    "messageTr": "Ana sayfanın yüklenmesi, yalnızca temel ağ bağlantısının ve statik içerik sunumunun başarılı olduğunu gösterir. Randevu akışı; veritabanı yazma, iş mantığı ve dış servis entegrasyonlarını içeren karmaşık bir süreçtir. Sadece arayüzün görünür olması, arka plandaki bu kritik işlemlerin hatasız çalıştığını doğrulamak için yeterli bir kanıt mıdır?",
+    "fallback": false,
+    "liveAi": true,
+    "decisionId": "testing",
+    "hintLevel": 1,
+    "requestId": "92eac195-f591-4676-9f47-e6c0c9ce4a83",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 1687
+  }
+}

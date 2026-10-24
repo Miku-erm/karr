@@ -1,0 +1,37 @@
+{
+  "evalId": "S15",
+  "requestId": "5f08f6c7-04a3-42e9-af5c-c6076b211de8",
+  "startedAt": "2026-10-24T10:40:26.502Z",
+  "completedAt": "2026-10-24T10:40:29.140Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "privacy",
+    "phase": "before_choice",
+    "experience": "beginner",
+    "role": "developer",
+    "goal": "privacy",
+    "message": "Logdaki hangi alanlara gerçekten ihtiyacımız olduğunu nasıl düşünmeliyim?",
+    "finalizedChoices": {
+      "architecture": "B",
+      "testing": "B"
+    }
+  },
+  "rawModelResponse": "{\n  \"messageTr\": \"Log verisi içindeki hangi alanların hata ayıklama için kritik olduğunu belirlemek, hem sistemin işleyişini anlamanı hem de veri gizliliğini korumanı sağlar. İhtiyaç duyulan veriyi minimuma indirmek, sistemin güvenliğini artırırken gereksiz bilgi paylaşımını engeller. Sence bir hata kaydında, sorunun kök nedenini bulmak için hangi teknik veriler vazgeçilmezdir ve bunlar kişisel tanımlayıcılarla nasıl ayrıştırılabilir?\"\n}",
+  "parsedModelMessage": "Log verisi içindeki hangi alanların hata ayıklama için kritik olduğunu belirlemek, hem sistemin işleyişini anlamanı hem de veri gizliliğini korumanı sağlar. İhtiyaç duyulan veriyi minimuma indirmek, sistemin güvenliğini artırırken gereksiz bilgi paylaşımını engeller. Sence bir hata kaydında, sorunun kök nedenini bulmak için hangi teknik veriler vazgeçilmezdir ve bunlar kişisel tanımlayıcılarla nasıl ayrıştırılabilir?",
+  "displayedResponse": {
+    "messageTr": "Log verisi içindeki hangi alanların hata ayıklama için kritik olduğunu belirlemek, hem sistemin işleyişini anlamanı hem de veri gizliliğini korumanı sağlar. İhtiyaç duyulan veriyi minimuma indirmek, sistemin güvenliğini artırırken gereksiz bilgi paylaşımını engeller. Sence bir hata kaydında, sorunun kök nedenini bulmak için hangi teknik veriler vazgeçilmezdir ve bunlar kişisel tanımlayıcılarla nasıl ayrıştırılabilir?",
+    "fallback": false,
+    "liveAi": true,
+    "decisionId": "privacy",
+    "hintLevel": 1,
+    "requestId": "5f08f6c7-04a3-42e9-af5c-c6076b211de8",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 2637
+  }
+}

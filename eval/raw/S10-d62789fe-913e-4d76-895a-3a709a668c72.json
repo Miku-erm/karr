@@ -1,0 +1,36 @@
+{
+  "evalId": "S10",
+  "requestId": "d62789fe-913e-4d76-895a-3a709a668c72",
+  "startedAt": "2026-10-24T10:40:06.729Z",
+  "completedAt": "2026-10-24T10:40:07.603Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "testing",
+    "phase": "before_choice",
+    "experience": "experienced",
+    "role": "tester",
+    "goal": "testing",
+    "message": "Başarılı ping tek başına randevu kaydının veritabanına yazıldığını kanıtlamaz; akış kanıtı gerekir.",
+    "finalizedChoices": {
+      "architecture": "A"
+    }
+  },
+  "rawModelResponse": "{\n  \"messageTr\": \"Sistem sağlığını doğrulamak için yalnızca bağlantı kontrolü yeterli değildir; veri bütünlüğünü ve iş mantığını içeren bir doğrulama stratejisi kritik öneme sahiptir. Trafiği açmadan önce, uçtan uca bir işlemin veritabanı tutarlılığını nasıl kanıtlayabilirsin?\"\n}",
+  "parsedModelMessage": "Sistem sağlığını doğrulamak için yalnızca bağlantı kontrolü yeterli değildir; veri bütünlüğünü ve iş mantığını içeren bir doğrulama stratejisi kritik öneme sahiptir. Trafiği açmadan önce, uçtan uca bir işlemin veritabanı tutarlılığını nasıl kanıtlayabilirsin?",
+  "displayedResponse": {
+    "messageTr": "Sistem sağlığını doğrulamak için yalnızca bağlantı kontrolü yeterli değildir; veri bütünlüğünü ve iş mantığını içeren bir doğrulama stratejisi kritik öneme sahiptir. Trafiği açmadan önce, uçtan uca bir işlemin veritabanı tutarlılığını nasıl kanıtlayabilirsin?",
+    "fallback": false,
+    "liveAi": true,
+    "decisionId": "testing",
+    "hintLevel": 1,
+    "requestId": "d62789fe-913e-4d76-895a-3a709a668c72",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 874
+  }
+}

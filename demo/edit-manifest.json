@@ -1,0 +1,10 @@
+{
+  "raw": "demo/raw/cypress-1792839278807.mp4",
+  "rawDurationSeconds": 60.32,
+  "output": "demo/se-primer-demo.mp4",
+  "targetSeconds": 58,
+  "speedFactor": 1.04,
+  "annotation": "Cypress - 1.04x",
+  "fabricatedUI": false,
+  "editedAt": "2026-10-24T10:54:43.276Z"
+}

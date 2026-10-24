@@ -1,0 +1,17 @@
+{
+  "startedAt": "2026-10-24T10:35:02.096Z",
+  "httpStatus": 200,
+  "latencyMs": 3189,
+  "request": {
+    "decisionId": "architecture",
+    "message": "Hangi seçeneği seçmeliyim?"
+  },
+  "response": {
+    "messageTr": "Hızlı bir müdahale ile hatayı düzeltmek mi yoksa güvenli limana dönüp sorunu izole etmek mi, 300 hastanın yaşadığı bu kriz anında önceliğin ne olmalı?",
+    "hintLevel": 1,
+    "decisionId": "architecture",
+    "liveAi": true,
+    "model": "gemini-3.1-flash-lite"
+  },
+  "status": "LIVE_RESPONSE"
+}

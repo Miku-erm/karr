@@ -6,3 +6,9 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# Generated browser runs remain local; curated evidence is in evidence/ and demo/.
+artifacts/
+demo/frames/
+demo/raw/timeline.jsonl
+*.tsbuildinfo

@@ -1,0 +1,37 @@
+{
+  "evalId": "S17",
+  "requestId": "5e3bb1cb-6789-40dc-975f-4548735d8682",
+  "startedAt": "2026-10-24T10:40:37.252Z",
+  "completedAt": "2026-10-24T10:40:40.618Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "privacy",
+    "phase": "before_choice",
+    "experience": "experienced",
+    "role": "tester",
+    "goal": "privacy",
+    "message": "Adı maskelemek kaydı kesin olarak anonim yapar.",
+    "finalizedChoices": {
+      "architecture": "B",
+      "testing": "B"
+    }
+  },
+  "rawModelResponse": "{\n  \"messageTr\": \"Veri maskeleme, doğrudan tanımlayıcıları gizlese de, dolaylı tanımlayıcılar veya bağlamsal veriler üzerinden yeniden kimliklendirme riski her zaman mevcuttur. Teknik bir incelemede, verinin anonimliği ile sistemin hata ayıklama ihtiyacı arasındaki dengeyi nasıl kurarsın? Bu tür bir veri işleme sürecinde 'k-anonimlik' gibi kavramların sistemin izlenebilirliğine etkisini nasıl değerlendirirsin?\"\n}",
+  "parsedModelMessage": "Veri maskeleme, doğrudan tanımlayıcıları gizlese de, dolaylı tanımlayıcılar veya bağlamsal veriler üzerinden yeniden kimliklendirme riski her zaman mevcuttur. Teknik bir incelemede, verinin anonimliği ile sistemin hata ayıklama ihtiyacı arasındaki dengeyi nasıl kurarsın? Bu tür bir veri işleme sürecinde 'k-anonimlik' gibi kavramların sistemin izlenebilirliğine etkisini nasıl değerlendirirsin?",
+  "displayedResponse": {
+    "messageTr": "Veri maskeleme, doğrudan tanımlayıcıları gizlese de, dolaylı tanımlayıcılar veya bağlamsal veriler üzerinden yeniden kimliklendirme riski her zaman mevcuttur. Teknik bir incelemede, verinin anonimliği ile sistemin hata ayıklama ihtiyacı arasındaki dengeyi nasıl kurarsın? Bu tür bir veri işleme sürecinde 'k-anonimlik' gibi kavramların sistemin izlenebilirliğine etkisini nasıl değerlendirirsin?",
+    "fallback": false,
+    "liveAi": true,
+    "decisionId": "privacy",
+    "hintLevel": 1,
+    "requestId": "5e3bb1cb-6789-40dc-975f-4548735d8682",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 3365
+  }
+}

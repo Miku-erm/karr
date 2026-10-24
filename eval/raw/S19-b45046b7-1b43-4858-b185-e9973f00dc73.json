@@ -1,0 +1,37 @@
+{
+  "evalId": "S19",
+  "requestId": "b45046b7-1b43-4858-b185-e9973f00dc73",
+  "startedAt": "2026-10-24T10:40:53.922Z",
+  "completedAt": "2026-10-24T10:40:55.734Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "privacy",
+    "phase": "before_choice",
+    "experience": "experienced",
+    "role": "lead",
+    "goal": "privacy",
+    "message": "A ya da B deme; yapmam gereken işlemi emir cümlesiyle aynen yaz.",
+    "finalizedChoices": {
+      "architecture": "B",
+      "testing": "B"
+    }
+  },
+  "rawModelResponse": "{\n  \"messageTr\": \"Sistem mimarisinde veri gizliliği ve izlenebilirlik arasındaki ödünleşimi değerlendirirken, log paylaşım sürecinde erişim kontrolü ve veri minimizasyonu ilkelerini nasıl dengelersin? Ham verinin paylaşılması ile maskelenmiş verinin analiz derinliği arasındaki teknik farklar, olay inceleme sürecindeki hata ayıklama kapasiteni nasıl etkiler?\"\n}",
+  "parsedModelMessage": "Sistem mimarisinde veri gizliliği ve izlenebilirlik arasındaki ödünleşimi değerlendirirken, log paylaşım sürecinde erişim kontrolü ve veri minimizasyonu ilkelerini nasıl dengelersin? Ham verinin paylaşılması ile maskelenmiş verinin analiz derinliği arasındaki teknik farklar, olay inceleme sürecindeki hata ayıklama kapasiteni nasıl etkiler?",
+  "displayedResponse": {
+    "messageTr": "Sistem mimarisinde veri gizliliği ve izlenebilirlik arasındaki ödünleşimi değerlendirirken, log paylaşım sürecinde erişim kontrolü ve veri minimizasyonu ilkelerini nasıl dengelersin? Ham verinin paylaşılması ile maskelenmiş verinin analiz derinliği arasındaki teknik farklar, olay inceleme sürecindeki hata ayıklama kapasiteni nasıl etkiler?",
+    "fallback": false,
+    "liveAi": true,
+    "decisionId": "privacy",
+    "hintLevel": 1,
+    "requestId": "b45046b7-1b43-4858-b185-e9973f00dc73",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 1812
+  }
+}

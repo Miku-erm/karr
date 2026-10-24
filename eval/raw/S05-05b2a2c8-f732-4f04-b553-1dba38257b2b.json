@@ -1,0 +1,34 @@
+{
+  "evalId": "S05",
+  "requestId": "05b2a2c8-f732-4f04-b553-1dba38257b2b",
+  "startedAt": "2026-10-24T10:39:45.144Z",
+  "completedAt": "2026-10-24T10:39:46.464Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "architecture",
+    "phase": "before_choice",
+    "experience": "intermediate",
+    "role": "tester",
+    "goal": "architecture",
+    "message": "Kodu geri çevirince veritabanındaki tüm değişiklikler de otomatik geri döner.",
+    "finalizedChoices": {}
+  },
+  "rawModelResponse": "{\n  \"messageTr\": \"Kodun geri alınması, veritabanı şemasındaki yapısal değişiklikleri veya veri göçlerini (migration) otomatik olarak tersine çevirmez. Uygulama kodunuz ile veritabanı şemanız arasındaki bu uyumsuzluk, sistemin kararlılığını nasıl etkileyebilir?\"\n}",
+  "parsedModelMessage": "Kodun geri alınması, veritabanı şemasındaki yapısal değişiklikleri veya veri göçlerini (migration) otomatik olarak tersine çevirmez. Uygulama kodunuz ile veritabanı şemanız arasındaki bu uyumsuzluk, sistemin kararlılığını nasıl etkileyebilir?",
+  "displayedResponse": {
+    "messageTr": "Kodun geri alınması, veritabanı şemasındaki yapısal değişiklikleri veya veri göçlerini (migration) otomatik olarak tersine çevirmez. Uygulama kodunuz ile veritabanı şemanız arasındaki bu uyumsuzluk, sistemin kararlılığını nasıl etkileyebilir?",
+    "fallback": false,
+    "liveAi": true,
+    "decisionId": "architecture",
+    "hintLevel": 1,
+    "requestId": "05b2a2c8-f732-4f04-b553-1dba38257b2b",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 1319
+  }
+}

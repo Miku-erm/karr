@@ -21,7 +21,7 @@ export const TutorView: React.FC<TutorViewProps> = ({
   const quickPrompts: Record<DecisionId, string[]> = {
     architecture: [
       'Geriye dönük şema uyumluluğu nasıl test edilir?',
-      'Canlıda indeks silmek ne tür bir kilitlenmeye yol açar?',
+      'Bir değişikliğin etki alanını nasıl değerlendirebilirim?',
       'Expand / Contract kalıbı nedir?',
     ],
     testing: [
@@ -116,14 +116,17 @@ export const TutorView: React.FC<TutorViewProps> = ({
       {/* Input Bar */}
       <form onSubmit={handleSend} className="flex items-center gap-2 bg-[#1d1b16] border border-[#2c2a24] rounded-xl p-2 shrink-0">
         <input
+          aria-label="Tutor mesajı"
+          maxLength={1000}
           type="text"
           value={inputVal}
           onChange={(e) => setInputVal(e.target.value)}
           placeholder="Mühendislik sorunu sor..."
-          className="bg-transparent text-[#e8e2d8] placeholder:text-[#8f9098] font-body text-[13px] flex-1 px-2 focus:outline-none"
+          className="bg-transparent text-[#e8e2d8] placeholder:text-[#8f9098] font-body text-[13px] flex-1 min-w-0 px-2 focus:outline-none"
         />
         <button
           type="submit"
+          aria-label="Tutor mesajını gönder"
           disabled={isLoading || !inputVal.trim()}
           className="w-8 h-8 rounded-lg bg-[#89d4cd] hover:bg-[#a5f0e9] text-[#003734] flex items-center justify-center shrink-0 disabled:opacity-40 transition-opacity cursor-pointer"
         >

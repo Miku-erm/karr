@@ -64,6 +64,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               type="button"
               onClick={() => setShowProfileModal(true)}
+              data-testid="profile-open"
               aria-label="Kullanıcı Profili ve Rolü"
               className="w-8 h-8 rounded-full bg-[#101d35] border border-[#89d4cd]/30 flex items-center justify-center text-[#89d4cd] hover:scale-105 active:scale-95 transition-transform"
             >
@@ -126,6 +127,7 @@ export const Header: React.FC<HeaderProps> = ({
                   setShowProfileModal(false);
                   onRestart();
                 }}
+                data-testid="reset-session"
                 className="mt-2 w-full py-2.5 rounded-lg bg-[#37352e] hover:bg-[#a35f02]/30 text-[#ffb870] font-mono text-xs font-semibold flex items-center justify-center gap-1.5 border border-[#ffb870]/30 transition-colors"
               >
                 <span className="material-symbols-outlined text-[16px]">replay</span>

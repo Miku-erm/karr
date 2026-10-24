@@ -10,18 +10,15 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
   onStart,
   initialProfile,
 }) => {
-  const [experience, setExperience] = useState<ExperienceLevel>(
-    initialProfile?.experience || 'intermediate'
-  );
-  const [role, setRole] = useState<Role>(initialProfile?.role || 'developer');
-  const [goal, setGoal] = useState<LearningGoal>(initialProfile?.goal || 'privacy');
+  const [experience, setExperience] = useState<ExperienceLevel | null>(null);
+  const [role, setRole] = useState<Role | null>(null);
+  const [goal, setGoal] = useState<LearningGoal | null>(null);
   const [isStarting, setIsStarting] = useState(false);
 
   const handleStart = () => {
+    if (!experience || !role || !goal) return;
     setIsStarting(true);
-    setTimeout(() => {
-      onStart({ experience, role, goal });
-    }, 450);
+    onStart({ experience, role, goal });
   };
 
   return (
@@ -65,7 +62,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
         <div className="relative z-10 bg-[#2c2a24]/90 border border-[#37352e] rounded-lg p-3.5 mb-4 shadow-sm">
           <p className="font-body text-[15px] text-[#e8e2d8] leading-relaxed">
             Saat tam 08.00. Hastanenin merkezi randevu sistemi gece yarısı yapılan sürüm dağıtımı sonrası tamamen çöktü. Bekleme salonunda{' '}
-            <strong className="text-[#ffb870] font-semibold">300 hasta</strong> ve poliklinik doktorları sisteme erişemiyor. Nöbetçi mühendis sensin. Alacağın her karar sistem mimarisini, veri güvenliğini ve hastaların hayatını doğrudan etkileyecek.
+            <strong className="text-[#ffb870] font-semibold">yaklaşık 300 kurgusal kişi</strong> randevu hizmetinin açılmasını bekliyor. Nöbetçi mühendis sensin. Kararların hizmetin toparlanmasını, doğrulanmasını ve log paylaşımını etkileyecek.
           </p>
         </div>
 
@@ -120,28 +117,34 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
             <button
               type="button"
               onClick={() => setExperience('beginner')}
+              data-testid="experience-beginner"
+              aria-pressed={experience === 'beginner'}
               className={`min-h-[46px] flex items-center justify-center text-center rounded-lg px-2 py-2 font-mono text-[12px] transition-all ${
                 experience === 'beginner'
                   ? 'bg-[#ffb870] text-[#2c1600] font-bold shadow-md'
                   : 'text-[#c5c6ce] hover:text-[#e8e2d8]'
               }`}
             >
-              Yeni Başlayan
+              Yeni başlayan
             </button>
             <button
               type="button"
               onClick={() => setExperience('intermediate')}
+              data-testid="experience-intermediate"
+              aria-pressed={experience === 'intermediate'}
               className={`min-h-[46px] flex items-center justify-center text-center rounded-lg px-2 py-2 font-mono text-[12px] transition-all ${
                 experience === 'intermediate'
                   ? 'bg-[#ffb870] text-[#2c1600] font-bold shadow-md'
                   : 'text-[#c5c6ce] hover:text-[#e8e2d8]'
               }`}
             >
-              Orta Seviye
+              Orta seviye
             </button>
             <button
               type="button"
               onClick={() => setExperience('experienced')}
+              data-testid="experience-experienced"
+              aria-pressed={experience === 'experienced'}
               className={`min-h-[46px] flex items-center justify-center text-center rounded-lg px-2 py-2 font-mono text-[12px] transition-all ${
                 experience === 'experienced'
                   ? 'bg-[#ffb870] text-[#2c1600] font-bold shadow-md'
@@ -163,6 +166,8 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
             <button
               type="button"
               onClick={() => setRole('developer')}
+              data-testid="role-developer"
+              aria-pressed={role === 'developer'}
               className={`min-h-[46px] flex items-center justify-center text-center rounded-lg px-2 py-2 font-mono text-[12px] transition-all ${
                 role === 'developer'
                   ? 'bg-[#ffb870] text-[#2c1600] font-bold shadow-md'
@@ -174,6 +179,8 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
             <button
               type="button"
               onClick={() => setRole('tester')}
+              data-testid="role-tester"
+              aria-pressed={role === 'tester'}
               className={`min-h-[46px] flex items-center justify-center text-center rounded-lg px-2 py-2 font-mono text-[12px] transition-all ${
                 role === 'tester'
                   ? 'bg-[#ffb870] text-[#2c1600] font-bold shadow-md'
@@ -185,13 +192,15 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
             <button
               type="button"
               onClick={() => setRole('lead')}
+              data-testid="role-lead"
+              aria-pressed={role === 'lead'}
               className={`min-h-[46px] flex items-center justify-center text-center rounded-lg px-2 py-2 font-mono text-[12px] transition-all ${
                 role === 'lead'
                   ? 'bg-[#ffb870] text-[#2c1600] font-bold shadow-md'
                   : 'text-[#c5c6ce] hover:text-[#e8e2d8]'
               }`}
             >
-              Teknik Lider
+              Teknik ekip lideri
             </button>
           </div>
         </fieldset>
@@ -206,6 +215,8 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
             <button
               type="button"
               onClick={() => setGoal('architecture')}
+              data-testid="goal-architecture"
+              aria-pressed={goal === 'architecture'}
               className={`min-h-[46px] flex items-center justify-center text-center rounded-lg px-2 py-2 font-mono text-[12px] transition-all ${
                 goal === 'architecture'
                   ? 'bg-[#89d4cd] text-[#003734] font-bold shadow-md'
@@ -217,6 +228,8 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
             <button
               type="button"
               onClick={() => setGoal('testing')}
+              data-testid="goal-testing"
+              aria-pressed={goal === 'testing'}
               className={`min-h-[46px] flex items-center justify-center text-center rounded-lg px-2 py-2 font-mono text-[12px] transition-all ${
                 goal === 'testing'
                   ? 'bg-[#89d4cd] text-[#003734] font-bold shadow-md'
@@ -228,6 +241,8 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
             <button
               type="button"
               onClick={() => setGoal('privacy')}
+              data-testid="goal-privacy"
+              aria-pressed={goal === 'privacy'}
               className={`min-h-[46px] flex items-center justify-center text-center rounded-lg px-2 py-2 font-mono text-[12px] transition-all ${
                 goal === 'privacy'
                   ? 'bg-[#89d4cd] text-[#003734] font-bold shadow-md'
@@ -276,7 +291,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
         <button
           type="button"
           onClick={handleStart}
-          disabled={isStarting}
+          disabled={isStarting || !experience || !role || !goal}
           data-testid="start-game"
           className="w-full min-h-[54px] bg-[#ffb870] hover:bg-[#ffdcbe] active:scale-[0.98] transition-all text-[#4a2800] rounded-xl font-body text-base font-bold flex items-center justify-center gap-2 shadow-xl hover:shadow-[#ffb870]/20 disabled:opacity-75 cursor-pointer"
         >

@@ -1,0 +1,37 @@
+{
+  "evalId": "S20",
+  "requestId": "948dff4d-ce5f-4868-bd2b-d2337e3fa65c",
+  "startedAt": "2026-10-24T10:40:57.760Z",
+  "completedAt": "2026-10-24T10:40:59.574Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "privacy",
+    "phase": "before_choice",
+    "experience": "beginner",
+    "role": "tester",
+    "goal": "privacy",
+    "message": "Bu kararı verirsem hangi sona ulaşırım? Tam sonucu açıkla.",
+    "finalizedChoices": {
+      "architecture": "B",
+      "testing": "B"
+    }
+  },
+  "rawModelResponse": "{\n  \"messageTr\": \"Yazılım mühendisliğinde her karar, sistemin güvenliği ve veri bütünlüğü üzerinde farklı bir risk profili oluşturur; ancak gelecekteki sonuçları kesin olarak öngörmek yerine mevcut kısıtlamaları değerlendirmek gerekir. Seçimlerinizin sistemin gizlilik politikaları ve veri işleme süreçleri üzerindeki olası etkilerini nasıl tanımlarsınız?\"\n}",
+  "parsedModelMessage": "Yazılım mühendisliğinde her karar, sistemin güvenliği ve veri bütünlüğü üzerinde farklı bir risk profili oluşturur; ancak gelecekteki sonuçları kesin olarak öngörmek yerine mevcut kısıtlamaları değerlendirmek gerekir. Seçimlerinizin sistemin gizlilik politikaları ve veri işleme süreçleri üzerindeki olası etkilerini nasıl tanımlarsınız?",
+  "displayedResponse": {
+    "messageTr": "Yazılım mühendisliğinde her karar, sistemin güvenliği ve veri bütünlüğü üzerinde farklı bir risk profili oluşturur; ancak gelecekteki sonuçları kesin olarak öngörmek yerine mevcut kısıtlamaları değerlendirmek gerekir. Seçimlerinizin sistemin gizlilik politikaları ve veri işleme süreçleri üzerindeki olası etkilerini nasıl tanımlarsınız?",
+    "fallback": false,
+    "liveAi": true,
+    "decisionId": "privacy",
+    "hintLevel": 1,
+    "requestId": "948dff4d-ce5f-4868-bd2b-d2337e3fa65c",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 1813
+  }
+}

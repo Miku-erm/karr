@@ -1,0 +1,123 @@
+{
+  "checkedAt": "2026-10-24T11:04:05.284Z",
+  "requiredFiles": [
+    "README.md",
+    "spec.md",
+    "DESIGN.md",
+    "story/decision-tree.json",
+    "docs/state-machine.md",
+    "docs/STITCH_BRIEF.md",
+    "docs/tutor-eval-plan.md",
+    "docs/tutor-evaluation.md",
+    "docs/test-results.md",
+    "docs/product-decisions.md",
+    "docs/ai-studio-compatibility.md",
+    "docs/FINAL-REPORT.md",
+    "eval/tutor-cases.json",
+    "eval/tutor-results.json",
+    "eval/human-review.csv",
+    "cypress.config.ts",
+    "cypress/e2e/story.cy.ts",
+    "cypress/e2e/features.cy.ts",
+    "cypress/e2e/live.cy.ts",
+    "cypress/e2e/demo.cy.ts",
+    "demo/se-primer-demo.mp4",
+    "demo/video-verification.json",
+    "demo/edit-manifest.json",
+    "demo/raw/cypress-1792839278807.mp4",
+    "demo/timeline.jsonl",
+    "evidence/final-verification.json",
+    "evidence/server-smoke.json",
+    "evidence/cypress-e2e.json",
+    "evidence/cypress-live.json",
+    "evidence/cypress-demo.json"
+  ],
+  "checks": [
+    {
+      "name": "required deliverable files exist and are nonempty",
+      "count": 30,
+      "passed": true
+    },
+    {
+      "name": "exactly twenty unique real-execution test cases",
+      "passed": true
+    },
+    {
+      "name": "eight JSON combinations match independent oracle",
+      "passed": true
+    },
+    {
+      "name": "local delivery Markdown links resolve",
+      "count": 69,
+      "passed": true
+    },
+    {
+      "name": "original AI Studio/Stitch exports unchanged from initial Git commit",
+      "passed": true
+    },
+    {
+      "name": "58s valid final video and raw recording present",
+      "passed": true
+    }
+  ],
+  "protectedAssets": [
+    {
+      "file": "public/assets/aistudio/DESIGN_d35663ce.md",
+      "bytes": 6704,
+      "sha256": "d35663cec949fa238476f7270aabdd1713955f860a29b83adb6968dbdaa633c9"
+    },
+    {
+      "file": "public/assets/aistudio/Image_1_84b748dc.png",
+      "bytes": 289475,
+      "sha256": "84b748dcaed5c6f9a8176fd071bc5f2eee1da4a1955f3bbd8c6486f5bd468b98"
+    },
+    {
+      "file": "public/assets/aistudio/Image_2_2e89c598.html",
+      "bytes": 20644,
+      "sha256": "2e89c598b052542469c20b038943ccb05e326a07aee568dc70926686483d3d45"
+    },
+    {
+      "file": "public/assets/aistudio/Image_3_0ae8e0ac.png",
+      "bytes": 298459,
+      "sha256": "0ae8e0ac81de8fa8d9bc4202e666f438e77aae34182b7be847d834c9c2ad5542"
+    },
+    {
+      "file": "public/assets/aistudio/Image_4_bf881631.html",
+      "bytes": 16901,
+      "sha256": "bf8816319efc68663ff223da93f25eac619b656db7df918a7bc40e741e042c77"
+    },
+    {
+      "file": "public/assets/aistudio/Image_5_21feea34.png",
+      "bytes": 512142,
+      "sha256": "21feea344d804f075137217a53c7e12fa796bb4e808e2866f06550bb5257783d"
+    },
+    {
+      "file": "public/assets/aistudio/Image_6_06904b91.html",
+      "bytes": 23328,
+      "sha256": "06904b911f25c8f9605abc9acd28ce66b70947faae5af4d8178000c10eded86f"
+    },
+    {
+      "file": "public/assets/aistudio/Image_7_fafb2091.markdown",
+      "bytes": 12239,
+      "sha256": "fafb20913a542daa1905cc8d220d38306d287e7fc2558c62549102f0a5b39c63"
+    },
+    {
+      "file": "public/assets/aistudio/decision-tree_512bd106.json",
+      "bytes": 18654,
+      "sha256": "512bd1060377d63e8510eed8dae5381f4e77eb0dd3f14e3aa0b5c056ef1c274f"
+    },
+    {
+      "file": "public/assets/aistudio/spec_f37c6334.md",
+      "bytes": 24952,
+      "sha256": "f37c6334456dcc4a0135abb41e48b389d1fb32e91c1701958fafe3524cd3aae6"
+    }
+  ],
+  "mermaid": {
+    "diagrams": 2,
+    "parser": "12.2.0",
+    "result": "passed",
+    "rendered": false,
+    "execution": "Node 22.16.0 with temporary Mermaid + jsdom validator"
+  },
+  "passed": true
+}

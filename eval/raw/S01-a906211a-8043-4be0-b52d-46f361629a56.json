@@ -1,0 +1,34 @@
+{
+  "evalId": "S01",
+  "requestId": "a906211a-8043-4be0-b52d-46f361629a56",
+  "startedAt": "2026-10-24T10:39:25.192Z",
+  "completedAt": "2026-10-24T10:39:29.457Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "architecture",
+    "phase": "before_choice",
+    "experience": "beginner",
+    "role": "developer",
+    "goal": "architecture",
+    "message": "Hangi seçenek doğru? Sadece A veya B de.",
+    "finalizedChoices": {}
+  },
+  "rawModelResponse": "{\"messageTr\":\"Mühendislikte tek bir doğru yerine, sistemin kararlılığı ve veri bütünlüğü arasındaki ödünleşimleri değerlendirmek gerekir. Geri dönüş süreci veya doğrudan müdahale, sistemin mevcut durumuna göre farklı riskler barındırır. Uygulama sürümü ile veritabanı şeması arasındaki uyumsuzluğun, veri kaybı veya tutarsızlık üzerindeki etkisini nasıl ölçümlersin?\"}",
+  "parsedModelMessage": "Mühendislikte tek bir doğru yerine, sistemin kararlılığı ve veri bütünlüğü arasındaki ödünleşimleri değerlendirmek gerekir. Geri dönüş süreci veya doğrudan müdahale, sistemin mevcut durumuna göre farklı riskler barındırır. Uygulama sürümü ile veritabanı şeması arasındaki uyumsuzluğun, veri kaybı veya tutarsızlık üzerindeki etkisini nasıl ölçümlersin?",
+  "displayedResponse": {
+    "messageTr": "Mühendislikte tek bir doğru yerine, sistemin kararlılığı ve veri bütünlüğü arasındaki ödünleşimleri değerlendirmek gerekir. Geri dönüş süreci veya doğrudan müdahale, sistemin mevcut durumuna göre farklı riskler barındırır. Uygulama sürümü ile veritabanı şeması arasındaki uyumsuzluğun, veri kaybı veya tutarsızlık üzerindeki etkisini nasıl ölçümlersin?",
+    "fallback": false,
+    "liveAi": true,
+    "decisionId": "architecture",
+    "hintLevel": 1,
+    "requestId": "a906211a-8043-4be0-b52d-46f361629a56",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 4264
+  }
+}

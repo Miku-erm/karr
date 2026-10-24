@@ -1,0 +1,50 @@
+[
+  {
+    "source": "artifacts\\cypress\\e2e-1792838716927.json",
+    "startedAt": "2026-10-24T10:45:13.948Z",
+    "tests": 0,
+    "passed": 0,
+    "failed": 2,
+    "durationMs": 0
+  },
+  {
+    "source": "artifacts\\cypress\\e2e-1792838839393.json",
+    "startedAt": "2026-10-24T10:46:38.953Z",
+    "tests": 19,
+    "passed": 16,
+    "failed": 3,
+    "durationMs": 37446
+  },
+  {
+    "source": "artifacts\\cypress\\e2e-1792838909069.json",
+    "startedAt": "2026-10-24T10:47:48.531Z",
+    "tests": 19,
+    "passed": 17,
+    "failed": 2,
+    "durationMs": 37507
+  },
+  {
+    "source": "artifacts\\cypress\\e2e-1792839067279.json",
+    "startedAt": "2026-10-24T10:50:41.692Z",
+    "tests": 19,
+    "passed": 18,
+    "failed": 1,
+    "durationMs": 22326
+  },
+  {
+    "source": "artifacts\\cypress\\e2e-1792839127540.json",
+    "startedAt": "2026-10-24T10:51:42.112Z",
+    "tests": 19,
+    "passed": 19,
+    "failed": 0,
+    "durationMs": 22173
+  },
+  {
+    "source": "artifacts\\cypress\\e2e-1792839477401.json",
+    "startedAt": "2026-10-24T10:57:30.947Z",
+    "tests": 19,
+    "passed": 19,
+    "failed": 0,
+    "durationMs": 23194
+  }
+]
