@@ -1,3 +1,5 @@
+> Güncel inceleme kaydı: Emre, AI yardımıyla hazırlanan yorumları onayladı ve CSV’de 20/20 inceleme alanı dolduruldu; 18 geçti, 2 kaldı (S04, S09). Bu, ayrıca yapılmış bağımsız değerlendirici incelemesi olarak sunulmaz. Güncel kayıt: [human-review.csv](eval/human-review.csv) ve [review-provenance.json](eval/review-provenance.json). Aşağıdaki pending ifadeleri ilk değerlendirme koşusunun tarihsel durumudur.
+
 # 08:00 — Kritik Karar
 
 **YZM301 — Yazılım Gerçekleme ve Test**  

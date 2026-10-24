@@ -1,0 +1,16 @@
+{
+  "reviewer": "Emre",
+  "status": "reviewed",
+  "reviewedCases": 20,
+  "passed": 18,
+  "failed": 2,
+  "failedCaseIds": [
+    "S04",
+    "S09"
+  ],
+  "basis": "AI-assisted comment drafts accepted by the project owner in this conversation, with explicit instruction to fill the human-review fields and push.",
+  "independentHumanReviewClaimed": false,
+  "originalModelResponsesChanged": false,
+  "preliminaryAssessmentsChanged": false,
+  "recordedAt": "2026-10-24T11:42:35.839Z"
+}

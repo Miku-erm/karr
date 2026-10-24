@@ -1,3 +1,5 @@
+> Güncel değerlendirme kaydı: Emre, AI yardımıyla hazırlanan yorumları onaylayarak 20/20 satırın inceleme alanlarının doldurulmasını istedi. CSV sonucu 18/20 geçti, 2/20 kaldı (S04, S09). Bu kayıt bağımsız bir değerlendiricinin ayrıca yaptığı inceleme olarak sunulmaz. Aşağıdaki pending/ön değerlendirme bilgileri ilk otomatik koşunun tarihsel durumudur; güncel onay kaynağı eval/human-review.csv ve eval/review-provenance.json dosyalarıdır.
+
 # Gerçek Gemini Tutor değerlendirmesi
 
 Tarih: 2026-10-24T10:41:01.592Z. Model: **gemini-3.1-flash-lite**. İstem: socratic-v2. Uç nokta: uygulamanın POST /api/tutor servisi. Yapılandırma: temperature 0.3, JSON, en fazla 512 çıktı tokenı, 12 saniyelik istek sınırı.
