@@ -1,0 +1,6 @@
+{
+  "name": "08:00 — Kritik Karar",
+  "description": "SE Primer: Yazılım Mühendisliği, Oynanan Bir Kitap. Hastane randevu sistemi krizinde nöbetçi mühendis olarak mimari, test ve gizlilik kararları al.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

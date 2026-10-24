@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#15130e;color:#e8e2d8;}body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-tertiary": "#003734", "inverse-surface": "#e8e2d8", "outline": "#8f9098", "inverse-primary": "#525e7a", "on-error": "#690005", "on-secondary-fixed": "#2c1600", "surface-container": "#211f19", "primary-container": "#101d35", "surface-container-highest": "#37352e", "surface-container-low": "#1d1b16", "primary-fixed": "#d8e2ff", "surface-variant": "#37352e", "secondary": "#ffb870", "surface-bright": "#3b3932", "secondary-fixed": "#ffdcbe", "on-tertiary-fixed-variant": "#00504c", "on-primary": "#243049", "on-secondary-container": "#fff2e9", "background": "#15130e", "on-tertiary-fixed": "#00201e", "secondary-container": "#a35f02", "error-container": "#93000a", "on-error-container": "#ffdad6", "surface-container-high": "#2c2a24", "surface-container-lowest": "#100e09", "on-secondary-fixed-variant": "#693c00", "tertiary-fixed-dim": "#89d4cd", "primary": "#bac6e6", "error": "#ffb4ab", "on-surface-variant": "#c5c6ce", "outline-variant": "#45474d", "surface-dim": "#15130e", "tertiary-container": "#002220", "tertiary": "#89d4cd", "on-background": "#e8e2d8", "primary-fixed-dim": "#bac6e6", "on-secondary": "#4a2800", "on-primary-fixed": "#0e1b33", "on-tertiary-container": "#46918c", "on-primary-fixed-variant": "#3a4761", "secondary-fixed-dim": "#ffb870", "on-surface": "#e8e2d8", "surface-tint": "#bac6e6", "surface": "#15130e", "tertiary-fixed": "#a5f0e9", "inverse-on-surface": "#33302a", "on-primary-container": "#7985a2" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "margin-lg": "1.5rem", "space-xl": "2rem", "space-lg": "1.5rem", "space-xs": "0.25rem", "gutter": "1rem", "space-md": "1rem", "margin": "1rem", "gutter-sm": "0.75rem", "space-sm": "0.5rem" }, fontFamily: { "headline-lg-mobile": ["Newsreader"], "headline-md": ["Newsreader"], "body-md": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "label-sm": ["JetBrains Mono"], "body-sm": ["Plus Jakarta Sans"], "label-md": ["JetBrains Mono"], "headline-xl": ["Newsreader"], "label-lg": ["Plus Jakarta Sans"], "headline-xl-mobile": ["Newsreader"], "headline-lg": ["Newsreader"] }, fontSize: { "headline-lg-mobile": ["24px", { lineHeight: "32px", letterSpacing: "0em", fontWeight: "500" }], "headline-md": ["22px", { lineHeight: "28px", fontWeight: "500" }], "body-md": ["15px", { lineHeight: "22px", fontWeight: "400" }], "body-lg": ["17px", { lineHeight: "26px", fontWeight: "400" }], "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.05em", fontWeight: "500" }], "body-sm": ["13px", { lineHeight: "18px", fontWeight: "400" }], "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "500" }], "headline-xl": ["40px", { lineHeight: "48px", letterSpacing: "-0.02em", fontWeight: "600" }], "label-lg": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "600" }], "headline-xl-mobile": ["30px", { lineHeight: "36px", letterSpacing: "-0.01em", fontWeight: "600" }], "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "500" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface antialiased flex justify-center min-h-screen"><div class="w-full max-w-[480px] min-h-screen relative flex flex-col bg-surface shadow-[0_0_50px_rgba(0,0,0,0.85)]"><header class="fixed top-0 w-full max-w-[480px] z-50 bg-surface/85 backdrop-blur-xl pt-safe shadow-[0_1px_12px_rgba(0,0,0,0.45)]"><div class="h-16 px-space-md flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="flex items-center gap-1.5 px-2 py-1 rounded bg-secondary-container/20"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><span class="font-label-sm text-label-sm font-semibold text-secondary tracking-wider">08:00</span></div><div class="flex flex-col"><span class="font-headline-md text-headline-md tracking-tight text-on-surface leading-tight">08:00 — KRİTİK KARAR</span><div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[13px] text-secondary">warning</span><span class="font-label-sm text-label-sm text-secondary uppercase">Acil Durum / Vaka Modu</span></div></div></div><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full px-space-md pt-16 pb-20 bg-surface min-h-screen"><div class="flex flex-col w-full pb-6 space-y-4">
+<!-- Telemetry Bar & Context Badge -->
+<section class="flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary font-semibold uppercase tracking-wider flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+        Bölüm 1 — Sistem Çöktü
+      </span>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container-high text-on-surface">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm font-medium">08:00</span>
+<span class="text-outline text-[10px]">•</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Karar 1 / 3</span>
+</div>
+</div>
+<!-- Live Telemetry Status Grid -->
+<div class="grid grid-cols-3 gap-1.5 p-2 rounded-lg bg-surface-container-low shadow-sm">
+<div class="flex flex-col items-center justify-center p-1.5 rounded bg-surface-container text-center">
+<span class="font-label-sm text-label-sm text-error font-medium">%98.4 Hata</span>
+<span class="text-[10px] font-label-sm text-on-surface-variant">HTTP 500</span>
+</div>
+<div class="flex flex-col items-center justify-center p-1.5 rounded bg-surface-container text-center">
+<span class="font-label-sm text-label-sm text-secondary font-medium">312 İstek/s</span>
+<span class="text-[10px] font-label-sm text-on-surface-variant">Kuyruk Baskısı</span>
+</div>
+<div class="flex flex-col items-center justify-center p-1.5 rounded bg-surface-container text-center">
+<span class="font-label-sm text-label-sm text-error font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[13px]">lock</span> Kilitli
+        </span>
+<span class="text-[10px] font-label-sm text-on-surface-variant">DB Havuzu</span>
+</div>
+</div>
+</section>
+<!-- Narrative Card (Atmospheric Sci-Fi Incident Feel) -->
+<article class="p-4 rounded-xl bg-surface-container shadow-md flex flex-col gap-3">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-[20px]">notifications_active</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wide text-secondary">Nöbet Odası Acil Hattı</span>
+</div>
+<p class="font-headline-md text-headline-md text-on-surface leading-snug">
+      Pazartesi sabahı nöbet odasındaki acil çağrı telefonu çalıyor.
+    </p>
+<div class="font-body-md text-body-md text-on-surface-variant space-y-2">
+<p>
+        Başhekimlik ve poliklinik bankoları ayakta: Randevu servisi yanıt vermiyor. Gece 03:00'te yeni hasta kimlik doğrulama mikroservisi yayına alınmış, ancak sabah hasta yükü biner binmez bağlantı havuzu tükenmiş.
+      </p>
+<div class="p-2.5 rounded bg-surface-container-lowest font-label-sm text-label-sm text-error flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] mt-0.5">crisis_alert</span>
+<span>ERROR: Deadlock detected on appointments_v2 table (processes waiting: 184)</span>
+</div>
+</div>
+</article>
+<!-- Decision Section -->
+<section class="flex flex-col gap-3">
+<div class="flex items-center gap-2 px-1">
+<span class="w-1.5 h-3.5 bg-secondary rounded-full"></span>
+<h2 class="font-label-lg text-label-lg font-semibold text-on-surface">
+        Yeni sürümden sonra sistem kilitlendi. İlk hamlen ne?
+      </h2>
+</div>
+<!-- Option A (Active / Selected State) -->
+<div class="p-4 rounded-xl bg-surface-container-high shadow-lg transition-all cursor-pointer relative" id="option-a-card" onclick="selectOption('A')">
+<div class="flex items-start gap-3">
+<div class="w-7 h-7 rounded-lg bg-secondary text-on-secondary flex items-center justify-center font-label-md text-label-md font-bold shrink-0 shadow-sm" id="badge-a">
+          A
+        </div>
+<div class="flex flex-col gap-1.5 flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<h3 class="font-body-lg text-body-lg font-semibold text-on-surface leading-snug">
+              Eski sürüme dön (Rollback)
+            </h3>
+<span class="flex items-center text-secondary" id="selected-indicator-a">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Gece yayına alınan <code class="font-label-sm text-on-surface bg-surface-container-lowest px-1 py-0.5 rounded">v2.4.0</code> paketini geri alıp kararlı <code class="font-label-sm text-on-surface bg-surface-container-lowest px-1 py-0.5 rounded">v2.3.9</code> sürümüne dön. Şema migrasyon uyumluluğunu acil teyit etmelisin.
+          </p>
+<div class="flex items-center gap-1.5 pt-1">
+<span class="material-symbols-outlined text-[14px] text-tertiary">check</span>
+<span class="font-label-sm text-label-sm text-tertiary font-medium">Düşük Kesinti</span>
+<span class="text-outline text-[10px]">•</span>
+<span class="material-symbols-outlined text-[14px] text-secondary">priority_high</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Veri Tutarsızlığı Riski</span>
+</div>
+</div>
+</div>
+<!-- Architectural Consequence Drawer for Selected Option -->
+<div class="mt-3.5 p-3 rounded-lg bg-surface-container-lowest flex flex-col gap-1" id="consequence-box-a">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-[16px]">psychology_alt</span>
+<span class="font-label-sm text-label-sm font-semibold uppercase">Mimari Etki Analizi</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+<strong class="text-on-surface">v2.4.0</strong>'da eklenen <code class="font-label-sm text-secondary">tc_kimlik_hash</code> kolonu <code class="font-label-sm text-error">NOT NULL</code> tanımlandığı için eski sürüme anında dönüş, yeni kayıt açan 14 poliklinik randevusunda veri yazma hatasına yol açabilir.
+        </p>
+</div>
+</div>
+<!-- Option B (Resting State) -->
+<div class="p-4 rounded-xl bg-surface-container shadow-sm opacity-90 transition-all cursor-pointer" id="option-b-card" onclick="selectOption('B')">
+<div class="flex items-start gap-3">
+<div class="w-7 h-7 rounded-lg bg-surface-container-highest text-on-surface flex items-center justify-center font-label-md text-label-md font-bold shrink-0" id="badge-b">
+          B
+        </div>
+<div class="flex flex-col gap-1.5 flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<h3 class="font-body-lg text-body-lg font-semibold text-on-surface leading-snug">
+              Canlıda acil yama uygula (Hotfix)
+            </h3>
+<span class="hidden items-center text-secondary" id="selected-indicator-b">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Veritabanındaki kilitlenen transaction indekslerini canlı ortamda drop edip connection pool boyutunu iki katına çıkararak sistemi ayakta tutmaya çalış.
+          </p>
+<div class="flex items-center gap-1.5 pt-1">
+<span class="material-symbols-outlined text-[14px] text-error">warning</span>
+<span class="font-label-sm text-label-sm text-error font-medium">Yüksek Sistem Riski</span>
+<span class="text-outline text-[10px]">•</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">KVKK &amp; Tutarlılık Tehlikesi</span>
+</div>
+</div>
+</div>
+<div class="hidden mt-3.5 p-3 rounded-lg bg-surface-container-lowest flex flex-col gap-1" id="consequence-box-b">
+<div class="flex items-center gap-1.5 text-error">
+<span class="material-symbols-outlined text-[16px]">report</span>
+<span class="font-label-sm text-label-sm font-semibold uppercase">Kritik Risk</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Canlı tabloda indeks silmek anlık global tablo kilitlenmesine (exclusive table lock) neden olabilir. Tüm randevu kayıtları tamamen donabilir.
+        </p>
+</div>
+</div>
+</section>
+<!-- AI Tutor Compact Section (Muted Teal Aesthetic) -->
+<section class="rounded-xl bg-tertiary-container text-on-tertiary-container p-3.5 flex flex-col gap-2.5 shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-tertiary text-[18px]">smart_toy</span>
+<span class="font-label-sm text-label-sm font-semibold text-tertiary tracking-wide uppercase">AI Mühendislik Danışmanı</span>
+</div>
+<button class="flex items-center gap-1 px-2 py-1 rounded-full bg-surface-container-high text-tertiary font-label-sm text-label-sm hover:opacity-90 transition-opacity" onclick="toggleHint()" type="button">
+<span class="material-symbols-outlined text-[13px]">lightbulb</span>
+<span>İpucu Ver</span>
+</button>
+</div>
+<!-- Socratic Prompt -->
+<div class="p-2.5 rounded bg-surface-container-lowest/80 text-on-surface">
+<p class="font-body-sm text-body-sm leading-relaxed">
+<span class="text-tertiary font-medium">Sokratik Soru:</span> Geri dönüş (rollback) yapmadan önce veritabanı şemasında ve transaction kuyruğunda ilk neyi kontrol ederdin?
+      </p>
+<div class="hidden mt-2 pt-2 text-on-surface-variant font-label-sm text-label-sm" id="hint-panel">
+        💡 <strong class="text-tertiary">Mühendislik Tavsiyesi:</strong> İki adımlı migrasyon (Expand/Contract pattern) kullanılmadıysa, NOT NULL sütunlar ve active foreign key constraint'ler sürüm düşürmede kuyruktaki istekleri zehirler (poison pill).
+      </div>
+</div>
+<!-- Compact Input Bar -->
+<div class="flex items-center gap-2 bg-surface-container-lowest rounded-lg p-1.5">
+<input class="bg-transparent text-on-surface placeholder:text-outline font-body-sm text-body-sm flex-1 px-2 focus:outline-none" placeholder="Tutor'a sor: 'Geriye uyumlu migrasyon adımları...'" type="text"/>
+<button aria-label="Soruyu Gönder" class="w-7 h-7 rounded-md bg-tertiary text-on-tertiary flex items-center justify-center shrink-0 hover:opacity-90" type="button">
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Forward Progress Confirmation Button -->
+<section class="pt-1">
+<button class="w-full h-12 rounded-xl bg-secondary text-on-secondary font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow-lg active:scale-[0.99] transition-transform" type="button">
+<span>Kararı Onayla ve İlerle (08:15)</span>
+<span class="material-symbols-outlined text-[18px]">east</span>
+</button>
+</section>
+</div>
+<script>
+  function selectOption(option) {
+    const cardA = document.getElementById('option-a-card');
+    const cardB = document.getElementById('option-b-card');
+    const badgeA = document.getElementById('badge-a');
+    const badgeB = document.getElementById('badge-b');
+    const indicatorA = document.getElementById('selected-indicator-a');
+    const indicatorB = document.getElementById('selected-indicator-b');
+    const consA = document.getElementById('consequence-box-a');
+    const consB = document.getElementById('consequence-box-b');
+
+    if (option === 'A') {
+      cardA.classList.remove('bg-surface-container', 'opacity-90');
+      cardA.classList.add('bg-surface-container-high', 'shadow-lg');
+      badgeA.className = 'w-7 h-7 rounded-lg bg-secondary text-on-secondary flex items-center justify-center font-label-md text-label-md font-bold shrink-0 shadow-sm';
+      indicatorA.classList.remove('hidden');
+      indicatorA.classList.add('flex');
+      consA.classList.remove('hidden');
+
+      cardB.classList.remove('bg-surface-container-high', 'shadow-lg');
+      cardB.classList.add('bg-surface-container', 'opacity-90');
+      badgeB.className = 'w-7 h-7 rounded-lg bg-surface-container-highest text-on-surface flex items-center justify-center font-label-md text-label-md font-bold shrink-0';
+      indicatorB.classList.remove('flex');
+      indicatorB.classList.add('hidden');
+      consB.classList.add('hidden');
+    } else {
+      cardB.classList.remove('bg-surface-container', 'opacity-90');
+      cardB.classList.add('bg-surface-container-high', 'shadow-lg');
+      badgeB.className = 'w-7 h-7 rounded-lg bg-secondary text-on-secondary flex items-center justify-center font-label-md text-label-md font-bold shrink-0 shadow-sm';
+      indicatorB.classList.remove('hidden');
+      indicatorB.classList.add('flex');
+      consB.classList.remove('hidden');
+
+      cardA.classList.remove('bg-surface-container-high', 'shadow-lg');
+      cardA.classList.add('bg-surface-container', 'opacity-90');
+      badgeA.className = 'w-7 h-7 rounded-lg bg-surface-container-highest text-on-surface flex items-center justify-center font-label-md text-label-md font-bold shrink-0';
+      indicatorA.classList.remove('flex');
+      indicatorA.classList.add('hidden');
+      consA.classList.add('hidden');
+    }
+  }
+
+  function toggleHint() {
+    const hint = document.getElementById('hint-panel');
+    if (hint) {
+      hint.classList.toggle('hidden');
+    }
+  }
+</script></main><nav class="fixed bottom-0 w-full max-w-[480px] z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-2px_16px_rgba(0,0,0,0.55)]" data-active-classes="text-secondary"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] min-h-[44px] text-on-surface-variant transition-colors" data-path="canli-vaka" href="#"><span class="material-symbols-outlined text-[22px]">terminal</span><span class="font-label-sm text-label-sm">Vaka</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] min-h-[44px] text-on-surface-variant transition-colors" data-path="sistem-telemetrisi" href="#"><span class="material-symbols-outlined text-[22px]">monitoring</span><span class="font-label-sm text-label-sm">Telemetri</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] min-h-[44px] text-on-surface-variant transition-colors" data-path="ai-tutor-danismani" href="#"><span class="material-symbols-outlined text-[22px]">psychology</span><span class="font-label-sm text-label-sm">Tutor</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] min-h-[44px] text-on-surface-variant transition-colors" data-path="post-mortem-debrief" href="#"><span class="material-symbols-outlined text-[22px]">assignment</span><span class="font-label-sm text-label-sm">Debrief</span></a></div></nav></div></body></html>
