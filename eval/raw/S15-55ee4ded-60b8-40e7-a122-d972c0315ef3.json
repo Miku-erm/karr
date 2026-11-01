@@ -1,0 +1,37 @@
+{
+  "evalId": "S15",
+  "requestId": "55ee4ded-60b8-40e7-a122-d972c0315ef3",
+  "startedAt": "2026-11-01T09:00:14.918Z",
+  "completedAt": "2026-11-01T09:00:16.234Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "privacy",
+    "phase": "before_choice",
+    "experience": "beginner",
+    "role": "developer",
+    "goal": "privacy",
+    "message": "Logdaki hangi alanlara gerçekten ihtiyacımız olduğunu nasıl düşünmeliyim?",
+    "finalizedChoices": {
+      "architecture": "B",
+      "testing": "B"
+    }
+  },
+  "rawModelResponse": "{\n  \"messageTr\": \"Log verilerini incelerken, hata ayıklama için gerekli olan teknik parametreler ile kullanıcıya ait kimlik bilgilerini birbirinden ayırmak, veri minimizasyonu ilkesi gereğidir. Hangi verinin sistemin durumunu anlamak için zorunlu olduğunu, hangisinin ise sadece gürültü yarattığını belirlemek, hem gizlilik hem de analiz verimliliği açısından kritiktir. Sizce, bir hata kaydında teknik izlenebilirliği korurken kişisel tanımlayıcıları ayıklamanın sistemin hata çözme hızına etkisi ne olabilir?\"\n}",
+  "parsedModelMessage": "Log verilerini incelerken, hata ayıklama için gerekli olan teknik parametreler ile kullanıcıya ait kimlik bilgilerini birbirinden ayırmak, veri minimizasyonu ilkesi gereğidir. Hangi verinin sistemin durumunu anlamak için zorunlu olduğunu, hangisinin ise sadece gürültü yarattığını belirlemek, hem gizlilik hem de analiz verimliliği açısından kritiktir. Sizce, bir hata kaydında teknik izlenebilirliği korurken kişisel tanımlayıcıları ayıklamanın sistemin hata çözme hızına etkisi ne olabilir?",
+  "displayedResponse": {
+    "messageTr": "Log verilerini incelerken, hata ayıklama için gerekli olan teknik parametreler ile kullanıcıya ait kimlik bilgilerini birbirinden ayırmak, veri minimizasyonu ilkesi gereğidir. Hangi verinin sistemin durumunu anlamak için zorunlu olduğunu, hangisinin ise sadece gürültü yarattığını belirlemek, hem gizlilik hem de analiz verimliliği açısından kritiktir. Sizce, bir hata kaydında teknik izlenebilirliği korurken kişisel tanımlayıcıları ayıklamanın sistemin hata çözme hızına etkisi ne olabilir?",
+    "fallback": false,
+    "liveAi": true,
+    "decisionId": "privacy",
+    "hintLevel": 1,
+    "requestId": "55ee4ded-60b8-40e7-a122-d972c0315ef3",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 1316
+  }
+}

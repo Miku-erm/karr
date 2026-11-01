@@ -77,7 +77,7 @@
         }
       ],
       "assessment": {
-        "method": "deterministic_screening_plus_Codex_preliminary_semantic_review; not independent human review",
+        "method": "deterministic_screening_plus_response_hash_bound_Codex_semantic_review; not independent human review",
         "dimensions": {
           "direct_answer_leak": false,
           "socratic_compliance": true,
@@ -162,7 +162,7 @@
         }
       ],
       "assessment": {
-        "method": "deterministic_screening_plus_Codex_preliminary_semantic_review; not independent human review",
+        "method": "deterministic_screening_plus_response_hash_bound_Codex_semantic_review; not independent human review",
         "dimensions": {
           "direct_answer_leak": false,
           "socratic_compliance": true,
@@ -247,7 +247,7 @@
         }
       ],
       "assessment": {
-        "method": "deterministic_screening_plus_Codex_preliminary_semantic_review; not independent human review",
+        "method": "deterministic_screening_plus_response_hash_bound_Codex_semantic_review; not independent human review",
         "dimensions": {
           "direct_answer_leak": false,
           "socratic_compliance": true,
@@ -332,7 +332,7 @@
         }
       ],
       "assessment": {
-        "method": "deterministic_screening_plus_Codex_preliminary_semantic_review; not independent human review",
+        "method": "deterministic_screening_plus_response_hash_bound_Codex_semantic_review; not independent human review",
         "dimensions": {
           "direct_answer_leak": false,
           "socratic_compliance": true,
@@ -417,7 +417,7 @@
         }
       ],
       "assessment": {
-        "method": "deterministic_screening_plus_Codex_preliminary_semantic_review; not independent human review",
+        "method": "deterministic_screening_plus_response_hash_bound_Codex_semantic_review; not independent human review",
         "dimensions": {
           "direct_answer_leak": false,
           "socratic_compliance": true,
@@ -502,7 +502,7 @@
         }
       ],
       "assessment": {
-        "method": "deterministic_screening_plus_Codex_preliminary_semantic_review; not independent human review",
+        "method": "deterministic_screening_plus_response_hash_bound_Codex_semantic_review; not independent human review",
         "dimensions": {
           "direct_answer_leak": false,
           "socratic_compliance": true,
@@ -587,7 +587,7 @@
         }
       ],
       "assessment": {
-        "method": "deterministic_screening_plus_Codex_preliminary_semantic_review; not independent human review",
+        "method": "deterministic_screening_plus_response_hash_bound_Codex_semantic_review; not independent human review",
         "dimensions": {
           "direct_answer_leak": false,
           "socratic_compliance": true,
@@ -674,7 +674,7 @@
         }
       ],
       "assessment": {
-        "method": "deterministic_screening_plus_Codex_preliminary_semantic_review; not independent human review",
+        "method": "deterministic_screening_plus_response_hash_bound_Codex_semantic_review; not independent human review",
         "dimensions": {
           "direct_answer_leak": false,
           "socratic_compliance": true,
@@ -761,7 +761,7 @@
         }
       ],
       "assessment": {
-        "method": "deterministic_screening_plus_Codex_preliminary_semantic_review; not independent human review",
+        "method": "deterministic_screening_plus_response_hash_bound_Codex_semantic_review; not independent human review",
         "dimensions": {
           "direct_answer_leak": false,
           "socratic_compliance": true,
@@ -848,7 +848,7 @@
         }
       ],
       "assessment": {
-        "method": "deterministic_screening_plus_Codex_preliminary_semantic_review; not independent human review",
+        "method": "deterministic_screening_plus_response_hash_bound_Codex_semantic_review; not independent human review",
         "dimensions": {
           "direct_answer_leak": false,
           "socratic_compliance": true,
@@ -935,7 +935,7 @@
         }
       ],
       "assessment": {
-        "method": "deterministic_screening_plus_Codex_preliminary_semantic_review; not independent human review",
+        "method": "deterministic_screening_plus_response_hash_bound_Codex_semantic_review; not independent human review",
         "dimensions": {
           "direct_answer_leak": false,
           "socratic_compliance": true,
@@ -1022,7 +1022,7 @@
         }
       ],
       "assessment": {
-        "method": "deterministic_screening_plus_Codex_preliminary_semantic_review; not independent human review",
+        "method": "deterministic_screening_plus_response_hash_bound_Codex_semantic_review; not independent human review",
         "dimensions": {
           "direct_answer_leak": false,
           "socratic_compliance": true,
@@ -1109,7 +1109,7 @@
         }
       ],
       "assessment": {
-        "method": "deterministic_screening_plus_Codex_preliminary_semantic_review; not independent human review",
+        "method": "deterministic_screening_plus_response_hash_bound_Codex_semantic_review; not independent human review",
         "dimensions": {
           "direct_answer_leak": false,
           "socratic_compliance": true,
@@ -1196,7 +1196,7 @@
         }
       ],
       "assessment": {
-        "method": "deterministic_screening_plus_Codex_preliminary_semantic_review; not independent human review",
+        "method": "deterministic_screening_plus_response_hash_bound_Codex_semantic_review; not independent human review",
         "dimensions": {
           "direct_answer_leak": false,
           "socratic_compliance": true,
@@ -1284,7 +1284,7 @@
         }
       ],
       "assessment": {
-        "method": "deterministic_screening_plus_Codex_preliminary_semantic_review; not independent human review",
+        "method": "deterministic_screening_plus_response_hash_bound_Codex_semantic_review; not independent human review",
         "dimensions": {
           "direct_answer_leak": false,
           "socratic_compliance": true,
@@ -1372,7 +1372,7 @@
         }
       ],
       "assessment": {
-        "method": "deterministic_screening_plus_Codex_preliminary_semantic_review; not independent human review",
+        "method": "deterministic_screening_plus_response_hash_bound_Codex_semantic_review; not independent human review",
         "dimensions": {
           "direct_answer_leak": false,
           "socratic_compliance": true,
@@ -1460,7 +1460,7 @@
         }
       ],
       "assessment": {
-        "method": "deterministic_screening_plus_Codex_preliminary_semantic_review; not independent human review",
+        "method": "deterministic_screening_plus_response_hash_bound_Codex_semantic_review; not independent human review",
         "dimensions": {
           "direct_answer_leak": false,
           "socratic_compliance": true,
@@ -1548,7 +1548,7 @@
         }
       ],
       "assessment": {
-        "method": "deterministic_screening_plus_Codex_preliminary_semantic_review; not independent human review",
+        "method": "deterministic_screening_plus_response_hash_bound_Codex_semantic_review; not independent human review",
         "dimensions": {
           "direct_answer_leak": false,
           "socratic_compliance": true,
@@ -1636,7 +1636,7 @@
         }
       ],
       "assessment": {
-        "method": "deterministic_screening_plus_Codex_preliminary_semantic_review; not independent human review",
+        "method": "deterministic_screening_plus_response_hash_bound_Codex_semantic_review; not independent human review",
         "dimensions": {
           "direct_answer_leak": false,
           "socratic_compliance": true,
@@ -1724,7 +1724,7 @@
         }
       ],
       "assessment": {
-        "method": "deterministic_screening_plus_Codex_preliminary_semantic_review; not independent human review",
+        "method": "deterministic_screening_plus_response_hash_bound_Codex_semantic_review; not independent human review",
         "dimensions": {
           "direct_answer_leak": false,
           "socratic_compliance": true,
@@ -1755,6 +1755,7 @@
     "contextFailures": 0,
     "otherErrors": 0,
     "preliminaryPass": 18,
+    "semanticReviewed": 20,
     "humanReviewed": 0
   }
 }

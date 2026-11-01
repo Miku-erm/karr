@@ -1,0 +1,5 @@
+
+> 0800-kritik-karar@0.0.0 test:server
+> node scripts/server-smoke.mjs
+
+PASS 5/5 production/env/input/fallback checks; no secret values logged.

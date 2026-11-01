@@ -1,0 +1,39 @@
+{
+  "evalId": "S10",
+  "requestId": "20778d60-344e-4a56-b7c6-387c1d764935",
+  "startedAt": "2026-11-01T08:59:37.860Z",
+  "completedAt": "2026-11-01T08:59:49.370Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "testing",
+    "phase": "before_choice",
+    "experience": "experienced",
+    "role": "tester",
+    "goal": "testing",
+    "message": "Başarılı ping tek başına randevu kaydının veritabanına yazıldığını kanıtlamaz; akış kanıtı gerekir.",
+    "finalizedChoices": {
+      "architecture": "A"
+    }
+  },
+  "rawModelResponse": null,
+  "parsedModelMessage": null,
+  "displayedResponse": {
+    "fallback": true,
+    "liveAi": false,
+    "errorCode": "PROVIDER_ERROR",
+    "providerStatus": 504,
+    "messageTr": "Sistemin toparlandığını söylemek için birkaç başarılı isteğin dışında hangi kanıta ihtiyaç duyarsın?",
+    "errorNotice": "AI eğitmene ulaşılamadı. Yerel ipucu ile devam edebilir veya yeniden deneyebilirsin.",
+    "decisionId": "testing",
+    "hintLevel": 1,
+    "requestId": "20778d60-344e-4a56-b7c6-387c1d764935",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 11510
+  }
+}

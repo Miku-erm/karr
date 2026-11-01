@@ -1,3 +1,31 @@
+# Güncel doğrulama — 1 Kasım 2026
+
+Europe/Istanbul. Bu bölüm güncel koşudur; aşağıdaki 24 Ekim kayıtları tarihsel kanıttır.
+
+| Çalıştırılan komut | Gerçek sonuç | Kanıt |
+|---|---|---|
+| npm ls --depth=0 | PASS, exit 0 | [toplu kayıt](../evidence/final-verification.json) |
+| npm run typecheck / npm run build | PASS, exit 0 | [loglar](../evidence/final-verification.json) |
+| npm test | 11/11 PASS | [çıktı](../evidence/verification/unit-tests.txt) |
+| npm run test:eval-report | 1/1 PASS; eski semantik/insan etiketleri yeni yanıta taşınmıyor | [çıktı](../evidence/verification/eval-report-test.txt) |
+| npm run tutor:audit | 2/2 koşu: 40/40 yanıt ham dosyayla eşleşiyor | [bütünlük kaydı](../evidence/evaluation-integrity.json) |
+| npm run test:server | 5/5 PASS | [sunucu kanıtı](../evidence/server-smoke.json) |
+| npm run cy:run | 19/19 PASS: 8/8 yol + 11/11 özellik | [Cypress](../evidence/cypress-e2e.json) |
+| npm run test:live | 1/1 PASS, gerçek Gemini arayüzde | [canlı test](../evidence/cypress-live.json) |
+| npm run tutor:smoke | 1/1 gerçek yanıt, 2 deneme; önce 503 sonra başarı | [smoke](../eval/smoke.json) |
+| npm run tutor:eval (tarihli çıktı klasörü) | 20/20 gerçek yanıt, 22 deneme; iki 504 retry ile tamam | [yeni koşu](../eval/runs/2026-11-01/report.md) |
+| npm run tutor:report (aynı çıktı klasörü) | 19/20 ön geçiş; insan incelemesi 0/20 pending; S09 teknik hata | [sonuç](../eval/runs/2026-11-01/tutor-results.json) |
+| npm run demo:record | 1/1 PASS, gerçek Gemini cevabı ve AAA yolu | [demo testi](../evidence/cypress-demo.json) |
+| npm run demo:edit / npm run demo:verify | 65.40 sn ham → 58.000 sn MP4, H.264 1280×1100; 1.13x; tam decode PASS | [video](../demo/video-verification.json) |
+| Görsel video kontrolü | 11 kare incelendi; Türkçe, canlı cevap, üç etki, son/restart görünür | [görsel kontrol](../demo/visual-inspection.json) |
+| npm run security:scan | Kaynak, dist ve Git geçmişi; gizli değer yazdırılmadı | [son tarama](security-scan.json) |
+
+PowerShell'de ayrı değerlendirme klasörü: $env:TUTOR_EVAL_OUTPUT_DIR='eval/runs/2026-11-01'. Güncel insan incelemesi eski onaydan ayrıdır. Sağlayıcı 503/504 hataları kayıtlardan silinmedi. Anahtar sunucuda; deterministik Cypress mock yanıtları canlı model kanıtı sayılmadı.
+
+Önceki toplu loglar [arşivde](../evidence/archive/2026-10-24/final-verification.json) korundu. Mermaid 2/2 ayrıştırması 24 Ekim kanıtıdır; değişmeyen diyagramlar bu koşuda yeniden ayrıştırılmadı/render edilmedi.
+
+---
+
 # Çalıştırılmış testler ve gerçek sonuçlar
 
 Tarih: 24 Ekim 2026, Europe/Istanbul. Kaynak: bu deponun Google AI Studio dışa aktarımı. Node 22.16.0, npm 10.9.2, TypeScript 7.0.2, Vite 8.3.5, Cypress 15.7.0 / Electron 138. Son toplu doğrulama UTC 10:57:21–10:57:58 aralığında (İstanbul 13:57) çalıştı.

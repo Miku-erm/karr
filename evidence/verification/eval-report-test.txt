@@ -1,0 +1,20 @@
+
+> 0800-kritik-karar@0.0.0 test:eval-report
+> node --test tests/eval-report.test.mjs
+
+TAP version 13
+# Subtest: report preserves exact-response reviews and invalidates changed-response labels
+ok 1 - report preserves exact-response reviews and invalidates changed-response labels
+  ---
+  duration_ms: 124.1948
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 174.007

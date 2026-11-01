@@ -1,7 +1,7 @@
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs/promises';
 await fs.mkdir('evidence/verification',{recursive:true});
-const commands=[['dependencies',['ls','--depth=0']],['typecheck',['run','typecheck']],['build',['run','build']],['unit-tests',['test']],['server-smoke',['run','test:server']],['cypress-e2e',['run','cy:run']],['security',['run','security:scan']]];
+const commands=[['dependencies',['ls','--depth=0']],['typecheck',['run','typecheck']],['build',['run','build']],['unit-tests',['test']],['eval-report-test',['run','test:eval-report']],['evaluation-integrity',['run','tutor:audit']],['server-smoke',['run','test:server']],['cypress-e2e',['run','cy:run']],['security',['run','security:scan']]];
 const records=[];
 for(const [label,args] of commands){
   const startedAt=new Date().toISOString();

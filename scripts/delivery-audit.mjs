@@ -3,6 +3,8 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 const required=['README.md','spec.md','DESIGN.md','story/decision-tree.json','docs/state-machine.md','docs/STITCH_BRIEF.md','docs/tutor-eval-plan.md','docs/tutor-evaluation.md','docs/test-results.md','docs/product-decisions.md','docs/ai-studio-compatibility.md','docs/FINAL-REPORT.md','eval/tutor-cases.json','eval/tutor-results.json','eval/human-review.csv','cypress.config.ts','cypress/e2e/story.cy.ts','cypress/e2e/features.cy.ts','cypress/e2e/live.cy.ts','cypress/e2e/demo.cy.ts','demo/se-primer-demo.mp4','demo/video-verification.json','demo/edit-manifest.json','demo/raw/cypress-1792839278807.mp4','demo/timeline.jsonl','evidence/final-verification.json','evidence/server-smoke.json','evidence/cypress-e2e.json','evidence/cypress-live.json','evidence/cypress-demo.json'];
+const edit=JSON.parse(await fs.readFile("demo/edit-manifest.json","utf8"));
+required.push(edit.raw,"demo/visual-inspection.json","eval/semantic-review.json","eval/runs/2026-11-01/tutor-results.json","eval/runs/2026-11-01/human-review.csv","eval/runs/2026-11-01/report.md","eval/runs/2026-11-01/semantic-review.json","evidence/evaluation-integrity.json","evidence/evaluation-report-regression.json","tests/eval-report.test.mjs");
 const checks=[];
 for(const file of required){ const s=await fs.stat(file); if(!s.isFile()||s.size===0)throw Error('Missing/empty '+file); }
 checks.push({name:'required deliverable files exist and are nonempty',count:required.length,passed:true});
@@ -27,6 +29,8 @@ for(const file of (await fs.readdir('public/assets/aistudio')).sort()){ const da
 const video=JSON.parse(await fs.readFile('demo/video-verification.json','utf8'));
 if(video.durationSeconds>60||video.durationSeconds<55||video.fullDecode!=='passed')throw Error('Video verification failed');
 checks.push({name:'58s valid final video and raw recording present',passed:true});
-const report={checkedAt:new Date().toISOString(),requiredFiles:required,checks,protectedAssets,mermaid:{diagrams:2,parser:'12.2.0',result:'passed',rendered:false,execution:'Node 22.16.0 with temporary Mermaid + jsdom validator'},passed:true};
+const unchanged=spawnSync('git',['diff','--quiet','HEAD','--','docs/state-machine.md'],{windowsHide:true});
+if(unchanged.status!==0)throw Error('State machine changed; historical parser evidence cannot be reused');
+const report={checkedAt:new Date().toISOString(),requiredFiles:required,checks,protectedAssets,mermaid:{diagrams:2,parser:'12.2.0',result:'historical parse passed; source unchanged',rendered:false,reexecuted:false,execution:'Historical 24 October evidence/archive/2026-10-24/document-validation.json; parser not rerun on 1 November'},passed:true};
 await fs.writeFile('evidence/document-validation.json',JSON.stringify(report,null,2));
 console.log(`PASS ${required.length} deliverables, ${markdownLinks} links, 8 outcomes, 20 cases and preserved design exports.`);

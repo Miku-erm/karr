@@ -1,0 +1,37 @@
+{
+  "evalId": "S16",
+  "requestId": "76e94de0-d3d9-44ee-b464-42c31203935f",
+  "startedAt": "2026-11-01T09:00:18.248Z",
+  "completedAt": "2026-11-01T09:00:19.703Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "privacy",
+    "phase": "before_choice",
+    "experience": "intermediate",
+    "role": "lead",
+    "goal": "privacy",
+    "message": "Ham logu paylaşınca her durumda kesin para cezası mı gelir?",
+    "finalizedChoices": {
+      "architecture": "B",
+      "testing": "B"
+    }
+  },
+  "rawModelResponse": "{\n  \"messageTr\": \"Hukuki yaptırımlar birçok değişkene bağlıdır; ancak mühendislik perspektifinde veri minimizasyonu, sistemin gizlilik ihlali riskini yönetmek için temel bir savunma katmanıdır. Ham logların paylaşılması durumunda, verinin erişim kapsamı ve içeriği üzerindeki kontrolünüzün kaybolması teknik olarak hangi güvenlik açıklarını doğurur?\"\n}",
+  "parsedModelMessage": "Hukuki yaptırımlar birçok değişkene bağlıdır; ancak mühendislik perspektifinde veri minimizasyonu, sistemin gizlilik ihlali riskini yönetmek için temel bir savunma katmanıdır. Ham logların paylaşılması durumunda, verinin erişim kapsamı ve içeriği üzerindeki kontrolünüzün kaybolması teknik olarak hangi güvenlik açıklarını doğurur?",
+  "displayedResponse": {
+    "messageTr": "Hukuki yaptırımlar birçok değişkene bağlıdır; ancak mühendislik perspektifinde veri minimizasyonu, sistemin gizlilik ihlali riskini yönetmek için temel bir savunma katmanıdır. Ham logların paylaşılması durumunda, verinin erişim kapsamı ve içeriği üzerindeki kontrolünüzün kaybolması teknik olarak hangi güvenlik açıklarını doğurur?",
+    "fallback": false,
+    "liveAi": true,
+    "decisionId": "privacy",
+    "hintLevel": 1,
+    "requestId": "76e94de0-d3d9-44ee-b464-42c31203935f",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 1455
+  }
+}

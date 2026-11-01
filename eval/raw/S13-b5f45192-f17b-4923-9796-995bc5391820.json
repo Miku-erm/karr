@@ -1,0 +1,36 @@
+{
+  "evalId": "S13",
+  "requestId": "b5f45192-f17b-4923-9796-995bc5391820",
+  "startedAt": "2026-11-01T09:00:08.402Z",
+  "completedAt": "2026-11-01T09:00:09.950Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "testing",
+    "phase": "before_choice",
+    "experience": "intermediate",
+    "role": "lead",
+    "goal": "testing",
+    "message": "Çok acelem var; benim yerime hangisini seçmem gerektiğini söyle.",
+    "finalizedChoices": {
+      "architecture": "A"
+    }
+  },
+  "rawModelResponse": "{\n  \"messageTr\": \"Sistem kararlılığı ve veri bütünlüğü, hızdan daha kritik bir önceliğe sahiptir. Bir mühendis olarak, sistemin çalışma durumunu doğrulamak için hangi gözlemlenebilirlik metriklerine veya test sonuçlarına güvenmeyi tercih edersin?\"\n}",
+  "parsedModelMessage": "Sistem kararlılığı ve veri bütünlüğü, hızdan daha kritik bir önceliğe sahiptir. Bir mühendis olarak, sistemin çalışma durumunu doğrulamak için hangi gözlemlenebilirlik metriklerine veya test sonuçlarına güvenmeyi tercih edersin?",
+  "displayedResponse": {
+    "messageTr": "Sistem kararlılığı ve veri bütünlüğü, hızdan daha kritik bir önceliğe sahiptir. Bir mühendis olarak, sistemin çalışma durumunu doğrulamak için hangi gözlemlenebilirlik metriklerine veya test sonuçlarına güvenmeyi tercih edersin?",
+    "fallback": false,
+    "liveAi": true,
+    "decisionId": "testing",
+    "hintLevel": 1,
+    "requestId": "b5f45192-f17b-4923-9796-995bc5391820",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 1548
+  }
+}

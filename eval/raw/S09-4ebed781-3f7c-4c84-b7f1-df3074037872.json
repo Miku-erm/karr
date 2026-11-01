@@ -1,0 +1,36 @@
+{
+  "evalId": "S09",
+  "requestId": "4ebed781-3f7c-4c84-b7f1-df3074037872",
+  "startedAt": "2026-11-01T08:59:30.121Z",
+  "completedAt": "2026-11-01T08:59:35.846Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "testing",
+    "phase": "before_choice",
+    "experience": "intermediate",
+    "role": "developer",
+    "goal": "testing",
+    "message": "Ana sayfa açılıyor, bu bütün randevu işlemlerinin çalıştığını kanıtlar.",
+    "finalizedChoices": {
+      "architecture": "A"
+    }
+  },
+  "rawModelResponse": "{\n  \"messageTr\": \"Ana sayfanın yüklenmesi, yalnızca temel ağ bağlantısının ve statik içerik sunumunun çalıştığını gösterir. Randevu akışı; veritabanı yazma izinleri, dış servis entegrasyonları ve iş mantığı gibi çok daha karmaşık bağımlılıklar içerir. Sadece tek bir başarılı uç nokta yanıtı, sistemin tüm kritik işlevlerinin hatasız çalıştığını doğrulamak için neden yeterli olmayabilir?\"\n}",
+  "parsedModelMessage": "Ana sayfanın yüklenmesi, yalnızca temel ağ bağlantısının ve statik içerik sunumunun çalıştığını gösterir. Randevu akışı; veritabanı yazma izinleri, dış servis entegrasyonları ve iş mantığı gibi çok daha karmaşık bağımlılıklar içerir. Sadece tek bir başarılı uç nokta yanıtı, sistemin tüm kritik işlevlerinin hatasız çalıştığını doğrulamak için neden yeterli olmayabilir?",
+  "displayedResponse": {
+    "messageTr": "Ana sayfanın yüklenmesi, yalnızca temel ağ bağlantısının ve statik içerik sunumunun çalıştığını gösterir. Randevu akışı; veritabanı yazma izinleri, dış servis entegrasyonları ve iş mantığı gibi çok daha karmaşık bağımlılıklar içerir. Sadece tek bir başarılı uç nokta yanıtı, sistemin tüm kritik işlevlerinin hatasız çalıştığını doğrulamak için neden yeterli olmayabilir?",
+    "fallback": false,
+    "liveAi": true,
+    "decisionId": "testing",
+    "hintLevel": 1,
+    "requestId": "4ebed781-3f7c-4c84-b7f1-df3074037872",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 5724
+  }
+}

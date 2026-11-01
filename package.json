@@ -17,6 +17,8 @@
     "tutor:smoke": "node scripts/tutor-eval.mjs --smoke",
     "tutor:eval": "node scripts/tutor-eval.mjs",
     "tutor:report": "node scripts/eval-report.mjs",
+    "tutor:audit": "node scripts/evaluation-integrity.mjs",
+    "test:eval-report": "node --test tests/eval-report.test.mjs",
     "demo:record": "node scripts/run-cypress.mjs demo",
     "demo:edit": "node scripts/demo-video.mjs edit",
     "demo:verify": "node scripts/demo-video.mjs verify",

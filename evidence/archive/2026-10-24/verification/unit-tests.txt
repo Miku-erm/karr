@@ -1,0 +1,80 @@
+
+> 0800-kritik-karar@0.0.0 test
+> tsx --test tests/decision-engine.test.ts
+
+TAP version 13
+# Subtest: ending AAA
+ok 1 - ending AAA
+  ---
+  duration_ms: 0.599
+  type: 'test'
+  ...
+# Subtest: ending AAB
+ok 2 - ending AAB
+  ---
+  duration_ms: 0.1037
+  type: 'test'
+  ...
+# Subtest: ending ABA
+ok 3 - ending ABA
+  ---
+  duration_ms: 0.0473
+  type: 'test'
+  ...
+# Subtest: ending ABB
+ok 4 - ending ABB
+  ---
+  duration_ms: 0.0395
+  type: 'test'
+  ...
+# Subtest: ending BAA
+ok 5 - ending BAA
+  ---
+  duration_ms: 0.0399
+  type: 'test'
+  ...
+# Subtest: ending BAB
+ok 6 - ending BAB
+  ---
+  duration_ms: 0.0434
+  type: 'test'
+  ...
+# Subtest: ending BBA
+ok 7 - ending BBA
+  ---
+  duration_ms: 0.0399
+  type: 'test'
+  ...
+# Subtest: ending BBB
+ok 8 - ending BBB
+  ---
+  duration_ms: 0.0382
+  type: 'test'
+  ...
+# Subtest: rejects incomplete, invalid and unexpected input
+ok 9 - rejects incomplete, invalid and unexpected input
+  ---
+  duration_ms: 0.3222
+  type: 'test'
+  ...
+# Subtest: all six consequences contain causal explanations; four endings exist
+ok 10 - all six consequences contain causal explanations; four endings exist
+  ---
+  duration_ms: 0.3206
+  type: 'test'
+  ...
+# Subtest: 27 profiles preserve eight paths and emphasize only the selected goal
+ok 11 - 27 profiles preserve eight paths and emphasize only the selected goal
+  ---
+  duration_ms: 0.4661
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 175.1816

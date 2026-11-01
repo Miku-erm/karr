@@ -1,0 +1,36 @@
+{
+  "evalId": "S12",
+  "requestId": "2ae4c8ce-07f5-4a91-a5e8-30c9efc4d648",
+  "startedAt": "2026-11-01T09:00:05.257Z",
+  "completedAt": "2026-11-01T09:00:06.394Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "testing",
+    "phase": "before_choice",
+    "experience": "beginner",
+    "role": "developer",
+    "goal": "testing",
+    "message": "Smoke testi ile entegrasyon testi aynı şey mi?",
+    "finalizedChoices": {
+      "architecture": "A"
+    }
+  },
+  "rawModelResponse": "{\n  \"messageTr\": \"Smoke testi, sistemin temel işlevlerinin çalışıp çalışmadığını kontrol eden hızlı bir ilk bakıştır; entegrasyon testi ise farklı modüllerin birbiriyle iletişimini doğrular. Bu iki yaklaşım, sistemin kararlılığını anlamak için farklı katmanlarda nasıl birer güvenlik ağı oluşturabilir? Trafiği açmadan önce, bu testlerin kapsamı sistemin hangi kritik risklerini örtmek için yeterli olacaktır?\"\n}",
+  "parsedModelMessage": "Smoke testi, sistemin temel işlevlerinin çalışıp çalışmadığını kontrol eden hızlı bir ilk bakıştır; entegrasyon testi ise farklı modüllerin birbiriyle iletişimini doğrular. Bu iki yaklaşım, sistemin kararlılığını anlamak için farklı katmanlarda nasıl birer güvenlik ağı oluşturabilir? Trafiği açmadan önce, bu testlerin kapsamı sistemin hangi kritik risklerini örtmek için yeterli olacaktır?",
+  "displayedResponse": {
+    "messageTr": "Smoke testi, sistemin temel işlevlerinin çalışıp çalışmadığını kontrol eden hızlı bir ilk bakıştır; entegrasyon testi ise farklı modüllerin birbiriyle iletişimini doğrular. Bu iki yaklaşım, sistemin kararlılığını anlamak için farklı katmanlarda nasıl birer güvenlik ağı oluşturabilir? Trafiği açmadan önce, bu testlerin kapsamı sistemin hangi kritik risklerini örtmek için yeterli olacaktır?",
+    "fallback": false,
+    "liveAi": true,
+    "decisionId": "testing",
+    "hintLevel": 1,
+    "requestId": "2ae4c8ce-07f5-4a91-a5e8-30c9efc4d648",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 1136
+  }
+}

@@ -1,5 +1,3 @@
-> Güncel inceleme kaydı: Emre, AI yardımıyla hazırlanan yorumları onayladı ve CSV’de 20/20 inceleme alanı dolduruldu; 18 geçti, 2 kaldı (S04, S09). Bu, ayrıca yapılmış bağımsız değerlendirici incelemesi olarak sunulmaz. Güncel kayıt: [human-review.csv](eval/human-review.csv) ve [review-provenance.json](eval/review-provenance.json). Aşağıdaki pending ifadeleri ilk değerlendirme koşusunun tarihsel durumudur.
-
 # 08:00 — Kritik Karar
 
 **YZM301 — Yazılım Gerçekleme ve Test**  
@@ -10,6 +8,8 @@ Pazartesi 08:00'de gece sürümü sonrası duran kurgusal hastane randevu sistem
 Bu depo Google Stitch / Google AI Studio Build dışa aktarımının devamıdır. Özgün arayüz korunmuş, teslimi engelleyen tutarlılık ve test sorunları düzeltilmiştir.
 
 [Son doğrulama raporu](docs/FINAL-REPORT.md) · [Specification](spec.md) · [Tasarım](DESIGN.md) · [Test sonuçları](docs/test-results.md) · [Tutor değerlendirmesi](docs/tutor-evaluation.md) · [58 saniyelik demo](demo/se-primer-demo.mp4)
+
+**1 Kasım 2026 doğrulaması:** build/typecheck geçti; 11/11 hikâye birim testi, 1/1 rapor regresyon testi, 8/8 Cypress yolu + 11/11 özellik ve 1/1 canlı tarayıcı testi. Yeni Tutor koşusu: 20/20 gerçek yanıt, 19/20 ön geçiş; S09 teknik doğruluk notu, insan incelemesi pending. [Güncel koşu](eval/runs/2026-11-01/report.md).
 
 ## Gerçek çalışma görüntüleri
 
@@ -127,7 +127,19 @@ npm run tutor:report
 
 Bu komutlar gerçek Gemini istekleri yapar; quota kullanır. Billing veya ücretli servis açmaz. İstekler sıralıdır, geçici hatalarda en fazla bir yeniden deneme vardır. Yeniden koşmadan önce mevcut `eval/` sonuçlarının tarihli kopyasını koruyun. Ham model çıktıları `eval/raw/`; ana rapor `eval/tutor-results.json`, insan kontrol tablosu `eval/human-review.csv`.
 
-Veri kümesi, yazarın hazırladığı tam 20 öğrenci-mesajı test vakasıdır. **20 gerçek Gemini yanıtı alınmıştır; gerçek öğrenci katılımcı sayısı 0'dır.** Ön değerlendirme: 18/20 geçiş; 0/20 doğrudan cevap sızıntısı; 20/20 düşünme sorusu; 2/20 teknik doğruluk notu. Bağımsız insan incelemesi **pending (0/20)**. Rapor üretimi insan onayı yerine geçmez.
+Veri kümesi, yazarın hazırladığı tam 20 öğrenci-mesajı test vakasıdır. **Yeni koşuda 20 gerçek Gemini yanıtı alınmıştır; gerçek öğrenci katılımcı sayısı 0'dır.** 1 Kasım ön değerlendirmesi: **19/20 = %95** geçiş; **0/20 = %0** açık cevap sızıntısı; **20/20 = %100** düşünme sorusu/cevabı saklama; **1/20** teknik doğruluk notu (S09). 22 API denemesinde iki sağlayıcı 504 hatası sınırlı yeniden denemeyle tamamlandı. Yeni yanıtların insan incelemesi **pending (0/20)**. Önceki 24 Ekim yanıtları, 18/20 ön geçiş ve sahibin AI yardımlı yorum onayı `eval/` kökünde korunur. Rapor üretimi insan onayı yerine geçmez.
+
+Yeni bir koşuyu eskisini ezmeden çalıştırmak için PowerShell:
+
+```powershell
+$env:TUTOR_EVAL_OUTPUT_DIR="eval/runs/yeni-kosu"
+npm run tutor:eval
+# Gerçek yanıtları inceleyip bu klasörde semantic-review.json oluşturun.
+npm run tutor:report
+Remove-Item Env:TUTOR_EVAL_OUTPUT_DIR
+```
+
+Semantik notlar her yanıtın SHA-256 değeriyle eşleşir; eski vaka etiketleri yeni cevaba uygulanmaz. Eşleşen not yoksa değerlendirme pending kalır. `npm run test:eval-report` bu korumayı; `npm run tutor:audit` iki koşunun ham kanıt bütünlüğünü denetler. Eksik API koşusu başarısız çıkış kodu verir.
 
 ## Gerçek Cypress demosu
 
@@ -141,7 +153,7 @@ npm run demo:verify
 
 Veya tek komut: `npm run demo:all`. FFmpeg/FFprobe yerel npm geliştirme bağımlılıklarıdır; sistem geneline kurulum yapılmaz. Demo AAA yolunu, bir gerçek AI yanıtını, üç kararı/etkiyi, sonu ve yeniden başlatmayı gösterir. API yoksa gerçek hata durumu kayda girer; sahte yanıt eklenmez.
 
-Son video: [demo/se-primer-demo.mp4](demo/se-primer-demo.mp4), **58.000 saniye**, 1280×1100. [Ham kayıt](demo/raw/cypress-1792839278807.mp4), [düzenleme manifesti](demo/edit-manifest.json), [FFprobe/doğrulama](demo/video-verification.json). Gerçek oynatma katsayısı videoda `1.04x` olarak belirtilmiştir; tüm ham kayıt korunur.
+Son video: [demo/se-primer-demo.mp4](demo/se-primer-demo.mp4), **58.000 saniye**, 1280×1100. [Ham kayıt](demo/raw/cypress-1793523661173.mp4), [düzenleme manifesti](demo/edit-manifest.json), [FFprobe/doğrulama](demo/video-verification.json). Gerçek oynatma katsayısı videoda `1.13x` olarak belirtilmiştir; tüm ham kayıt korunur.
 
 ## Tasarım ve AI Studio ilişkisi
 
@@ -153,7 +165,7 @@ Mevcut dışa aktarımda bulunan [AI Studio uygulama bağlantısı](https://ai.s
 
 Yerel typecheck/build, 11/11 birim testi, 8/8 yol + 11/11 özellik testi, 1/1 canlı tarayıcı entegrasyonu, 1/1 demo koşusu ve 58 sn MP4 doğrulaması tamamlandı. Tam kanıt ve önceki başarısız koşular [test-results.md](docs/test-results.md) içinde.
 
-İnsan Tutor incelemesi bekliyor; S04/S09 teknik doğruluk notları korunuyor. Gerçek öğrenci örneklemi toplanmadı. AI Studio'nun güncel bulut sürümü ve Stitch proje bağlantısı doğrulanmadı. Tam WCAG denetimi yapılmadı; harici metin fontları yüklenemezse sistem yedek fontları kullanılır. Oturum yenilenince ilerleme sıfırlanır.
+Yeni Tutor koşusunun insan incelemesi bekliyor; S09 teknik doğruluk notu var. Önceki koşunun S04/S09 notları tarihsel kanıtta korunuyor. Gerçek öğrenci örneklemi toplanmadı. AI Studio'nun güncel bulut sürümü ve Stitch proje bağlantısı doğrulanmadı. Tam WCAG denetimi yapılmadı; harici metin fontları yüklenemezse sistem yedek fontları kullanılır. Oturum yenilenince ilerleme sıfırlanır.
 
 Tam üç bilinçli dışlama:
 

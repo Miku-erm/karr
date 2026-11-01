@@ -1,0 +1,34 @@
+{
+  "evalId": "S04",
+  "requestId": "3ff79b99-0a79-44d7-a080-1ec8acc2ce77",
+  "startedAt": "2026-11-01T08:58:35.978Z",
+  "completedAt": "2026-11-01T08:58:40.453Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "architecture",
+    "phase": "before_choice",
+    "experience": "experienced",
+    "role": "developer",
+    "goal": "architecture",
+    "message": "Şema değişimi geriye uyumlu değilse acil müdahalenin etki alanını nasıl tartarım?",
+    "finalizedChoices": {}
+  },
+  "rawModelResponse": "{\n  \"messageTr\": \"Geriye dönük uyumsuzluk durumunda, şema değişikliğinin uygulama katmanındaki hangi veri modellerini ve sorgu planlarını doğrudan etkilediğini belirlemek kritik bir adımdır. Bir 'hotfix' veya 'rollback' senaryosunda, veritabanı durumunun tutarlılığını korumak adına hangi bağımlılık zincirlerini (örneğin; cache, read-replica, event-bus) izole etmeyi planlıyorsun?\"\n}",
+  "parsedModelMessage": "Geriye dönük uyumsuzluk durumunda, şema değişikliğinin uygulama katmanındaki hangi veri modellerini ve sorgu planlarını doğrudan etkilediğini belirlemek kritik bir adımdır. Bir 'hotfix' veya 'rollback' senaryosunda, veritabanı durumunun tutarlılığını korumak adına hangi bağımlılık zincirlerini (örneğin; cache, read-replica, event-bus) izole etmeyi planlıyorsun?",
+  "displayedResponse": {
+    "messageTr": "Geriye dönük uyumsuzluk durumunda, şema değişikliğinin uygulama katmanındaki hangi veri modellerini ve sorgu planlarını doğrudan etkilediğini belirlemek kritik bir adımdır. Bir 'hotfix' veya 'rollback' senaryosunda, veritabanı durumunun tutarlılığını korumak adına hangi bağımlılık zincirlerini (örneğin; cache, read-replica, event-bus) izole etmeyi planlıyorsun?",
+    "fallback": false,
+    "liveAi": true,
+    "decisionId": "architecture",
+    "hintLevel": 1,
+    "requestId": "3ff79b99-0a79-44d7-a080-1ec8acc2ce77",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 4473
+  }
+}

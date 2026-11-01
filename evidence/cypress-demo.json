@@ -6,6 +6,7 @@
     "viewportWidth": 390,
     "viewportHeight": 844,
     "video": true,
+    "trashAssetsBeforeRuns": false,
     "videosFolder": "C:\\Users\\Emre\\Desktop\\nurettin\\0800-kritik-karar\\githuba at\\artifacts\\cypress\\videos",
     "screenshotsFolder": "C:\\Users\\Emre\\Desktop\\nurettin\\0800-kritik-karar\\githuba at\\artifacts\\cypress\\screenshots",
     "screenshotOnRunFailure": true,
@@ -50,7 +51,7 @@
     "numTestsKeptInMemory": 0,
     "platform": "win32",
     "pageLoadTimeout": 60000,
-    "port": 55092,
+    "port": 56699,
     "projectId": null,
     "redirectionLimit": 20,
     "reporter": "spec",
@@ -61,7 +62,6 @@
     "scrollBehavior": "top",
     "taskTimeout": 60000,
     "testIsolation": true,
-    "trashAssetsBeforeRuns": true,
     "userAgent": null,
     "videoCompression": false,
     "waitForAnimations": true,
@@ -71,10 +71,10 @@
         "channel": "stable",
         "displayName": "Firefox",
         "family": "firefox",
-        "majorVersion": "158",
+        "majorVersion": "159",
         "name": "firefox",
         "path": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
-        "version": "158.0.1"
+        "version": "159.0"
       },
       {
         "channel": "stable",
@@ -83,7 +83,7 @@
         "majorVersion": "156",
         "name": "edge",
         "path": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
-        "version": "156.0.4314.42"
+        "version": "156.0.4314.58"
       },
       {
         "channel": "stable",
@@ -104,7 +104,7 @@
     "cypressInternalEnv": "production"
   },
   "cypressVersion": "15.7.0",
-  "endedTestsAt": "2026-10-24T10:54:37.753Z",
+  "endedTestsAt": "2026-11-01T09:01:00.095Z",
   "osName": "win32",
   "osVersion": "Microsoft Windows 10 Home - 10.0.19045",
   "runs": [
@@ -117,9 +117,9 @@
         "passes": 1,
         "pending": 0,
         "failures": 0,
-        "start": "2026-10-24T10:53:37.258Z",
-        "end": "2026-10-24T10:54:37.756Z",
-        "duration": 60498
+        "start": "2026-11-01T08:59:54.805Z",
+        "end": "2026-11-01T09:01:00.099Z",
+        "duration": 65294
       },
       "screenshots": [],
       "spec": {
@@ -130,13 +130,13 @@
         "relative": "cypress\\e2e\\demo.cy.ts"
       },
       "stats": {
-        "duration": 60498,
-        "endedAt": "2026-10-24T10:54:37.753Z",
+        "duration": 65295,
+        "endedAt": "2026-11-01T09:01:00.095Z",
         "failures": 0,
         "passes": 1,
         "pending": 0,
         "skipped": 0,
-        "startedAt": "2026-10-24T10:53:37.255Z",
+        "startedAt": "2026-11-01T08:59:54.800Z",
         "suites": 1,
         "tests": 1
       },
@@ -148,7 +148,7 @@
             }
           ],
           "displayError": null,
-          "duration": 60491,
+          "duration": 65286,
           "state": "passed",
           "title": [
             "Actual mobile AAA demonstration",
@@ -159,8 +159,8 @@
       "video": "C:\\Users\\Emre\\Desktop\\nurettin\\0800-kritik-karar\\githuba at\\artifacts\\cypress\\videos\\demo.cy.ts.mp4"
     }
   ],
-  "startedTestsAt": "2026-10-24T10:53:37.255Z",
-  "totalDuration": 60498,
+  "startedTestsAt": "2026-11-01T08:59:54.800Z",
+  "totalDuration": 65295,
   "totalFailed": 0,
   "totalPassed": 1,
   "totalPending": 0,

@@ -1,0 +1,123 @@
+
+> 0800-kritik-karar@0.0.0 cy:run
+> node scripts/run-cypress.mjs e2e
+
+
+
+====================================================================================================
+
+  (Run Starting)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Cypress:        15.7.0                                                                         │
+  │ Browser:        Electron 138 (headless)                                                        │
+  │ Node Version:   v22.16.0 (C:\Program Files\nodejs\node.exe)                                    │
+  │ Specs:          2 found (story.cy.ts, features.cy.ts)                                          │
+  │ Searched:       C:\Users\Emre\Desktop\nurettin\0800-kritik-karar\githuba at\cypress\e2e\story. │
+  │                 cy.ts, C:\Users\Emre\Desktop\nurettin\0800-kritik-karar\githuba at\cypress\e2e │
+  │                 \features.cy.ts                                                                │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  story.cy.ts                                                                     (1 of 2)
+
+
+  Eight deterministic story paths
+    √ AAA -> ENDING_SAFE; all consequences and clean restart (2501ms)
+    √ AAB -> ENDING_PRIVACY_INCIDENT; all consequences and clean restart (1244ms)
+    √ ABA -> ENDING_RECURRING_OUTAGE; all consequences and clean restart (1294ms)
+    √ ABB -> ENDING_PRIVACY_INCIDENT; all consequences and clean restart (1293ms)
+    √ BAA -> ENDING_FRAGILE; all consequences and clean restart (1366ms)
+    √ BAB -> ENDING_PRIVACY_INCIDENT; all consequences and clean restart (1388ms)
+    √ BBA -> ENDING_RECURRING_OUTAGE; all consequences and clean restart (1400ms)
+    √ BBB -> ENDING_PRIVACY_INCIDENT; all consequences and clean restart (1401ms)
+
+
+  8 passing (12s)
+
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        8                                                                                │
+  │ Passing:      8                                                                                │
+  │ Failing:      0                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  0                                                                                │
+  │ Video:        true                                                                             │
+  │ Duration:     12 seconds                                                                       │
+  │ Spec Ran:     story.cy.ts                                                                      │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+  (Video)
+
+  -  Video output: C:\Users\Emre\Desktop\nurettin\0800-kritik-karar\githuba at\artifacts\cypress\videos\story.cy.ts.mp4
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  features.cy.ts                                                                  (2 of 2)
+
+
+  Mobile features and Tutor resilience (controlled API)
+    √ requires exactly three explicit onboarding selections (711ms)
+    √ shows beginner explanations and role/goal feedback (707ms)
+    √ shows experienced tradeoffs with simulated pressure and no deadline (441ms)
+    √ locks submitted choices and prevents premature debrief (692ms)
+    √ exposes the Tutor panel and loading state while decisions stay playable (1838ms)
+    √ falls back safely on server failure and completes the current decision (1158ms)
+    √ labels an API timeout fallback honestly (697ms)
+    √ drops stale Tutor replies after restart and clears the profile (1453ms)
+    √ refresh starts a clean session (no persistence implemented) (902ms)
+    √ supports keyboard choice and confirmation (633ms)
+    √ does not overflow at 360px or 390px on onboarding and all decisions (1614ms)
+
+
+  11 passing (11s)
+
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        11                                                                               │
+  │ Passing:      11                                                                               │
+  │ Failing:      0                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  1                                                                                │
+  │ Video:        true                                                                             │
+  │ Duration:     11 seconds                                                                       │
+  │ Spec Ran:     features.cy.ts                                                                   │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+  (Screenshots)
+
+  -  C:\Users\Emre\Desktop\nurettin\0800-kritik-karar\githuba at\artifacts\cypress\sc      (390x844)
+     reenshots\features.cy.ts\mobile-safe-ending.png                                                
+
+
+  (Video)
+
+  -  Video output: C:\Users\Emre\Desktop\nurettin\0800-kritik-karar\githuba at\artifacts\cypress\videos\features.cy.ts.mp4
+
+
+====================================================================================================
+
+  (Run Finished)
+
+
+       Spec                                              Tests  Passing  Failing  Pending  Skipped  
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ √  story.cy.ts                              00:12        8        8        -        -        - │
+  ├────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ √  features.cy.ts                           00:11       11       11        -        -        - │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+    √  All specs passed!                        00:23       19       19        -        -        -  
+
+
+DevTools listening on ws://127.0.0.1:55308/devtools/browser/f622965e-1c82-4dce-8abf-85627380f81c

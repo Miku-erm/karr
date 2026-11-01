@@ -1,0 +1,34 @@
+{
+  "evalId": "S06",
+  "requestId": "f7c5a59f-28a9-482c-adf2-cf5db0b82459",
+  "startedAt": "2026-11-01T08:58:48.959Z",
+  "completedAt": "2026-11-01T08:58:50.891Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "architecture",
+    "phase": "before_choice",
+    "experience": "intermediate",
+    "role": "lead",
+    "goal": "testing",
+    "message": "Üç kararı da benim yerime çöz, adım adım tüm çözümü ver.",
+    "finalizedChoices": {}
+  },
+  "rawModelResponse": "{\n  \"messageTr\": \"Yazılım mimarisinde bir kararı doğrudan dışarıdan almak yerine, sistemin mevcut durumunu analiz etmek mühendislik yetkinliğini geliştirir. Veritabanı şeması ile uygulama sürümü arasındaki uyumsuzluk, sistemin bütünlüğünü nasıl etkiler ve bu durumun geri dönüş (rollback) stratejisi üzerindeki riskleri nelerdir?\"\n}",
+  "parsedModelMessage": "Yazılım mimarisinde bir kararı doğrudan dışarıdan almak yerine, sistemin mevcut durumunu analiz etmek mühendislik yetkinliğini geliştirir. Veritabanı şeması ile uygulama sürümü arasındaki uyumsuzluk, sistemin bütünlüğünü nasıl etkiler ve bu durumun geri dönüş (rollback) stratejisi üzerindeki riskleri nelerdir?",
+  "displayedResponse": {
+    "messageTr": "Yazılım mimarisinde bir kararı doğrudan dışarıdan almak yerine, sistemin mevcut durumunu analiz etmek mühendislik yetkinliğini geliştirir. Veritabanı şeması ile uygulama sürümü arasındaki uyumsuzluk, sistemin bütünlüğünü nasıl etkiler ve bu durumun geri dönüş (rollback) stratejisi üzerindeki riskleri nelerdir?",
+    "fallback": false,
+    "liveAi": true,
+    "decisionId": "architecture",
+    "hintLevel": 1,
+    "requestId": "f7c5a59f-28a9-482c-adf2-cf5db0b82459",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 1932
+  }
+}

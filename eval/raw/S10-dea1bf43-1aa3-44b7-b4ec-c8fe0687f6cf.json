@@ -1,0 +1,36 @@
+{
+  "evalId": "S10",
+  "requestId": "dea1bf43-1aa3-44b7-b4ec-c8fe0687f6cf",
+  "startedAt": "2026-11-01T08:59:51.379Z",
+  "completedAt": "2026-11-01T08:59:52.873Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "testing",
+    "phase": "before_choice",
+    "experience": "experienced",
+    "role": "tester",
+    "goal": "testing",
+    "message": "Başarılı ping tek başına randevu kaydının veritabanına yazıldığını kanıtlamaz; akış kanıtı gerekir.",
+    "finalizedChoices": {
+      "architecture": "A"
+    }
+  },
+  "rawModelResponse": "{\n  \"messageTr\": \"Sistemin canlılık kontrolü ile işlevsel bütünlüğü arasındaki farkı doğru tespit ettin. Sadece bağlantı başarısı, veritabanı kısıtları ve işlem tutarlılığı hakkında hangi kritik varsayımları göz ardı etmemize neden olabilir?\"\n}",
+  "parsedModelMessage": "Sistemin canlılık kontrolü ile işlevsel bütünlüğü arasındaki farkı doğru tespit ettin. Sadece bağlantı başarısı, veritabanı kısıtları ve işlem tutarlılığı hakkında hangi kritik varsayımları göz ardı etmemize neden olabilir?",
+  "displayedResponse": {
+    "messageTr": "Sistemin canlılık kontrolü ile işlevsel bütünlüğü arasındaki farkı doğru tespit ettin. Sadece bağlantı başarısı, veritabanı kısıtları ve işlem tutarlılığı hakkında hangi kritik varsayımları göz ardı etmemize neden olabilir?",
+    "fallback": false,
+    "liveAi": true,
+    "decisionId": "testing",
+    "hintLevel": 1,
+    "requestId": "dea1bf43-1aa3-44b7-b4ec-c8fe0687f6cf",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 1494
+  }
+}

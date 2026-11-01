@@ -1,0 +1,20 @@
+
+> 0800-kritik-karar@0.0.0 tutor:audit
+> node scripts/evaluation-integrity.mjs
+
+[
+  {
+    "run": "eval",
+    "cases": 20,
+    "completed": 20,
+    "attempts": 20,
+    "passed": true
+  },
+  {
+    "run": "eval/runs/2026-11-01",
+    "cases": 20,
+    "completed": 20,
+    "attempts": 22,
+    "passed": true
+  }
+]

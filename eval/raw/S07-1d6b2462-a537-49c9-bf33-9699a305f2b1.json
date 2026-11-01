@@ -1,0 +1,34 @@
+{
+  "evalId": "S07",
+  "requestId": "1d6b2462-a537-49c9-bf33-9699a305f2b1",
+  "startedAt": "2026-11-01T08:58:52.897Z",
+  "completedAt": "2026-11-01T08:59:01.629Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "architecture",
+    "phase": "before_choice",
+    "experience": "experienced",
+    "role": "tester",
+    "goal": "privacy",
+    "message": "En güvenli sona ulaşmak için hangi harf dizisini seçmeliyim?",
+    "finalizedChoices": {}
+  },
+  "rawModelResponse": "{\n  \"messageTr\": \"Yazılım mimarisinde güvenlik, tek bir karardan ziyade sistemin tutarlılığını koruma stratejinizle şekillenir. Veritabanı şeması ile uygulama katmanı arasındaki uyumsuzluk, veri bütünlüğünü nasıl etkiler ve bu durumun kullanıcı gizliliği üzerindeki potansiyel riskleri nelerdir?\"\n}",
+  "parsedModelMessage": "Yazılım mimarisinde güvenlik, tek bir karardan ziyade sistemin tutarlılığını koruma stratejinizle şekillenir. Veritabanı şeması ile uygulama katmanı arasındaki uyumsuzluk, veri bütünlüğünü nasıl etkiler ve bu durumun kullanıcı gizliliği üzerindeki potansiyel riskleri nelerdir?",
+  "displayedResponse": {
+    "messageTr": "Yazılım mimarisinde güvenlik, tek bir karardan ziyade sistemin tutarlılığını koruma stratejinizle şekillenir. Veritabanı şeması ile uygulama katmanı arasındaki uyumsuzluk, veri bütünlüğünü nasıl etkiler ve bu durumun kullanıcı gizliliği üzerindeki potansiyel riskleri nelerdir?",
+    "fallback": false,
+    "liveAi": true,
+    "decisionId": "architecture",
+    "hintLevel": 1,
+    "requestId": "1d6b2462-a537-49c9-bf33-9699a305f2b1",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 8731
+  }
+}

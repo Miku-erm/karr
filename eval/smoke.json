@@ -1,7 +1,7 @@
 {
   "datasetSource": "author-created student-message evaluation prompts; no recruited students",
   "planned": 1,
-  "startedAt": "2026-10-24T10:38:56.144Z",
+  "startedAt": "2026-11-01T08:57:21.053Z",
   "baseUrl": "http://127.0.0.1:3000",
   "model": "gemini-3.1-flash-lite",
   "human_review_status": "pending",
@@ -11,42 +11,42 @@
       "decisionId": "architecture",
       "studentMessage": "Hangi seçeneği seçmeliyim?",
       "status": "completed",
-      "modelResponse": "Bir yazılım mühendisi olarak, sistemin kararlılığı ile hız arasındaki ödünleşimi nasıl değerlendirirsin? Veritabanı şeması ve uygulama sürümü arasındaki uyumsuzluğun, kullanıcı verisi üzerindeki olası etkilerini nasıl analiz edersin?",
-      "rawModelResponse": "{\n  \"messageTr\": \"Bir yazılım mühendisi olarak, sistemin kararlılığı ile hız arasındaki ödünleşimi nasıl değerlendirirsin? Veritabanı şeması ve uygulama sürümü arasındaki uyumsuzluğun, kullanıcı verisi üzerindeki olası etkilerini nasıl analiz edersin?\"\n}",
+      "modelResponse": "Sistem mimarisinde bir değişiklik yaparken, mevcut veritabanı şeması ile uygulama kodunun uyumsuzluğu hangi riskleri beraberinde getirir? Hangi yaklaşımın sistemin kararlılığı ve veri bütünlüğü üzerindeki uzun vadeli etkisini daha iyi yönetebileceğini düşünüyorsun?",
+      "rawModelResponse": "{\n  \"messageTr\": \"Sistem mimarisinde bir değişiklik yaparken, mevcut veritabanı şeması ile uygulama kodunun uyumsuzluğu hangi riskleri beraberinde getirir? Hangi yaklaşımın sistemin kararlılığı ve veri bütünlüğü üzerindeki uzun vadeli etkisini daha iyi yönetebileceğini düşünüyorsun?\"\n}",
       "displayedResponse": {
-        "messageTr": "Bir yazılım mühendisi olarak, sistemin kararlılığı ile hız arasındaki ödünleşimi nasıl değerlendirirsin? Veritabanı şeması ve uygulama sürümü arasındaki uyumsuzluğun, kullanıcı verisi üzerindeki olası etkilerini nasıl analiz edersin?",
+        "messageTr": "Sistem mimarisinde bir değişiklik yaparken, mevcut veritabanı şeması ile uygulama kodunun uyumsuzluğu hangi riskleri beraberinde getirir? Hangi yaklaşımın sistemin kararlılığı ve veri bütünlüğü üzerindeki uzun vadeli etkisini daha iyi yönetebileceğini düşünüyorsun?",
         "fallback": false,
         "liveAi": true,
         "decisionId": "architecture",
         "hintLevel": 1,
-        "requestId": "b806a8c2-b369-4dba-9163-740675823bab",
+        "requestId": "e52ebe47-2324-443a-a0e7-c3abc773657e",
         "model": "gemini-3.1-flash-lite",
-        "latencyMs": 2544
+        "latencyMs": 6770
       },
       "attempts": [
         {
           "attempt": 1,
-          "startedAt": "2026-10-24T10:38:56.145Z",
-          "latencyMs": 11992,
+          "startedAt": "2026-11-01T08:57:21.054Z",
+          "latencyMs": 967,
           "httpStatus": 200,
           "response": {
             "fallback": true,
             "liveAi": false,
             "errorCode": "PROVIDER_ERROR",
-            "providerStatus": 504,
+            "providerStatus": 503,
             "messageTr": "Bir değişikliğin sistemin diğer parçalarına etkisini hangi kanıtlarla değerlendirebilirsin?",
             "errorNotice": "AI eğitmene ulaşılamadı. Yerel ipucu ile devam edebilir veya yeniden deneyebilirsin.",
             "decisionId": "architecture",
             "hintLevel": 1,
-            "requestId": "0fb2d2e2-3bb0-425a-92b7-48eda49971a4",
+            "requestId": "6864a221-a3ff-442d-b60c-d3544077d82b",
             "model": "gemini-3.1-flash-lite",
-            "latencyMs": 11944
+            "latencyMs": 905
           },
           "evidence": {
             "evalId": "SMOKE",
-            "requestId": "0fb2d2e2-3bb0-425a-92b7-48eda49971a4",
-            "startedAt": "2026-10-24T10:38:56.180Z",
-            "completedAt": "2026-10-24T10:39:08.124Z",
+            "requestId": "6864a221-a3ff-442d-b60c-d3544077d82b",
+            "startedAt": "2026-11-01T08:57:21.106Z",
+            "completedAt": "2026-11-01T08:57:22.013Z",
             "model": "gemini-3.1-flash-lite",
             "promptVersion": "socratic-v2",
             "generationSettings": {
@@ -69,38 +69,38 @@
               "fallback": true,
               "liveAi": false,
               "errorCode": "PROVIDER_ERROR",
-              "providerStatus": 504,
+              "providerStatus": 503,
               "messageTr": "Bir değişikliğin sistemin diğer parçalarına etkisini hangi kanıtlarla değerlendirebilirsin?",
               "errorNotice": "AI eğitmene ulaşılamadı. Yerel ipucu ile devam edebilir veya yeniden deneyebilirsin.",
               "decisionId": "architecture",
               "hintLevel": 1,
-              "requestId": "0fb2d2e2-3bb0-425a-92b7-48eda49971a4",
+              "requestId": "6864a221-a3ff-442d-b60c-d3544077d82b",
               "model": "gemini-3.1-flash-lite",
-              "latencyMs": 11944
+              "latencyMs": 905
             }
           },
           "transportError": null
         },
         {
           "attempt": 2,
-          "startedAt": "2026-10-24T10:39:10.147Z",
-          "latencyMs": 2549,
+          "startedAt": "2026-11-01T08:57:24.024Z",
+          "latencyMs": 6775,
           "httpStatus": 200,
           "response": {
-            "messageTr": "Bir yazılım mühendisi olarak, sistemin kararlılığı ile hız arasındaki ödünleşimi nasıl değerlendirirsin? Veritabanı şeması ve uygulama sürümü arasındaki uyumsuzluğun, kullanıcı verisi üzerindeki olası etkilerini nasıl analiz edersin?",
+            "messageTr": "Sistem mimarisinde bir değişiklik yaparken, mevcut veritabanı şeması ile uygulama kodunun uyumsuzluğu hangi riskleri beraberinde getirir? Hangi yaklaşımın sistemin kararlılığı ve veri bütünlüğü üzerindeki uzun vadeli etkisini daha iyi yönetebileceğini düşünüyorsun?",
             "fallback": false,
             "liveAi": true,
             "decisionId": "architecture",
             "hintLevel": 1,
-            "requestId": "b806a8c2-b369-4dba-9163-740675823bab",
+            "requestId": "e52ebe47-2324-443a-a0e7-c3abc773657e",
             "model": "gemini-3.1-flash-lite",
-            "latencyMs": 2544
+            "latencyMs": 6770
           },
           "evidence": {
             "evalId": "SMOKE",
-            "requestId": "b806a8c2-b369-4dba-9163-740675823bab",
-            "startedAt": "2026-10-24T10:39:10.149Z",
-            "completedAt": "2026-10-24T10:39:12.693Z",
+            "requestId": "e52ebe47-2324-443a-a0e7-c3abc773657e",
+            "startedAt": "2026-11-01T08:57:24.026Z",
+            "completedAt": "2026-11-01T08:57:30.796Z",
             "model": "gemini-3.1-flash-lite",
             "promptVersion": "socratic-v2",
             "generationSettings": {
@@ -117,17 +117,17 @@
               "message": "Hangi seçeneği seçmeliyim?",
               "finalizedChoices": {}
             },
-            "rawModelResponse": "{\n  \"messageTr\": \"Bir yazılım mühendisi olarak, sistemin kararlılığı ile hız arasındaki ödünleşimi nasıl değerlendirirsin? Veritabanı şeması ve uygulama sürümü arasındaki uyumsuzluğun, kullanıcı verisi üzerindeki olası etkilerini nasıl analiz edersin?\"\n}",
-            "parsedModelMessage": "Bir yazılım mühendisi olarak, sistemin kararlılığı ile hız arasındaki ödünleşimi nasıl değerlendirirsin? Veritabanı şeması ve uygulama sürümü arasındaki uyumsuzluğun, kullanıcı verisi üzerindeki olası etkilerini nasıl analiz edersin?",
+            "rawModelResponse": "{\n  \"messageTr\": \"Sistem mimarisinde bir değişiklik yaparken, mevcut veritabanı şeması ile uygulama kodunun uyumsuzluğu hangi riskleri beraberinde getirir? Hangi yaklaşımın sistemin kararlılığı ve veri bütünlüğü üzerindeki uzun vadeli etkisini daha iyi yönetebileceğini düşünüyorsun?\"\n}",
+            "parsedModelMessage": "Sistem mimarisinde bir değişiklik yaparken, mevcut veritabanı şeması ile uygulama kodunun uyumsuzluğu hangi riskleri beraberinde getirir? Hangi yaklaşımın sistemin kararlılığı ve veri bütünlüğü üzerindeki uzun vadeli etkisini daha iyi yönetebileceğini düşünüyorsun?",
             "displayedResponse": {
-              "messageTr": "Bir yazılım mühendisi olarak, sistemin kararlılığı ile hız arasındaki ödünleşimi nasıl değerlendirirsin? Veritabanı şeması ve uygulama sürümü arasındaki uyumsuzluğun, kullanıcı verisi üzerindeki olası etkilerini nasıl analiz edersin?",
+              "messageTr": "Sistem mimarisinde bir değişiklik yaparken, mevcut veritabanı şeması ile uygulama kodunun uyumsuzluğu hangi riskleri beraberinde getirir? Hangi yaklaşımın sistemin kararlılığı ve veri bütünlüğü üzerindeki uzun vadeli etkisini daha iyi yönetebileceğini düşünüyorsun?",
               "fallback": false,
               "liveAi": true,
               "decisionId": "architecture",
               "hintLevel": 1,
-              "requestId": "b806a8c2-b369-4dba-9163-740675823bab",
+              "requestId": "e52ebe47-2324-443a-a0e7-c3abc773657e",
               "model": "gemini-3.1-flash-lite",
-              "latencyMs": 2544
+              "latencyMs": 6770
             }
           },
           "transportError": null
@@ -149,6 +149,6 @@
       }
     }
   ],
-  "updatedAt": "2026-10-24T10:39:12.697Z",
-  "completedAt": "2026-10-24T10:39:12.703Z"
+  "updatedAt": "2026-11-01T08:57:30.799Z",
+  "completedAt": "2026-11-01T08:57:30.800Z"
 }

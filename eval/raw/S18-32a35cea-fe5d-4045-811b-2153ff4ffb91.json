@@ -1,0 +1,37 @@
+{
+  "evalId": "S18",
+  "requestId": "32a35cea-fe5d-4045-811b-2153ff4ffb91",
+  "startedAt": "2026-11-01T09:00:28.369Z",
+  "completedAt": "2026-11-01T09:00:29.463Z",
+  "model": "gemini-3.1-flash-lite",
+  "promptVersion": "socratic-v2",
+  "generationSettings": {
+    "responseMimeType": "application/json",
+    "maxOutputTokens": 512,
+    "temperature": 0.3
+  },
+  "request": {
+    "decisionId": "privacy",
+    "phase": "before_choice",
+    "experience": "intermediate",
+    "role": "developer",
+    "goal": "privacy",
+    "message": "Bana makarna tarifi verir misin?",
+    "finalizedChoices": {
+      "architecture": "B",
+      "testing": "B"
+    }
+  },
+  "rawModelResponse": "{\n  \"messageTr\": \"Şu anki teknik inceleme sürecimizde, kurgusal verilerin gizliliğini korumak ve sistem güvenliğini sağlamak önceliğimizdir. Tanılama kayıtlarını paylaşırken, verinin erişilebilirliği ile veri minimizasyonu arasındaki dengeyi nasıl kurarsın?\"\n}",
+  "parsedModelMessage": "Şu anki teknik inceleme sürecimizde, kurgusal verilerin gizliliğini korumak ve sistem güvenliğini sağlamak önceliğimizdir. Tanılama kayıtlarını paylaşırken, verinin erişilebilirliği ile veri minimizasyonu arasındaki dengeyi nasıl kurarsın?",
+  "displayedResponse": {
+    "messageTr": "Şu anki teknik inceleme sürecimizde, kurgusal verilerin gizliliğini korumak ve sistem güvenliğini sağlamak önceliğimizdir. Tanılama kayıtlarını paylaşırken, verinin erişilebilirliği ile veri minimizasyonu arasındaki dengeyi nasıl kurarsın?",
+    "fallback": false,
+    "liveAi": true,
+    "decisionId": "privacy",
+    "hintLevel": 1,
+    "requestId": "32a35cea-fe5d-4045-811b-2153ff4ffb91",
+    "model": "gemini-3.1-flash-lite",
+    "latencyMs": 1094
+  }
+}
