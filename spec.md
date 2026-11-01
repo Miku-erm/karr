@@ -198,4 +198,41 @@ Veri koruma açıklaması bir eğitim çerçevesidir. Amaçla sınırlılık/öl
 
 Güncel çalıştırma kanıtları: [test sonuçları](docs/test-results.md), [Tutor değerlendirmesi](docs/tutor-evaluation.md) ve [son rapor](docs/FINAL-REPORT.md).
 
+## 13. Primer v2 — ön kayıt: Primer Adapt — Karar Yüküne Duyarlı Öğrenme
+
+YZM301 ödev 7, “The Primer v2: Hikâyene Küçük Bir Model Ekle”. Bu ek v1 sözleşmesini değiştirmez. Phase 1 yalnızca gönüllü insan davranışı toplama altyapısıdır; model eğitimi, ONNX üretimi ve model yayını bu aşamada yapılmaz. Mevcut Gemini Tutor, kişiselleştirme, sekiz yol ve dört son korunur.
+
+İleride gerçekten eğitilmiş küçük bir tablosal model `p_difficulty = P(oyuncunun bu kararda belirgin zorluk bildirmesi)` üretecektir. Bu, kişinin nesnel psikolojik durumu veya tanısı değildir. LOW_DIFFICULTY standart anlatımı, teknik açıklamaları ve isteğe bağlı Tutor'ı korur. HIGH_DIFFICULTY kısa kavramsal destek sunar, simüle aciliyet dilini azaltır ve A/B ifşa etmeyen kademeli Sokratik soru önerir; hiçbir seçeneği kapatmaz ve hiçbir kararı/sonu değiştirmez. Gelecek arayüz eşiği `p_difficulty >= 0.5` olarak ön kaydedilir; Phase 1 sahte tahmin üretmez.
+
+### Sabit özellik sözleşmesi ve bağımsız etiket
+
+Model girdisi sırası kesin olarak şöyledir:
+
+1. `decision_elapsed_seconds`: kararın sunulmasından gözleme kadar saniye; 0–120, 120'de kırpılır.
+2. `option_switch_count`: ilk A/B seçimi hariç, kesinleştirme öncesi farklı seçeneğe geçiş sayısı.
+3. `hint_request_count`: kesinleştirme öncesi açık ipucu/Tutor isteği sayısı; ipucunu kapatmak ve otomatik öneri sayılmaz.
+4. `prior_high_risk_choice_count`: bu senaryoda önceki kesinleşmiş B seçimlerinin sayısı; zorluk etiketi değildir.
+5. `scene_number`: 1, 2 veya 3.
+6. `experience_code`: beginner=0, intermediate=1, experienced=2.
+
+Altı değer karar kesinleştirilirken, sonuç gösterilmeden önce dondurulur. Etiket, geri bildirim, mevcut/gelecek seçim veya final sonucu modele girdi olamaz. Sonradan geçen etiket yanıtlama süresi ölçüme eklenmez. CSV kimlik/grup/kaynak sütunları da model girdisi değildir. [Veri sözlüğü](data/SOZLUK.md).
+
+Yalnızca Veri Toplama Modunda, kesinleştirme ile teknik sonuç arasına şu bağımsız soru girer: **“Bu kararı verirken belirgin biçimde zorlandın mı?”** “Evet, zorlandım”=1, “Hayır, zorlanmadım”=0. Etiket insan tarafından verilir; süre/ipuçları/seçenek/sondan hesaplanmaz. Normal oyunda bu ekran yoktur.
+
+### Veri toplama sınırları
+
+Türkçe bilgilendirme ve ayrı açık gönüllü onay zorunludur; reddeden normal oyuna döner. Sayısal davranışların anonim satırlar halinde herkese açık GitHub ders deposuna eklenebileceği önceden açıklanır. Ad, e-posta, konum, cihaz kimliği, IP, tıbbi bilgi ve serbest metin toplanmaz. Davranışlar Gemini'ye veya sunucuya otomatik gönderilmez. Her oyun yeni rastgele UUID alır; isteğe bağlı P01–P99 grup kodu gerçek kimlikle eşlenmez. Oturumlar tarayıcıda kalıcı saklanır; restart tamamlanan veriyi silmez. Eksikler `incomplete` kalır ve eğitim CSV'sine girmez. Yalnızca üç farklı sahnesi bağımsız etiketlenmiş oturumlar export edilir; otomasyon verisi `sentetik`, gerçek gönüllü oyun `gercek` olarak ayrılır. Başlangıç veri dosyası yalnızca başlıktır, gerçek insan oturumu sayısı sıfırdır.
+
+### Eğitim öncesi kabul kapısı
+
+Birincil metrik **balanced accuracy >= 0.60**; bu eşik eğitimden önce Git'te kaydedilir ve sonuçlara göre değiştirilmez. Satır düzeyinde rastgele ayırma yasaktır: aynı oturumun üç kararı aynı gruptadır; bilinen aynı katılımcının tekrarları da Pxx grubuyla birlikte tutulur. Tüm ön işleme yalnızca eğitim katında öğrenilir. En az **15 gerçek tamamlanmış oturum**, her etiket için en az **5 gerçek karar satırı ve 3 farklı gerçek oturum** gerekir. Sentetik satırlar bu eşiğe veya birincil metriklere sayılmaz. Küçük örneklem ve üç gönüllünün tekrarlı oyunları bağımsız 45 katılımcı değildir; belirsizlik ve zayıf genelleme açıkça raporlanır. Gruplu dış örneklem tahminleri, aynı kişinin/oturumun benzer kararlarından test sızıntısını azaltır.
+
+Python sklearn–ONNX olasılık farkı **< 1e-4**; beş referans örneğinde Python Oracle–tarayıcı ONNX farkı **< 1e-4**; v1'in sekiz yolu ve mevcut 19 Cypress testi doğru kalmalıdır. Birincil metrik veya diğer zorunlu kapılar geçilmezse model yayımlanmaz. Tam ön kayıt: [ML_ACCEPTANCE_GATE.md](docs/ML_ACCEPTANCE_GATE.md).
+
+### Tam üç yeni v2 kabul örneği
+
+1. **V2-A1 — Gerçek insan geri bildirimi:** Gönüllü açık onay verir, üç kararı oynar ve her kesinleştirmeden sonra/sonuçtan önce zorluk etiketini kendisi seçer; tarayıcı yeniden başlatılsa da kişisel tanımlayıcı veya serbest metin içermeyen üç sayısal satır korunur, reddedenin verisi kaydedilmez.
+2. **V2-A2 — Eğitsel uyarlama:** İleride kabul kapısını geçmiş gerçek modelin düşük ve yüksek olasılıkları farklı anlatım/destek/Tutor davranışları üretir; her iki durumda tüm seçenekler açık ve sonuç motoru aynıdır. Phase 1'de model yoktur; bu kabul örneği sonraki aşama için bekler.
+3. **V2-A3 — Parite ve regresyon:** İleride beş referans örneğinin Python Oracle ve tarayıcı ONNX olasılıkları <1e-4 farkla eşleşir ve sekiz hikâye yolu/19 v1 Cypress testi doğru kalır. Phase 1 yalnızca hikâye regresyonunu doğrular; ONNX kabulü eğitim sonrası bekler.
+
 **Tam ödev teslimi:** Üç soruluk onboarding, üç karar, sekiz yol, dört son ve temiz yeniden başlatma çalışır; Stitch ekranları ve AI Studio paylaşımı gerçekten vardır; tüm yollara ait Cypress raporu, mobil/erişilebilirlik kontrolü ve 60 sn demo vardır; gerçek Gemini kullanılır ve hata halinde oyun devam eder; 20 yanıt raporu ham kanıt ve başarısızlıklarla sunulur, Tutor geçiş hedefleri karşılanır; API anahtarı istemcide bulunmaz; tüm veriler kurgusaldır; üç ürün dışlaması korunur. Açık hata ve sınırlamalar teslim notuna yazılır.
