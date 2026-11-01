@@ -1,0 +1,87 @@
+{
+  "checkedAt": "2026-11-01T09:44:24.499Z",
+  "records": [
+    {
+      "command": "npm ls --depth=0",
+      "label": "dependencies",
+      "startedAt": "2026-11-01T09:42:44.696Z",
+      "completedAt": "2026-11-01T09:42:45.681Z",
+      "exitCode": 0,
+      "passed": true,
+      "log": "evidence/phase1/logs/dependencies.txt"
+    },
+    {
+      "command": "npm run typecheck",
+      "label": "typecheck",
+      "startedAt": "2026-11-01T09:42:45.682Z",
+      "completedAt": "2026-11-01T09:42:46.196Z",
+      "exitCode": 0,
+      "passed": true,
+      "log": "evidence/phase1/logs/typecheck.txt"
+    },
+    {
+      "command": "npm run build",
+      "label": "build",
+      "startedAt": "2026-11-01T09:42:46.196Z",
+      "completedAt": "2026-11-01T09:42:47.038Z",
+      "exitCode": 0,
+      "passed": true,
+      "log": "evidence/phase1/logs/build.txt"
+    },
+    {
+      "command": "npm test",
+      "label": "v1-unit",
+      "startedAt": "2026-11-01T09:42:47.038Z",
+      "completedAt": "2026-11-01T09:42:47.647Z",
+      "exitCode": 0,
+      "passed": true,
+      "log": "evidence/phase1/logs/v1-unit.txt"
+    },
+    {
+      "command": "npm run test:data",
+      "label": "collection-unit",
+      "startedAt": "2026-11-01T09:42:47.647Z",
+      "completedAt": "2026-11-01T09:42:48.910Z",
+      "exitCode": 0,
+      "passed": true,
+      "log": "evidence/phase1/logs/collection-unit.txt"
+    },
+    {
+      "command": "npm run data:validate",
+      "label": "csv-validate",
+      "startedAt": "2026-11-01T09:42:48.911Z",
+      "completedAt": "2026-11-01T09:42:49.428Z",
+      "exitCode": 0,
+      "passed": true,
+      "log": "evidence/phase1/logs/csv-validate.txt"
+    },
+    {
+      "command": "npm run cy:run",
+      "label": "cypress-v1",
+      "startedAt": "2026-11-01T09:42:49.428Z",
+      "completedAt": "2026-11-01T09:43:22.110Z",
+      "exitCode": 0,
+      "passed": true,
+      "log": "evidence/phase1/logs/cypress-v1.txt"
+    },
+    {
+      "command": "npm run cy:collection",
+      "label": "cypress-collection",
+      "startedAt": "2026-11-01T09:43:22.112Z",
+      "completedAt": "2026-11-01T09:44:23.652Z",
+      "exitCode": 1,
+      "passed": false,
+      "log": "evidence/phase1/logs/cypress-collection.txt"
+    },
+    {
+      "command": "npm run security:scan",
+      "label": "security",
+      "startedAt": "2026-11-01T09:44:23.654Z",
+      "completedAt": "2026-11-01T09:44:24.498Z",
+      "exitCode": 0,
+      "passed": true,
+      "log": "evidence/phase1/logs/security.txt"
+    }
+  ],
+  "passed": false
+}

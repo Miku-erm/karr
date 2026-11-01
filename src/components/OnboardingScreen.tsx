@@ -2,23 +2,25 @@ import React, { useState } from 'react';
 import { ExperienceLevel, LearningGoal, Role, UserProfile } from '../types';
 
 interface OnboardingScreenProps {
-  onStart: (profile: UserProfile) => void;
+  onStart: (profile: UserProfile, trusted: boolean) => boolean | void;
   initialProfile?: UserProfile;
+  startBlocked?: boolean;
 }
 
 export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
   onStart,
   initialProfile,
+  startBlocked = false,
 }) => {
   const [experience, setExperience] = useState<ExperienceLevel | null>(null);
   const [role, setRole] = useState<Role | null>(null);
   const [goal, setGoal] = useState<LearningGoal | null>(null);
   const [isStarting, setIsStarting] = useState(false);
 
-  const handleStart = () => {
-    if (!experience || !role || !goal) return;
+  const handleStart = (event: React.MouseEvent) => {
+    if (!experience || !role || !goal || startBlocked) return;
     setIsStarting(true);
-    onStart({ experience, role, goal });
+    if (onStart({ experience, role, goal }, event.isTrusted) === false) setIsStarting(false);
   };
 
   return (
@@ -291,7 +293,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
         <button
           type="button"
           onClick={handleStart}
-          disabled={isStarting || !experience || !role || !goal}
+          disabled={startBlocked || isStarting || !experience || !role || !goal}
           data-testid="start-game"
           className="w-full min-h-[54px] bg-[#ffb870] hover:bg-[#ffdcbe] active:scale-[0.98] transition-all text-[#4a2800] rounded-xl font-body text-base font-bold flex items-center justify-center gap-2 shadow-xl hover:shadow-[#ffb870]/20 disabled:opacity-75 cursor-pointer"
         >

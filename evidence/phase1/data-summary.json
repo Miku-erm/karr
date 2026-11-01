@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-11-01T09:48:26.187Z",
+  "scope": "Repository CSV only; no human sessions collected by automation",
+  "valid": true,
+  "genuineSessions": 0,
+  "syntheticSessions": 0,
+  "completedRows": 0,
+  "genuineRows": 0,
+  "incompleteSessions": 0,
+  "labelBalance": [
+    {
+      "label": 0,
+      "rows": 0,
+      "sessions": 0
+    },
+    {
+      "label": 1,
+      "rows": 0,
+      "sessions": 0
+    }
+  ],
+  "dataReady": false
+}

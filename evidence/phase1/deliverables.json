@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-11-01T09:50:01.402Z",
+  "requiredFiles": [
+    "spec.md",
+    "docs/ML_ACCEPTANCE_GATE.md",
+    "data/SOZLUK.md",
+    "data/oturumlar.csv",
+    "docs/HUMAN_COLLECTION_GUIDE.md",
+    "docs/PHASE1-REPORT.md",
+    "src/collection/contract.ts",
+    "src/collection/store.ts",
+    "src/collection/CollectionPanel.tsx",
+    "src/collection/DifficultyFeedback.tsx",
+    "scripts/data-cli.ts",
+    "cypress/e2e/collection.cy.ts",
+    "tests/collection.test.ts"
+  ],
+  "localLinksChecked": 48,
+  "passed": true
+}

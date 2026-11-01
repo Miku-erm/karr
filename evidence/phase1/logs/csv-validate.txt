@@ -1,0 +1,27 @@
+
+> 0800-kritik-karar@0.0.0 data:validate
+> tsx scripts/data-cli.ts validate
+
+{
+  "file": "data/oturumlar.csv",
+  "valid": true,
+  "genuineSessions": 0,
+  "syntheticSessions": 0,
+  "completedRows": 0,
+  "genuineRows": 0,
+  "incompleteSessions": 0,
+  "labelBalance": [
+    {
+      "label": 0,
+      "rows": 0,
+      "sessions": 0
+    },
+    {
+      "label": 1,
+      "rows": 0,
+      "sessions": 0
+    }
+  ],
+  "dataReady": false,
+  "note": "Şema geçerli; gerçek veri sayısı/sınıf kapısı henüz hazır değil."
+}

@@ -1,0 +1,164 @@
+
+> 0800-kritik-karar@0.0.0 test:data
+> tsx --test tests/collection.test.ts
+
+TAP version 13
+# Subtest: six fixed pre-choice predictors exclude labels, IDs and endings
+ok 1 - six fixed pre-choice predictors exclude labels, IDs and endings
+  ---
+  duration_ms: 1.0679
+  type: 'test'
+  ...
+# Subtest: header-only CSV is valid but has zero genuine sessions and is not data-ready
+ok 2 - header-only CSV is valid but has zero genuine sessions and is not data-ready
+  ---
+  duration_ms: 0.3869
+  type: 'test'
+  ...
+# Subtest: BOM/quoted cells/CRLF round trip preserves binary labels and synthetic source
+ok 3 - BOM/quoted cells/CRLF round trip preserves binary labels and synthetic source
+  ---
+  duration_ms: 0.7872
+  type: 'test'
+  ...
+# Subtest: rejects missing required field
+ok 4 - rejects missing required field
+  ---
+  duration_ms: 0.1185
+  type: 'test'
+  ...
+# Subtest: rejects personal identifier column
+ok 5 - rejects personal identifier column
+  ---
+  duration_ms: 0.0629
+  type: 'test'
+  ...
+# Subtest: rejects invalid UUID
+ok 6 - rejects invalid UUID
+  ---
+  duration_ms: 0.0697
+  type: 'test'
+  ...
+# Subtest: rejects name used as group
+ok 7 - rejects name used as group
+  ---
+  duration_ms: 0.0979
+  type: 'test'
+  ...
+# Subtest: rejects negative elapsed
+ok 8 - rejects negative elapsed
+  ---
+  duration_ms: 0.0534
+  type: 'test'
+  ...
+# Subtest: rejects elapsed over cap
+ok 9 - rejects elapsed over cap
+  ---
+  duration_ms: 0.1391
+  type: 'test'
+  ...
+# Subtest: rejects nonfinite elapsed
+ok 10 - rejects nonfinite elapsed
+  ---
+  duration_ms: 0.2311
+  type: 'test'
+  ...
+# Subtest: rejects fractional switches
+ok 11 - rejects fractional switches
+  ---
+  duration_ms: 0.0775
+  type: 'test'
+  ...
+# Subtest: rejects negative hint count
+ok 12 - rejects negative hint count
+  ---
+  duration_ms: 0.0543
+  type: 'test'
+  ...
+# Subtest: rejects future choice leak
+ok 13 - rejects future choice leak
+  ---
+  duration_ms: 0.044
+  type: 'test'
+  ...
+# Subtest: rejects invalid experience
+ok 14 - rejects invalid experience
+  ---
+  duration_ms: 0.0356
+  type: 'test'
+  ...
+# Subtest: rejects invalid scene
+ok 15 - rejects invalid scene
+  ---
+  duration_ms: 0.0319
+  type: 'test'
+  ...
+# Subtest: rejects nonbinary label
+ok 16 - rejects nonbinary label
+  ---
+  duration_ms: 0.0345
+  type: 'test'
+  ...
+# Subtest: rejects invented source
+ok 17 - rejects invented source
+  ---
+  duration_ms: 0.051
+  type: 'test'
+  ...
+# Subtest: CSV rejects malformed headers, blank numbers, textual labels and malformed quotes
+ok 18 - CSV rejects malformed headers, blank numbers, textual labels and malformed quotes
+  ---
+  duration_ms: 1.152
+  type: 'test'
+  ...
+# Subtest: CSV rejects repeated pairs, incomplete sessions and mixed session metadata
+ok 19 - CSV rejects repeated pairs, incomplete sessions and mixed session metadata
+  ---
+  duration_ms: 0.2908
+  type: 'test'
+  ...
+# Subtest: merge deduplicates full identical sessions and rejects conflicting labels or incomplete input
+ok 20 - merge deduplicates full identical sessions and rejects conflicting labels or incomplete input
+  ---
+  duration_ms: 0.7562
+  type: 'test'
+  ...
+# Subtest: source categories are exact; synthetic rows never satisfy the genuine-data gate
+ok 21 - source categories are exact; synthetic rows never satisfy the genuine-data gate
+  ---
+  duration_ms: 0.1989
+  type: 'test'
+  ...
+# Subtest: local persistence retains incomplete sessions but exports only complete sessions
+ok 22 - local persistence retains incomplete sessions but exports only complete sessions
+  ---
+  duration_ms: 0.5323
+  type: 'test'
+  ...
+# Subtest: corrupt or privacy-expanded storage is not overwritten, and write failure propagates
+ok 23 - corrupt or privacy-expanded storage is not overwritten, and write failure propagates
+  ---
+  duration_ms: 0.194
+  type: 'test'
+  ...
+# Subtest: schema exposes exactly ten allowed CSV columns and no free-text metadata
+ok 24 - schema exposes exactly ten allowed CSV columns and no free-text metadata
+  ---
+  duration_ms: 0.1243
+  type: 'test'
+  ...
+# Subtest: CLI returns failure for invalid CSV and insufficient real data; conflicting merge never overwrites output
+ok 25 - CLI returns failure for invalid CSV and insufficient real data; conflicting merge never overwrites output
+  ---
+  duration_ms: 642.6645
+  type: 'test'
+  ...
+1..25
+# tests 25
+# suites 0
+# pass 25
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 843.7873

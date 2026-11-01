@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-11-01T09:46:55.587Z",
+  "v1Tag": "primer-v1",
+  "v1Commit": "5ce833e04d0c3ef5ba09e961a0d6e0cf8b91bc99",
+  "acceptanceGateCommit": "3a171896c020ba5465acc655f118b26f2e4bab16",
+  "primaryMetric": "balanced_accuracy",
+  "threshold": 0.6,
+  "thresholdCommittedBeforeTraining": true,
+  "trainingPerformed": false,
+  "modelPublished": false,
+  "originalV1SpecPreserved": true,
+  "acceptanceGateUnchangedSincePreregistration": true,
+  "protectedPaths": [
+    "src/decisionEngine.ts",
+    "src/storyData.ts",
+    "story",
+    "server.ts",
+    "DESIGN.md",
+    "src/index.css",
+    "public/assets/aistudio",
+    "cypress/e2e/story.cy.ts",
+    "cypress/e2e/features.cy.ts"
+  ],
+  "protectedPathsUnchanged": true
+}

@@ -9,6 +9,7 @@ export default defineConfig({
   trashAssetsBeforeRuns: false,
   videosFolder: 'artifacts/cypress/videos',
   screenshotsFolder: 'artifacts/cypress/screenshots',
+  downloadsFolder: 'artifacts/cypress/downloads',
   screenshotOnRunFailure: true,
   defaultCommandTimeout: 8000,
   requestTimeout: 18000,

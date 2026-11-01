@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useLayoutEffect } from 'react';
 import {
   ActiveTab,
   ChoiceId,
@@ -22,6 +22,10 @@ import { ChapterScreen } from './components/ChapterScreen';
 import { EndingScreen } from './components/EndingScreen';
 import { TelemetryView } from './components/TelemetryView';
 import { TutorView } from './components/TutorView';
+import { CollectionPanel } from './collection/CollectionPanel';
+import { DifficultyFeedback } from './collection/DifficultyFeedback';
+import { CollectionSession, Observation } from './collection/contract';
+import { deleteSession, isHumanInteraction, saveSession } from './collection/store';
 
 const DECISION_KEYS: DecisionId[] = ['architecture', 'testing', 'privacy'];
 
@@ -43,6 +47,31 @@ export default function App() {
   });
   const [finalizedChoices, setFinalizedChoices] = useState<Partial<Record<DecisionId, ChoiceId>>>({});
   const [sessionId, setSessionId] = useState<string>(() => 'sess_' + Math.random().toString(36).substring(2, 9));
+  const [collectionOpen, setCollectionOpen] = useState(() => new URLSearchParams(window.location.search).get('mode') === 'collection');
+  const [collectionConsent, setCollectionConsent] = useState<{ group: string; trusted: boolean } | null>(null);
+  const [lastGroup, setLastGroup] = useState('');
+  const [collectionError, setCollectionError] = useState('');
+  const collectedSession = useRef<CollectionSession | null>(null);
+  const observation = useRef({ startedAt: 0, switches: 0, hints: 0, previous: null as ChoiceId | null });
+  const frozenObservation = useRef<Observation | null>(null);
+
+  useLayoutEffect(() => {
+    if (gameScreen === 'DECISION' && collectedSession.current) observation.current = { startedAt: performance.now(), switches: 0, hints: 0, previous: null };
+  }, [gameScreen, currentDecisionIndex]);
+
+  const recordInteractionSource = (trusted: boolean) => {
+    const session = collectedSession.current;
+    if (session && session.kaynak === 'gercek' && !isHumanInteraction(trusted)) {
+      session.kaynak = 'sentetik';
+      session.rows = session.rows.map(row => ({ ...row, kaynak: 'sentetik' }));
+      try { saveSession(session); } catch { setCollectionError('Kaynak değişimi kaydedilemedi; kayıt tamamlanmış sayılmadı.'); }
+    }
+  };
+  const countHintRequest = (trusted: boolean) => {
+    if (gameScreen !== 'DECISION' || !collectedSession.current) return;
+    recordInteractionSource(trusted);
+    observation.current.hints += 1;
+  };
 
   // Tutor state
   const currentDecisionId = DECISION_KEYS[currentDecisionIndex] || 'architecture';
@@ -72,7 +101,19 @@ export default function App() {
   ]);
 
   // Start the simulation after onboarding
-  const handleStartGame = (profile: UserProfile) => {
+  const handleStartGame = (profile: UserProfile, trusted: boolean) => {
+    if (collectionOpen) {
+      if (!collectionConsent) return false;
+      try {
+        const session: CollectionSession = { session_id: crypto.randomUUID(), participant_group: collectionConsent.group, kaynak: isHumanInteraction(trusted) && collectionConsent.trusted ? 'gercek' : 'sentetik', status: 'incomplete', rows: [] };
+        saveSession(session, window.localStorage, 'create');
+        collectedSession.current = session;
+        setCollectionError('');
+      } catch {
+        setCollectionError('Kalıcı tarayıcı kaydı açılamadı. Veri kaydı başlamadı; depolama iznini kontrol et veya normal oyuna dön.');
+        return false;
+      }
+    }
     invalidateTutor();
     setUserProfile(profile);
     setCurrentDecisionIndex(0);
@@ -81,17 +122,35 @@ export default function App() {
     setGameScreen('DECISION');
     setActiveTab('vaka');
     setTutorQuestion(DECISIONS.architecture.localTutorQuestion);
+    return true;
   };
 
   // Option selection before commit
-  const handleSelectChoice = (choice: ChoiceId) => {
+  const handleSelectChoice = (choice: ChoiceId, trusted: boolean) => {
     if (gameScreen !== 'DECISION' || finalizedChoices[currentDecisionId]) return;
+    if (collectedSession.current) {
+      recordInteractionSource(trusted);
+      const metrics = observation.current;
+      if (metrics.previous && metrics.previous !== choice) metrics.switches += 1;
+      metrics.previous = choice;
+    }
     setPendingChoice(choice);
   };
 
   // Finalize selected option
-  const handleFinalizeChoice = () => {
+  const handleFinalizeChoice = (trusted: boolean) => {
     if (!pendingChoice || gameScreen !== 'DECISION' || finalizedChoices[currentDecisionId]) return;
+    if (collectedSession.current) {
+      recordInteractionSource(trusted);
+      const metrics = observation.current;
+      frozenObservation.current = {
+        decision_elapsed_seconds: Math.round(Math.min(120, Math.max(0, (performance.now() - metrics.startedAt) / 1000)) * 1000) / 1000,
+        option_switch_count: metrics.switches, hint_request_count: metrics.hints,
+        prior_high_risk_choice_count: Object.values(finalizedChoices).filter(choice => choice === 'B').length,
+        scene_number: currentDecisionIndex + 1,
+        experience_code: { beginner: 0, intermediate: 1, experienced: 2 }[userProfile.experience],
+      };
+    }
     invalidateTutor();
 
     const updated = {
@@ -103,7 +162,33 @@ export default function App() {
       ...prev,
       [currentDecisionId]: pendingChoice,
     }));
-    setGameScreen('CONSEQUENCE');
+    setGameScreen(collectedSession.current ? 'DIFFICULTY_FEEDBACK' : 'CONSEQUENCE');
+  };
+
+  const handleDifficultyAnswer = (label: 0 | 1, trusted: boolean) => {
+    if (gameScreen !== 'DIFFICULTY_FEEDBACK' || !collectedSession.current || !frozenObservation.current) return;
+    recordInteractionSource(trusted);
+    const session = collectedSession.current;
+    const updated: CollectionSession = { ...session, status: session.rows.length === 2 ? 'completed' : 'incomplete', rows: [...session.rows, { ...frozenObservation.current, session_id: session.session_id, participant_group: session.participant_group, kaynak: session.kaynak, difficulty_label: label }] };
+    try {
+      saveSession(updated);
+      collectedSession.current = updated;
+      frozenObservation.current = null;
+      setCollectionError('');
+      setGameScreen('CONSEQUENCE');
+    } catch {
+      setCollectionError('Yanıt kalıcı kaydedilemedi. Sonuç henüz açılmadı; tekrar dene veya üstteki vazgeçme düğmesiyle bu oturumun kaydını silerek normal oyuna geç.');
+    }
+  };
+
+  const withdrawCollection = () => {
+    try {
+      if (collectedSession.current) deleteSession(collectedSession.current.session_id);
+      collectedSession.current = null;
+      frozenObservation.current = null;
+      setCollectionConsent(null); setCollectionOpen(false); setCollectionError('');
+      if (gameScreen === 'DIFFICULTY_FEEDBACK') setGameScreen('CONSEQUENCE');
+    } catch { setCollectionError('Oturum silinemedi. Depolama iznini kontrol et; silme işlemi tamamlanmış sayılmadı.'); }
   };
 
   // Continue to next decision or show ending
@@ -125,8 +210,9 @@ export default function App() {
   };
 
   // Ask Socratic Tutor via real server API
-  const handleAskTutor = async (query: string) => {
+  const handleAskTutor = async (query: string, trusted: boolean) => {
     if (!query.trim() || isTutorLoading || !['DECISION', 'CONSEQUENCE'].includes(gameScreen)) return;
+    countHintRequest(trusted);
     const requestVersion = ++tutorVersion.current;
     const controller = new AbortController();
     tutorAbort.current = controller;
@@ -216,6 +302,11 @@ export default function App() {
   // Full clean reset
   const handleRestartGame = () => {
     invalidateTutor();
+    // Completed rows and incomplete sessions remain in local storage across restarts.
+    collectedSession.current = null;
+    frozenObservation.current = null;
+    setCollectionConsent(null);
+    setCollectionError('');
     setUserProfile({ experience: 'intermediate', role: 'developer', goal: 'architecture' });
     setTutorQuestion(DECISIONS.architecture.localTutorQuestion);
     setGameScreen('ONBOARDING');
@@ -263,15 +354,30 @@ export default function App() {
 
       {/* Main Content Viewport */}
       <main className="flex flex-col relative w-full px-4 pt-20 pb-20 bg-[#15130e] min-h-screen">
+        {collectedSession.current && gameScreen !== 'ONBOARDING' && <aside data-testid="collection-active" className="mb-4 rounded-xl border border-[#89d4cd]/40 p-3 text-xs space-y-2">
+          <p>Veri toplama açık · {collectedSession.current.kaynak === 'sentetik' ? 'Sentetik / otomasyon kaydı — gerçek insan sayılmaz' : 'Gönüllü oturum'} · {collectedSession.current.rows.length}/3 etiketli karar</p>
+          <p className="break-all">Oturum: {collectedSession.current.session_id}</p>
+          <button data-testid="collection-withdraw" type="button" onClick={withdrawCollection} className="min-h-11 w-full border border-[#89d4cd]/40 rounded-lg px-2">Veriden vazgeç — bu oturumu sil ve normal oyuna geç</button>
+          {collectionError && gameScreen !== 'DIFFICULTY_FEEDBACK' && <p role="alert" className="text-[#ffb4ab]">{collectionError}</p>}
+        </aside>}
         {/* TAB: VAKA (Main Storyline) */}
         {activeTab === 'vaka' && (
           <>
             {gameScreen === 'ONBOARDING' && (
+              <>
+              {!collectionOpen && <button data-testid="collection-open" type="button" onClick={() => setCollectionOpen(true)} className="mb-4 min-h-11 rounded-xl border border-[#89d4cd]/40 px-4 py-2 text-sm text-[#89d4cd]">Veri Toplama Modu — gönüllü katılım</button>}
+              {collectionOpen && <CollectionPanel consented={Boolean(collectionConsent)} initialGroup={lastGroup} error={collectionError}
+                onConsent={(group, trusted) => { setCollectionConsent({ group, trusted: isHumanInteraction(trusted) }); setLastGroup(group); }}
+                onDecline={() => { setCollectionConsent(null); setCollectionOpen(false); setCollectionError(''); }} onClearError={() => setCollectionError('')} />}
               <OnboardingScreen
                 onStart={handleStartGame}
                 initialProfile={userProfile}
+                startBlocked={collectionOpen && !collectionConsent}
               />
+              </>
             )}
+
+            {gameScreen === 'DIFFICULTY_FEEDBACK' && <DifficultyFeedback onAnswer={handleDifficultyAnswer} error={collectionError} />}
 
             {(gameScreen === 'DECISION' || gameScreen === 'CONSEQUENCE') && (
               <ChapterScreen
@@ -286,6 +392,7 @@ export default function App() {
                 isTutorLoading={isTutorLoading}
                 tutorFallback={tutorFallback}
                 onAskTutor={handleAskTutor}
+                onHintRequest={countHintRequest}
                 isLastDecision={currentDecisionIndex === 2}
               />
             )}
@@ -335,6 +442,7 @@ export default function App() {
       <BottomNav
         activeTab={activeTab}
         onTabChange={(tab) => {
+          if (gameScreen === 'DIFFICULTY_FEEDBACK' && tab !== 'vaka') return;
           if (tab === 'debrief' && gameScreen !== 'ENDING') return;
           if (gameScreen === 'ONBOARDING' && tab !== 'vaka') return;
           setActiveTab(tab);

@@ -90,5 +90,5 @@ export interface TutorMessage {
   timestamp: string;
 }
 
-export type GameScreen = 'ONBOARDING' | 'DECISION' | 'CONSEQUENCE' | 'ENDING';
+export type GameScreen = 'ONBOARDING' | 'DECISION' | 'DIFFICULTY_FEEDBACK' | 'CONSEQUENCE' | 'ENDING';
 export type ActiveTab = 'vaka' | 'telemetri' | 'tutor' | 'debrief';

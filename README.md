@@ -5,6 +5,28 @@
 **YZM301 — Yazılım Gerçekleme ve Test**  
 **SE Primer: Yazılım Mühendisliği, Oynanan Bir Kitap**
 
+## Primer v2 — Phase 1: gerçek gönüllü verisi toplama
+
+**Primer Adapt — Karar Yüküne Duyarlı Öğrenme**, mevcut oyuna ayrı ve gönüllü bir veri toplama modu ekler. Başlangıç verisi **0 gerçek oturum**dur; bu aşamada model eğitilmez veya yayımlanmaz. v1 `primer-v1` etiketiyle korunur; v2 dalı `feature/primer-v2`.
+
+`npm run dev` sonrası [Veri Toplama Modu](http://127.0.0.1:3000/?mode=collection) bağlantısını normal tarayıcıda açın. Bilgilendirmeyi okuyup açık onay verin, isteğe bağlı Pxx kodunu girin ve üç profil alanını seçerek başlayın. Her kararı onayladıktan sonra, teknik sonuçtan önce kendi zorluk yanıtınızı verin. Yeniden başlatma tamamlanan kayıtları silmez. Panelde tüm tamamlanan oturumları CSV indirme, eksik/sentetik/gerçek sayaçları ve silme araçları bulunur.
+
+Varsayılan protokol: **3 gerçek gönüllü × 5 tam oyun = 15 oturum / 45 karar satırı**. Otomasyon/testler `sentetik` olarak işaretlenir; gerçek oturum diye sayılmaz. Kişisel bilgi ve serbest metin veri kümesine kaydedilmez, davranış ölçümleri harici servislere gönderilmez.
+
+```sh
+npm run data:validate
+npm run data:merge -- --output data/oturumlar.csv cihaz1.csv cihaz2.csv
+npm run data:validate -- --require-ready
+npm run test:data
+npm run cy:run
+npm run cy:collection
+npm run verify:phase1
+```
+
+Cypress komutları çalışan yerel sunucu ister. Otomatik başlatma için `npm run test:e2e` ve `npm run test:collection` kullanılabilir. [Türkçe toplama rehberi](docs/HUMAN_COLLECTION_GUIDE.md) · [Veri sözlüğü](data/SOZLUK.md) · [Eğitim öncesi sabit kabul kapısı](docs/ML_ACCEPTANCE_GATE.md) · [Phase 1 raporu](docs/PHASE1-REPORT.md). Sabit birincil metrik: gruplu dış örneklem **balanced accuracy >=0.60**; eski 19 Cypress testi ve sekiz yol korunmalıdır. Model/ONNX kabulü sonraki aşamadır.
+
+---
+
 Pazartesi 08:00'de gece sürümü sonrası duran kurgusal hastane randevu sistemini toparla. Nöbetçi yazılım mühendisi olarak mimari, test ve log gizliliği üzerine üç karar ver; teknik nedenleri ve sonuçlarını gör. Yaklaşık 300 kurgusal kişi hizmetin açılmasını bekliyor. Gerçek hasta verisi veya tıbbi teşhis kullanılmaz.
 
 Bu depo Google Stitch / Google AI Studio Build dışa aktarımının devamıdır. Özgün arayüz korunmuş, teslimi engelleyen tutarlılık ve test sorunları düzeltilmiştir.

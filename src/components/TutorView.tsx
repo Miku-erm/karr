@@ -3,7 +3,7 @@ import { DecisionId, TutorMessage, UserProfile } from '../types';
 
 interface TutorViewProps {
   messages: TutorMessage[];
-  onSendMessage: (query: string) => void;
+  onSendMessage: (query: string, trusted: boolean) => void;
   isLoading: boolean;
   currentDecisionId: DecisionId;
   userProfile: UserProfile;
@@ -39,7 +39,7 @@ export const TutorView: React.FC<TutorViewProps> = ({
   const handleSend = (e: React.FormEvent) => {
     e.preventDefault();
     if (!inputVal.trim() || isLoading) return;
-    onSendMessage(inputVal.trim());
+    onSendMessage(inputVal.trim(), e.isTrusted);
     setInputVal('');
   };
 
@@ -104,7 +104,7 @@ export const TutorView: React.FC<TutorViewProps> = ({
           <button
             key={idx}
             type="button"
-            onClick={() => onSendMessage(prompt)}
+            onClick={event => onSendMessage(prompt, event.isTrusted)}
             disabled={isLoading}
             className="px-2.5 py-1.5 rounded-lg bg-[#1d1b16] border border-[#2c2a24] hover:border-[#ffb870]/40 text-[#c5c6ce] hover:text-[#e8e2d8] font-mono text-[11px] whitespace-nowrap transition-colors shrink-0 disabled:opacity-50"
           >

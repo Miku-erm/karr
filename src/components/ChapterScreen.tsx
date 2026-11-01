@@ -12,13 +12,14 @@ interface ChapterScreenProps {
   screenState: GameScreen;
   userProfile: UserProfile;
   selectedChoice: ChoiceId | null;
-  onSelectChoice: (choice: ChoiceId) => void;
-  onFinalizeChoice: () => void;
+  onSelectChoice: (choice: ChoiceId, trusted: boolean) => void;
+  onFinalizeChoice: (trusted: boolean) => void;
   onContinue: () => void;
   tutorQuestion: string;
   isTutorLoading: boolean;
   tutorFallback: boolean;
-  onAskTutor: (query: string) => void;
+  onAskTutor: (query: string, trusted: boolean) => void;
+  onHintRequest?: (trusted: boolean) => void;
   isLastDecision: boolean;
 }
 
@@ -34,6 +35,7 @@ export const ChapterScreen: React.FC<ChapterScreenProps> = ({
   isTutorLoading,
   tutorFallback,
   onAskTutor,
+  onHintRequest,
   isLastDecision,
 }) => {
   const [showHint, setShowHint] = useState(false);
@@ -48,7 +50,7 @@ export const ChapterScreen: React.FC<ChapterScreenProps> = ({
   const handleAskSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!userQuery.trim() || isTutorLoading) return;
-    onAskTutor(userQuery.trim());
+    onAskTutor(userQuery.trim(), e.isTrusted);
     setUserQuery('');
   };
 
@@ -137,8 +139,8 @@ export const ChapterScreen: React.FC<ChapterScreenProps> = ({
             role="button"
             tabIndex={0}
             aria-pressed={selectedChoice === 'A'}
-            onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelectChoice('A'); } }}
-            onClick={() => onSelectChoice('A')}
+            onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelectChoice('A', e.isTrusted); } }}
+            onClick={e => onSelectChoice('A', e.isTrusted)}
             data-testid="decision-a"
             className={`p-4 rounded-xl transition-all cursor-pointer relative border ${
               selectedChoice === 'A'
@@ -201,8 +203,8 @@ export const ChapterScreen: React.FC<ChapterScreenProps> = ({
             role="button"
             tabIndex={0}
             aria-pressed={selectedChoice === 'B'}
-            onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelectChoice('B'); } }}
-            onClick={() => onSelectChoice('B')}
+            onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelectChoice('B', e.isTrusted); } }}
+            onClick={e => onSelectChoice('B', e.isTrusted)}
             data-testid="decision-b"
             className={`p-4 rounded-xl transition-all cursor-pointer relative border ${
               selectedChoice === 'B'
@@ -270,7 +272,7 @@ export const ChapterScreen: React.FC<ChapterScreenProps> = ({
               </div>
               <button
                 type="button"
-                onClick={() => setShowHint(!showHint)}
+                onClick={e => { if (!showHint) onHintRequest?.(e.isTrusted); setShowHint(!showHint); }}
                 data-testid="concept-hint-btn"
                 className="flex items-center gap-1 px-2 py-1 rounded-full bg-[#2c2a24] text-[#89d4cd] font-mono text-[11px] hover:opacity-90 transition-opacity border border-[#89d4cd]/30"
               >
@@ -329,11 +331,11 @@ export const ChapterScreen: React.FC<ChapterScreenProps> = ({
             <button
               type="button"
               disabled={!selectedChoice}
-              onClick={onFinalizeChoice}
+              onClick={event => onFinalizeChoice(event.isTrusted)}
               onKeyDown={event => {
                 if (event.key === 'Enter' || event.key === ' ') {
                   event.preventDefault();
-                  if (selectedChoice) onFinalizeChoice();
+                  if (selectedChoice) onFinalizeChoice(event.isTrusted);
                 }
               }}
               data-testid="finalize-decision"

@@ -198,6 +198,8 @@ Veri koruma açıklaması bir eğitim çerçevesidir. Amaçla sınırlılık/öl
 
 Güncel çalıştırma kanıtları: [test sonuçları](docs/test-results.md), [Tutor değerlendirmesi](docs/tutor-evaluation.md) ve [son rapor](docs/FINAL-REPORT.md).
 
+**Tam ödev teslimi:** Üç soruluk onboarding, üç karar, sekiz yol, dört son ve temiz yeniden başlatma çalışır; Stitch ekranları ve AI Studio paylaşımı gerçekten vardır; tüm yollara ait Cypress raporu, mobil/erişilebilirlik kontrolü ve 60 sn demo vardır; gerçek Gemini kullanılır ve hata halinde oyun devam eder; 20 yanıt raporu ham kanıt ve başarısızlıklarla sunulur, Tutor geçiş hedefleri karşılanır; API anahtarı istemcide bulunmaz; tüm veriler kurgusaldır; üç ürün dışlaması korunur. Açık hata ve sınırlamalar teslim notuna yazılır.
+
 ## 13. Primer v2 — ön kayıt: Primer Adapt — Karar Yüküne Duyarlı Öğrenme
 
 YZM301 ödev 7, “The Primer v2: Hikâyene Küçük Bir Model Ekle”. Bu ek v1 sözleşmesini değiştirmez. Phase 1 yalnızca gönüllü insan davranışı toplama altyapısıdır; model eğitimi, ONNX üretimi ve model yayını bu aşamada yapılmaz. Mevcut Gemini Tutor, kişiselleştirme, sekiz yol ve dört son korunur.
@@ -234,5 +236,3 @@ Python sklearn–ONNX olasılık farkı **< 1e-4**; beş referans örneğinde Py
 1. **V2-A1 — Gerçek insan geri bildirimi:** Gönüllü açık onay verir, üç kararı oynar ve her kesinleştirmeden sonra/sonuçtan önce zorluk etiketini kendisi seçer; tarayıcı yeniden başlatılsa da kişisel tanımlayıcı veya serbest metin içermeyen üç sayısal satır korunur, reddedenin verisi kaydedilmez.
 2. **V2-A2 — Eğitsel uyarlama:** İleride kabul kapısını geçmiş gerçek modelin düşük ve yüksek olasılıkları farklı anlatım/destek/Tutor davranışları üretir; her iki durumda tüm seçenekler açık ve sonuç motoru aynıdır. Phase 1'de model yoktur; bu kabul örneği sonraki aşama için bekler.
 3. **V2-A3 — Parite ve regresyon:** İleride beş referans örneğinin Python Oracle ve tarayıcı ONNX olasılıkları <1e-4 farkla eşleşir ve sekiz hikâye yolu/19 v1 Cypress testi doğru kalır. Phase 1 yalnızca hikâye regresyonunu doğrular; ONNX kabulü eğitim sonrası bekler.
-
-**Tam ödev teslimi:** Üç soruluk onboarding, üç karar, sekiz yol, dört son ve temiz yeniden başlatma çalışır; Stitch ekranları ve AI Studio paylaşımı gerçekten vardır; tüm yollara ait Cypress raporu, mobil/erişilebilirlik kontrolü ve 60 sn demo vardır; gerçek Gemini kullanılır ve hata halinde oyun devam eder; 20 yanıt raporu ham kanıt ve başarısızlıklarla sunulur, Tutor geçiş hedefleri karşılanır; API anahtarı istemcide bulunmaz; tüm veriler kurgusaldır; üç ürün dışlaması korunur. Açık hata ve sınırlamalar teslim notuna yazılır.

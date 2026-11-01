@@ -1,0 +1,14 @@
+
+> 0800-kritik-karar@0.0.0 security:scan
+> node scripts/secret-scan.mjs
+
+{
+  "checkedAt": "2026-11-01T09:44:24.478Z",
+  "filesScanned": 172,
+  "productionBundleScanned": true,
+  "historyScanned": true,
+  "localEnvironmentIgnored": true,
+  "credentialValuesPrinted": false,
+  "passed": true,
+  "violationPaths": []
+}
