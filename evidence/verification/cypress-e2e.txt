@@ -25,17 +25,17 @@
 
 
   Eight deterministic story paths
-    √ AAA -> ENDING_SAFE; all consequences and clean restart (2136ms)
-    √ AAB -> ENDING_PRIVACY_INCIDENT; all consequences and clean restart (1246ms)
-    √ ABA -> ENDING_RECURRING_OUTAGE; all consequences and clean restart (1225ms)
-    √ ABB -> ENDING_PRIVACY_INCIDENT; all consequences and clean restart (1220ms)
-    √ BAA -> ENDING_FRAGILE; all consequences and clean restart (1218ms)
-    √ BAB -> ENDING_PRIVACY_INCIDENT; all consequences and clean restart (1212ms)
-    √ BBA -> ENDING_RECURRING_OUTAGE; all consequences and clean restart (1217ms)
-    √ BBB -> ENDING_PRIVACY_INCIDENT; all consequences and clean restart (1216ms)
+    √ AAA -> ENDING_SAFE; all consequences and clean restart (2501ms)
+    √ AAB -> ENDING_PRIVACY_INCIDENT; all consequences and clean restart (1244ms)
+    √ ABA -> ENDING_RECURRING_OUTAGE; all consequences and clean restart (1294ms)
+    √ ABB -> ENDING_PRIVACY_INCIDENT; all consequences and clean restart (1293ms)
+    √ BAA -> ENDING_FRAGILE; all consequences and clean restart (1366ms)
+    √ BAB -> ENDING_PRIVACY_INCIDENT; all consequences and clean restart (1388ms)
+    √ BBA -> ENDING_RECURRING_OUTAGE; all consequences and clean restart (1400ms)
+    √ BBB -> ENDING_PRIVACY_INCIDENT; all consequences and clean restart (1401ms)
 
 
-  8 passing (11s)
+  8 passing (12s)
 
 
   (Results)
@@ -48,14 +48,14 @@
   │ Skipped:      0                                                                                │
   │ Screenshots:  0                                                                                │
   │ Video:        true                                                                             │
-  │ Duration:     10 seconds                                                                       │
+  │ Duration:     12 seconds                                                                       │
   │ Spec Ran:     story.cy.ts                                                                      │
   └────────────────────────────────────────────────────────────────────────────────────────────────┘
 
 
   (Video)
 
-  -  Video output: C:\Users\Emre\Desktop\nurettin\0800-kritik-karar\githuba at\artifacts\cypress\videos\story.cy.ts (2).mp4
+  -  Video output: C:\Users\Emre\Desktop\nurettin\0800-kritik-karar\githuba at\artifacts\cypress\videos\story.cy.ts.mp4
 
 
 ────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -64,20 +64,20 @@
 
 
   Mobile features and Tutor resilience (controlled API)
-    √ requires exactly three explicit onboarding selections (543ms)
-    √ shows beginner explanations and role/goal feedback (653ms)
-    √ shows experienced tradeoffs with simulated pressure and no deadline (405ms)
-    √ locks submitted choices and prevents premature debrief (625ms)
-    √ exposes the Tutor panel and loading state while decisions stay playable (1727ms)
-    √ falls back safely on server failure and completes the current decision (1093ms)
-    √ labels an API timeout fallback honestly (658ms)
-    √ drops stale Tutor replies after restart and clears the profile (1396ms)
-    √ refresh starts a clean session (no persistence implemented) (737ms)
-    √ supports keyboard choice and confirmation (531ms)
-    √ does not overflow at 360px or 390px on onboarding and all decisions (1301ms)
+    √ requires exactly three explicit onboarding selections (711ms)
+    √ shows beginner explanations and role/goal feedback (707ms)
+    √ shows experienced tradeoffs with simulated pressure and no deadline (441ms)
+    √ locks submitted choices and prevents premature debrief (692ms)
+    √ exposes the Tutor panel and loading state while decisions stay playable (1838ms)
+    √ falls back safely on server failure and completes the current decision (1158ms)
+    √ labels an API timeout fallback honestly (697ms)
+    √ drops stale Tutor replies after restart and clears the profile (1453ms)
+    √ refresh starts a clean session (no persistence implemented) (902ms)
+    √ supports keyboard choice and confirmation (633ms)
+    √ does not overflow at 360px or 390px on onboarding and all decisions (1614ms)
 
 
-  11 passing (10s)
+  11 passing (11s)
 
 
   (Results)
@@ -90,7 +90,7 @@
   │ Skipped:      0                                                                                │
   │ Screenshots:  1                                                                                │
   │ Video:        true                                                                             │
-  │ Duration:     9 seconds                                                                        │
+  │ Duration:     11 seconds                                                                       │
   │ Spec Ran:     features.cy.ts                                                                   │
   └────────────────────────────────────────────────────────────────────────────────────────────────┘
 
@@ -98,12 +98,12 @@
   (Screenshots)
 
   -  C:\Users\Emre\Desktop\nurettin\0800-kritik-karar\githuba at\artifacts\cypress\sc      (390x844)
-     reenshots\features.cy.ts\mobile-safe-ending (2).png                                            
+     reenshots\features.cy.ts\mobile-safe-ending.png                                                
 
 
   (Video)
 
-  -  Video output: C:\Users\Emre\Desktop\nurettin\0800-kritik-karar\githuba at\artifacts\cypress\videos\features.cy.ts (2).mp4
+  -  Video output: C:\Users\Emre\Desktop\nurettin\0800-kritik-karar\githuba at\artifacts\cypress\videos\features.cy.ts.mp4
 
 
 ====================================================================================================
@@ -113,11 +113,11 @@
 
        Spec                                              Tests  Passing  Failing  Pending  Skipped  
   ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
-  │ √  story.cy.ts                              00:10        8        8        -        -        - │
+  │ √  story.cy.ts                              00:12        8        8        -        -        - │
   ├────────────────────────────────────────────────────────────────────────────────────────────────┤
-  │ √  features.cy.ts                           00:09       11       11        -        -        - │
+  │ √  features.cy.ts                           00:11       11       11        -        -        - │
   └────────────────────────────────────────────────────────────────────────────────────────────────┘
-    √  All specs passed!                        00:20       19       19        -        -        -  
+    √  All specs passed!                        00:23       19       19        -        -        -  
 
 
-DevTools listening on ws://127.0.0.1:56997/devtools/browser/207be384-bc17-4617-92e7-62aae6e4594b
+DevTools listening on ws://127.0.0.1:55308/devtools/browser/f622965e-1c82-4dce-8abf-85627380f81c

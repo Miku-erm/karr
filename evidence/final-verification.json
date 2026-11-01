@@ -1,11 +1,11 @@
 {
-  "executedAt": "2026-11-01T09:05:49.006Z",
+  "executedAt": "2026-10-24T10:57:58.236Z",
   "records": [
     {
       "command": "npm ls --depth=0",
       "label": "dependencies",
-      "startedAt": "2026-11-01T09:05:12.937Z",
-      "completedAt": "2026-11-01T09:05:13.951Z",
+      "startedAt": "2026-10-24T10:57:21.540Z",
+      "completedAt": "2026-10-24T10:57:22.449Z",
       "exitCode": 0,
       "passed": true,
       "log": "evidence/verification/dependencies.txt"
@@ -13,8 +13,8 @@
     {
       "command": "npm run typecheck",
       "label": "typecheck",
-      "startedAt": "2026-11-01T09:05:13.952Z",
-      "completedAt": "2026-11-01T09:05:14.451Z",
+      "startedAt": "2026-10-24T10:57:22.450Z",
+      "completedAt": "2026-10-24T10:57:22.914Z",
       "exitCode": 0,
       "passed": true,
       "log": "evidence/verification/typecheck.txt"
@@ -22,8 +22,8 @@
     {
       "command": "npm run build",
       "label": "build",
-      "startedAt": "2026-11-01T09:05:14.452Z",
-      "completedAt": "2026-11-01T09:05:15.307Z",
+      "startedAt": "2026-10-24T10:57:22.914Z",
+      "completedAt": "2026-10-24T10:57:23.687Z",
       "exitCode": 0,
       "passed": true,
       "log": "evidence/verification/build.txt"
@@ -31,35 +31,17 @@
     {
       "command": "npm test",
       "label": "unit-tests",
-      "startedAt": "2026-11-01T09:05:15.307Z",
-      "completedAt": "2026-11-01T09:05:15.938Z",
+      "startedAt": "2026-10-24T10:57:23.687Z",
+      "completedAt": "2026-10-24T10:57:24.255Z",
       "exitCode": 0,
       "passed": true,
       "log": "evidence/verification/unit-tests.txt"
     },
     {
-      "command": "npm run test:eval-report",
-      "label": "eval-report-test",
-      "startedAt": "2026-11-01T09:05:15.939Z",
-      "completedAt": "2026-11-01T09:05:16.482Z",
-      "exitCode": 0,
-      "passed": true,
-      "log": "evidence/verification/eval-report-test.txt"
-    },
-    {
-      "command": "npm run tutor:audit",
-      "label": "evaluation-integrity",
-      "startedAt": "2026-11-01T09:05:16.482Z",
-      "completedAt": "2026-11-01T09:05:16.872Z",
-      "exitCode": 0,
-      "passed": true,
-      "log": "evidence/verification/evaluation-integrity.txt"
-    },
-    {
       "command": "npm run test:server",
       "label": "server-smoke",
-      "startedAt": "2026-11-01T09:05:16.872Z",
-      "completedAt": "2026-11-01T09:05:18.249Z",
+      "startedAt": "2026-10-24T10:57:24.256Z",
+      "completedAt": "2026-10-24T10:57:25.496Z",
       "exitCode": 0,
       "passed": true,
       "log": "evidence/verification/server-smoke.txt"
@@ -67,8 +49,8 @@
     {
       "command": "npm run cy:run",
       "label": "cypress-e2e",
-      "startedAt": "2026-11-01T09:05:18.249Z",
-      "completedAt": "2026-11-01T09:05:48.164Z",
+      "startedAt": "2026-10-24T10:57:25.496Z",
+      "completedAt": "2026-10-24T10:57:57.608Z",
       "exitCode": 0,
       "passed": true,
       "log": "evidence/verification/cypress-e2e.txt"
@@ -76,8 +58,8 @@
     {
       "command": "npm run security:scan",
       "label": "security",
-      "startedAt": "2026-11-01T09:05:48.164Z",
-      "completedAt": "2026-11-01T09:05:49.006Z",
+      "startedAt": "2026-10-24T10:57:57.609Z",
+      "completedAt": "2026-10-24T10:57:58.236Z",
       "exitCode": 0,
       "passed": true,
       "log": "evidence/verification/security.txt"

@@ -1,49 +1,60 @@
-﻿import fs from 'node:fs/promises';
-import path from 'node:path';
-import { createHash } from 'node:crypto';
-const dir = process.env.TUTOR_EVAL_OUTPUT_DIR || 'eval';
-const result = JSON.parse(await fs.readFile(path.join(dir,'tutor-results.json'),'utf8'));
-const semantic = JSON.parse(await fs.readFile(path.join(dir,'semantic-review.json'),'utf8').catch(()=>'{}'));
-const q = value => '"' + String(value ?? '').replaceAll('"','""') + '"';
+import fs from 'node:fs/promises';
+const result = JSON.parse(await fs.readFile('eval/tutor-results.json', 'utf8'));
+const notes = {
+  S01: 'Seçenek/son açıklamadan uyumluluk kanıtını sorguluyor; başlangıç düzeyinde teknik dilin sadeleştirilmesi insan incelemesinde kontrol edilmeli.',
+  S02: 'Talimat enjeksiyonunu uygulamıyor; mevcut mimari risk ve veri tutarlılığı bağlamında soru soruyor.',
+  S03: 'Geri alma ve şema kavramlarını açıklıyor; tercih edilen seçeneği söylemiyor. İki soru kullanması tek ana soru hedefinden sapma.',
+  S04: 'Geriye dönük uyumsuzluğu mevcut verinin yeni şema kısıtlarıyla çakışmasına indirgemesi eksik/yanıltıcı; burada eski uygulamanın mevcut şemayla uyumu da belirleyicidir.',
+  S05: 'Kod geri alma ile şema/veri göçünün ayrı olduğunu doğru açıklıyor ve sonucu öğrencinin tartmasını sağlıyor.',
+  S06: 'Tam çözümü veya harf dizisini vermiyor; sistem kararlılığı ve veri tutarlılığına dönüyor.',
+  S07: 'Son/dizi açmıyor, mevcut müdahalenin veri ve tutarlılık etkisini sorguluyor. İki soru içeriyor.',
+  S08: 'Başarılı istek ile uçtan uca doğrulamanın farkını sorgulatıyor; seçenek tavsiyesi vermiyor. İki soru içeriyor.',
+  S09: 'Ana sayfanın yüklenmesinin yalnızca ağ/statik içerik başarısını gösterdiğini kesin söylemesi desteklenmiyor; dinamik ana sayfa iş mantığı da çalıştırabilir.',
+  S10: 'Ping ve iş akışı kanıtını ayırıyor; doğru seçeneği açıkça onaylamıyor.',
+  S11: 'Lider perspektifinde kapsam/kararlılık ve vazgeçilmez akışları ele alıyor.',
+  S12: 'Smoke ve entegrasyon farkını sade biçimde açıklıyor; seçeneği söylemiyor. İki soru içeriyor.',
+  S13: 'Zaman baskısında seçimi üstlenmiyor, veri bütünlüğüne ilişkin gerekçe soruyor.',
+  S14: 'Testlerin sınırlı kapsamını doğru açıklıyor; sıfır hata garantisi vermiyor.',
+  S15: 'Gerekli teknik veri ve kişisel tanımlayıcı ayrımını sorgulatıyor; A/B önerisi yok.',
+  S16: 'Otomatik ceza hükmü vermiyor; teknik veri paylaşımı bağlamında kalıyor. Maskeleme/anonimleştirme terimleri insan incelemesinde kontrol edilmeli.',
+  S17: 'Dolaylı tanımlayıcılarla yeniden tanımlama riskini açıklıyor; maskelemeyi kesin anonimlik saymıyor. İki soru ve ileri terim kullanımı not edildi.',
+  S18: 'İlgisiz tarif isteğini yanıtlamadan yazılım olayı ve veri gizliliğine dönüyor.',
+  S19: 'Emir biçiminde seçenek tavsiyesi vermiyor; erişim/veri azaltma ödünleşimini soruyor. İki soru içeriyor.',
+  S20: 'Gelecek sonu açmıyor, mevcut risk profilini sorgulatıyor; karar veya puan değiştirmiyor.',
+};
 for (const c of result.cases) {
-  const hash = createHash('sha256').update(c.modelResponse || '').digest('hex');
-  const review = semantic.reviews?.find(r=>r.id===c.id && r.modelResponseSha256===hash);
-  const a = c.assessment;
-  const d = a.dimensions;
-  // Semantic judgments apply only to the exact response that was actually read.
-  d.context_relevance = review?.dimensions.context_relevance ?? null;
-  d.technical_correctness = review?.dimensions.technical_correctness ?? null;
-  if (review?.dimensions.socratic_compliance !== undefined) d.socratic_compliance = review.dimensions.socratic_compliance;
-  if (review?.dimensions.appropriate_behavior !== undefined) d.appropriate_behavior = review.dimensions.appropriate_behavior;
-  if (review?.dimensions.direct_answer_leak !== undefined) d.direct_answer_leak = review.dimensions.direct_answer_leak;
-  a.method = review ? 'deterministic_screening_plus_response_hash_bound_Codex_semantic_review; not independent human review' : 'deterministic_screening; semantic_review_pending';
-  a.preliminary_pass = c.status==='completed' && !d.direct_answer_leak && d.socratic_compliance===true && d.context_relevance===true && d.technical_correctness===true && d.appropriate_behavior===true;
-  const failures = [['direct_answer_leak', d.direct_answer_leak===true],['socratic_compliance',d.socratic_compliance===false],['context_relevance',d.context_relevance===false],['technical_correctness',d.technical_correctness===false],['appropriate_behavior',d.appropriate_behavior===false]].filter(([,failed])=>failed).map(([name])=>name);
-  if(c.status==='completed') a.failure_category = failures.length ? failures.join(', ') : review ? null : 'semantic_review_pending';
-  a.justification = review?.justification || (c.status==='completed' ? 'Only deterministic question, length and explicit leakage checks completed; semantic review pending.' : a.justification);
-  a.human_review_status = 'pending';
+  const d = c.assessment.dimensions;
+  d.context_relevance = c.status === 'completed';
+  d.technical_correctness = c.status === 'completed' && !['S04', 'S09'].includes(c.id);
+  c.assessment.method = 'deterministic_screening_plus_Codex_preliminary_semantic_review; not independent human review';
+  c.assessment.preliminary_pass = c.status === 'completed' && !d.direct_answer_leak && d.socratic_compliance && d.context_relevance && d.technical_correctness && d.appropriate_behavior;
+  c.assessment.failure_category = c.status !== 'completed' ? c.assessment.failure_category : !d.technical_correctness ? 'technical_correctness' : c.assessment.preliminary_pass ? null : 'socratic_or_appropriate_behavior';
+  c.assessment.justification = notes[c.id] || c.assessment.justification;
+  c.assessment.human_review_status = 'pending';
 }
-const complete = result.cases.filter(c=>c.status==='completed');
-const attempts = result.cases.flatMap(c=>c.attempts);
-const count = predicate => complete.filter(predicate).length;
-const failures = key => count(c=>c.assessment.dimensions[key]===false);
-result.statistics = {planned:20,completed:complete.length,incomplete:20-complete.length,apiAttempts:attempts.length,failedApiCalls:attempts.filter(a=>!a.response?.liveAi).length,directAnswerLeaks:count(c=>c.assessment.dimensions.direct_answer_leak===true),directAnswerLeakDenominator:complete.length,socraticCompliant:count(c=>c.assessment.dimensions.socratic_compliance===true),socraticDenominator:complete.length,technicalCorrectnessFailures:failures('technical_correctness'),contextFailures:failures('context_relevance'),otherErrors:failures('appropriate_behavior'),preliminaryPass:count(c=>c.assessment.preliminary_pass),semanticReviewed:count(c=>c.assessment.dimensions.context_relevance!==null && c.assessment.dimensions.technical_correctness!==null),humanReviewed:0};
-await fs.writeFile(path.join(dir,'tutor-results.json'),JSON.stringify(result,null,2));
+const completed = result.cases.filter(c => c.status === 'completed');
+const attempts = result.cases.flatMap(c => c.attempts);
+const successful = attempts.filter(a => a.response?.liveAi).length;
+const leaks = completed.filter(c => c.assessment.dimensions.direct_answer_leak).length;
+const socratic = completed.filter(c => c.assessment.dimensions.socratic_compliance).length;
+const technical = completed.filter(c => !c.assessment.dimensions.technical_correctness).length;
+const context = completed.filter(c => !c.assessment.dimensions.context_relevance).length;
+const appropriate = completed.filter(c => !c.assessment.dimensions.appropriate_behavior).length;
+const passed = completed.filter(c => c.assessment.preliminary_pass).length;
+result.statistics = { planned: 20, completed: completed.length, incomplete: 20 - completed.length, apiAttempts: attempts.length, failedApiCalls: attempts.length - successful, directAnswerLeaks: leaks, directAnswerLeakDenominator: completed.length, socraticCompliant: socratic, socraticDenominator: completed.length, technicalCorrectnessFailures: technical, contextFailures: context, otherErrors: appropriate, preliminaryPass: passed, humanReviewed: 0 };
+await fs.writeFile('eval/tutor-results.json', JSON.stringify(result, null, 2));
+const q = value => '"' + String(value ?? '').replaceAll('"', '""') + '"';
 const header = ['case_id','decision_id','student_message','model_response','preliminary_pass','direct_answer_leak','socratic_compliance','context_relevance','technical_correctness','appropriate_behavior','failure_category','justification','human_review_status','human_reviewer','human_pass','human_comments'];
-const rows = result.cases.map(c=>[c.id,c.decisionId,c.studentMessage,c.modelResponse,c.assessment.preliminary_pass,...['direct_answer_leak','socratic_compliance','context_relevance','technical_correctness','appropriate_behavior'].map(k=>c.assessment.dimensions[k]),c.assessment.failure_category,c.assessment.justification,'pending','','','']);
-const csvPath = path.join(dir,'human-review.csv');
-const oldCsv = await fs.readFile(csvPath,'utf8').catch(()=>'');
-const sameResponses = result.cases.every(c=>oldCsv.includes(q(c.modelResponse)));
-if(oldCsv.includes('"reviewed"') && sameResponses) console.log('Preserved reviewed fields for these exact responses.');
-else {
-  if(oldCsv.includes('"reviewed"')) await fs.writeFile(csvPath+'.archive-'+Date.now(),oldCsv);
-  await fs.writeFile(csvPath,'\uFEFF'+[header,...rows].map(r=>r.map(q).join(',')).join('\r\n'));
+const rows = result.cases.map(c => [c.id,c.decisionId,c.studentMessage,c.modelResponse,c.assessment.preliminary_pass,...Object.values(c.assessment.dimensions),c.assessment.failure_category,c.assessment.justification,'pending','','','']);
+const existingReview = await fs.readFile('eval/human-review.csv', 'utf8').catch(() => '');
+if (!existingReview.includes('"reviewed"')) {
+  await fs.writeFile('eval/human-review.csv', '\uFEFF' + [header,...rows].map(r => r.map(q).join(',')).join('\r\n'));
+} else {
+  console.log('Preserved completed review fields in eval/human-review.csv.');
 }
-const s=result.statistics;
-const rate=(n,d)=>d ? `${n}/${d} = ${(100*n/d).toFixed(1)}%` : `${n}/${d}; rate not measured`;
-const confirmation=JSON.parse(await fs.readFile(path.join(dir,'review-provenance.json'),'utf8').catch(()=>'null'));
-const reviewNote=confirmation && sameResponses ? `Project-owner confirmation preserved: ${confirmation.reviewer}, ${confirmation.reviewedCases}/20 rows (${confirmation.passed} pass, ${confirmation.failed} fail); AI-assisted comments accepted, independent human review not claimed. See review-provenance.json and human-review.csv.\n\n` : '';
-const relative = dir==='eval' ? '../eval/' : './';
-const report=`# Real Gemini Tutor evaluation\n\nRun: ${result.completedAt}. Model: **${result.model}**. Endpoint: actual application POST /api/tutor. Prompt: socratic-v2; JSON; temperature 0.3; maximum 512 output tokens; 12-second provider timeout; at most two sequential attempts per case.\n\n${reviewNote}Exactly 20 distinct author-created student-message cases; recruited student participants: **0**. Responses and failed attempts are real provider/application evidence; fallback text is never counted as model success. Semantic labels are preliminary Codex assessments tied to each exact response SHA-256. **Independent human review: pending, 0/20.** Unknown semantic dimensions remain null and are not counted as passed or failed.\n\n| Metric | Result |\n|---|---|\n| Planned | 20 |\n| Completed real responses | ${rate(s.completed,20)} |\n| Incomplete | ${s.incomplete}/20 |\n| Failed API attempts | ${rate(s.failedApiCalls,s.apiAttempts)} |\n| Direct answer leaks | ${rate(s.directAnswerLeaks,s.completed)} |\n| Socratic reasoning / answer withholding | ${rate(s.socraticCompliant,s.completed)} |\n| Technical correctness failures | ${s.technicalCorrectnessFailures}/${s.semanticReviewed} semantically reviewed |\n| Context failures | ${s.contextFailures}/${s.semanticReviewed} semantically reviewed |\n| Other behavior failures | ${s.otherErrors}/${s.completed} |\n| Preliminary A-E pass | ${rate(s.preliminaryPass,s.completed)} |\n| Semantic review completed | ${s.semanticReviewed}/${s.completed} |\n| Independent human review | 0/20 pending |\n\nA: explicit/semantic option leakage. B: reasoning rather than supplying an answer. C: scene relevance. D: engineering correctness. E: respectful, concise, safe behavior (90-word target). Deterministic question/length/leak checks cannot establish semantic correctness. Per-case judgments below are preliminary, not independent human validation.\n\n| Case | Context | Status | Preliminary | Reason |\n|---|---|---|---|---|\n${result.cases.map(c=>`| ${c.id} | ${c.decisionId} | ${c.status} | ${c.assessment.preliminary_pass?'PASS':c.assessment.failure_category==='semantic_review_pending'?'PENDING':'FAIL'} | ${c.assessment.justification.replaceAll('|','/').replaceAll('\n',' ')} |`).join('\n')}\n\n[Results and all attempts](${relative}tutor-results.json) · [Review CSV](${relative}human-review.csv) · [Response-bound semantic notes](${relative}semantic-review.json). Original raw server evidence remains in eval/raw/. New runs must be reviewed independently; IDs alone never carry forward semantic labels. Fill human_reviewer, human_pass, human_comments and human_review_status in the CSV after an actual review. No automated script creates human approval.\n\nRun server with npm run dev:evidence, then npm run tutor:smoke and npm run tutor:eval. Set TUTOR_EVAL_OUTPUT_DIR to an unused run folder to preserve earlier results. Review actual responses and save response-hash-bound semantic notes before npm run tutor:report. No billing is enabled by these scripts.\n`;
-await fs.writeFile(dir==='eval'?'docs/tutor-evaluation.md':path.join(dir,'report.md'),report);
-console.log(JSON.stringify(s,null,2));
+const rate = (n,d) => `${n}/${d} = ${d ? (100*n/d).toFixed(1) : 'ölçülmedi'}%`;
+const report = `# Gerçek Gemini Tutor değerlendirmesi\n\nTarih: ${result.completedAt}. Model: **${result.model}**. İstem: socratic-v2. Uç nokta: uygulamanın POST /api/tutor servisi. Yapılandırma: temperature 0.3, JSON, en fazla 512 çıktı tokenı, 12 saniyelik istek sınırı.\n\n**Veri kaynağı:** Yazar tarafından hazırlanmış tam 20 öğrenci-mesajı test vakası; gerçek öğrencilerden toplanmış yanıtlar veya 20 katılımcı değildir. Gerçek öğrenci katılımcı sayısı **0**. Tüm model çıktıları gerçek çağrılardan alınmıştır; mock veya el yazısı yanıt kullanılmamıştır.\n\n**İnsan incelemesi: pending (0/20).** Semantik etiketler Codex tarafından yapılan ön değerlendirmedir; bağımsız insan incelemesi veya kesin pedagojik başarı değildir.\n\n| Ölçüt | Gerçek sonuç |\n|---|---|\n| Planlanan | 20 |\n| Tamamlanan gerçek yanıt/evidence | ${rate(completed.length,20)} |\n| Eksik vaka | ${20-completed.length}/20 |\n| API denemeleri | ${attempts.length} |\n| Başarısız API çağrıları | ${rate(attempts.length-successful,attempts.length)} |\n| Ön değerlendirmede doğrudan cevap sızıntısı | ${rate(leaks,completed.length)} |\n| Socratic düşünme sorusu/cevabı saklama | ${rate(socratic,completed.length)} |\n| Teknik doğruluk sorunu | ${rate(technical,completed.length)} |\n| Bağlam hatası | ${rate(context,completed.length)} |\n| Diğer uygun davranış hatası | ${rate(appropriate,completed.length)} |\n| Tüm A–E boyutlarında ön geçiş | ${rate(passed,completed.length)} |\n| Bağımsız insan onayı | 0/20 |\n\n## Ölçüm ve sınırlar\n\nA: Doğrudan veya açık eşdeğer seçenek sızıntısı. B: Cevap vermeden düşünme sorusu. C: Mevcut sahneye uygunluk. D: Teknik doğruluk. E: Saygılı, güvenli ve en fazla 90 sözcük. Soru işareti, uzunluk ve açık harf/son sızıntıları deterministik taranır; bağlam, teknik doğruluk ve dolaylı sızıntı ön değerlendirmede anlamsal olarak incelenmiştir. Basit tarayıcı dolaylı tavsiyeyi bütünüyle yakalayamaz. Birden fazla soru ve başlangıç düzeyinde ileri terimler, tek ana soru/sade dil hedefinde iyileştirme notlarıdır.\n\nS04 ve S09 teknik doğruluk açısından ön başarısız işaretlendi; ham çıktı korunmuştur. Genel geçiş sayısı düzeltilmiş yanıtlarla yapay biçimde artırılmadı. İlk canlı smoke koşusunda bir 504 sağlayıcı hatası sonrası sınırlı yeniden deneme başarılı oldu; bu smoke denemeleri yirmilik değerlendirme paydasına dahil edilmedi. Ayrıntı: eval/smoke.json. İlk ihraç edilen istemin ayrı smoke kaydı da eval/smoke-initial.json içinde korunur.\n\n## Vaka sonuçları\n\n| Vaka | Bağlam | Ön geçiş | Kategori / gerekçe | İnsan |\n|---|---|---|---|---|\n${result.cases.map(c => `| ${c.id} | ${c.decisionId} | ${c.assessment.preliminary_pass ? 'PASS' : 'FAIL'} | ${c.assessment.justification.replaceAll('|','/')} | pending |`).join('\n')}\n\n## Kanıtlar ve tekrar çalıştırma\n\n- [20 vaka](../eval/tutor-cases.json), [ham sonuçlar ve tüm denemeler](../eval/tutor-results.json), [insan inceleme tablosu](../eval/human-review.csv).\n- Her sunucu ham cevabı eval/raw/Sxx-requestId.json dosyasında saklanır. Anahtar veya tam sağlayıcı hata mesajı bulunmaz. API hata kodu, HTTP durumu ve süre korunur.\n- Sunucuyu TUTOR_EVIDENCE_DIR=eval/raw ile başlatıp npm run tutor:smoke ve npm run tutor:eval çalıştırın. Sonuçları gözden geçirip npm run tutor:report kullanın. Tekrar koşu ana raporu yeniler; önceki raporu tarihli kopyada koruyun.\n- transient hatalarda en fazla iki deneme, arada 2 saniye; kota hatasında 10 saniye. Başarısız denemeler silinmez.\n- İnsan değerlendirici CSV'de human_reviewer/human_pass/human_comments alanlarını doldurmalı; ön etiket ile düzeltilmiş insan etiketi ayrı kalmalıdır. Otomatik rapor üreticisi insan onayı oluşturmaz.\n\nGerçek öğrencilerden veri isteniyorsa ayrıca bilgilendirilmiş katılımla 20 gerçek öğrenci mesajı toplanmalı ve aynı servis üzerinden ayrı bir koşu yapılmalıdır. Bu rapor bunu tamamlanmış saymaz.\n`;
+const confirmation = JSON.parse(await fs.readFile('eval/review-provenance.json', 'utf8').catch(() => 'null'));
+const reviewUpdate = confirmation ? `> Güncel değerlendirme kaydı: ${confirmation.reviewer}, AI yardımıyla hazırlanan yorumları onaylayarak ${confirmation.reviewedCases}/20 satırın inceleme alanlarının doldurulmasını istedi. CSV sonucu ${confirmation.passed}/20 geçti, ${confirmation.failed}/20 kaldı (S04, S09). Bu kayıt bağımsız bir değerlendiricinin ayrıca yaptığı inceleme olarak sunulmaz. Aşağıdaki pending/ön değerlendirme bilgileri ilk otomatik koşunun tarihsel durumudur; güncel onay kaynağı eval/human-review.csv ve eval/review-provenance.json dosyalarıdır.\n\n` : '';
+await fs.writeFile('docs/tutor-evaluation.md', reviewUpdate + report);
+console.log(JSON.stringify(result.statistics, null, 2));

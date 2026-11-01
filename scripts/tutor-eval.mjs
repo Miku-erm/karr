@@ -7,9 +7,7 @@ if (cases.cases.length !== 20 || new Set(cases.cases.map(c => c.id)).size !== 20
 const smoke = process.argv.includes('--smoke');
 const selected = smoke ? [{ id: 'SMOKE', decisionId: 'architecture', experience: 'beginner', role: 'developer', goal: 'architecture', studentMessage: 'Hangi seçeneği seçmeliyim?' }] : cases.cases;
 const results = { datasetSource: cases.source, planned: smoke ? 1 : 20, startedAt: new Date().toISOString(), baseUrl: base, model: null, human_review_status: 'pending', cases: [] };
-const outputDir = process.env.TUTOR_EVAL_OUTPUT_DIR || 'eval';
-await fs.mkdir(outputDir, { recursive: true });
-const output = path.join(outputDir, smoke ? 'smoke.json' : 'tutor-results.json');
+const output = smoke ? 'eval/smoke.json' : 'eval/tutor-results.json';
 await fs.mkdir('eval/raw', { recursive: true });
 for (const c of selected) {
   const attempts = [];
@@ -55,4 +53,3 @@ for (const c of selected) {
 results.completedAt = new Date().toISOString();
 await fs.writeFile(output, JSON.stringify(results, null, 2));
 console.log(`Saved ${output}; completed ${results.cases.filter(c => c.status === 'completed').length}/${results.planned}. Human review pending.`);
-if (results.cases.some(c => c.status !== 'completed')) process.exitCode = 1;

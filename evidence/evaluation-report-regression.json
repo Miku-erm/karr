@@ -1,9 +1,0 @@
-{
-  "checkedAt": "2026-11-01T09:00:13.601Z",
-  "checks": [
-    "same response preserves existing human review CSV",
-    "changed response SHA-256 invalidates semantic judgments",
-    "changed response archives and clears previous human review"
-  ],
-  "passed": true
-}

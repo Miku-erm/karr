@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-01T09:08:43.917Z",
+  "checkedAt": "2026-10-24T11:05:45.021Z",
   "requiredFiles": [
     "README.md",
     "spec.md",
@@ -30,22 +30,12 @@
     "evidence/server-smoke.json",
     "evidence/cypress-e2e.json",
     "evidence/cypress-live.json",
-    "evidence/cypress-demo.json",
-    "demo/raw/cypress-1793523661173.mp4",
-    "demo/visual-inspection.json",
-    "eval/semantic-review.json",
-    "eval/runs/2026-11-01/tutor-results.json",
-    "eval/runs/2026-11-01/human-review.csv",
-    "eval/runs/2026-11-01/report.md",
-    "eval/runs/2026-11-01/semantic-review.json",
-    "evidence/evaluation-integrity.json",
-    "evidence/evaluation-report-regression.json",
-    "tests/eval-report.test.mjs"
+    "evidence/cypress-demo.json"
   ],
   "checks": [
     {
       "name": "required deliverable files exist and are nonempty",
-      "count": 40,
+      "count": 30,
       "passed": true
     },
     {
@@ -58,7 +48,7 @@
     },
     {
       "name": "local delivery Markdown links resolve",
-      "count": 98,
+      "count": 70,
       "passed": true
     },
     {
@@ -125,10 +115,9 @@
   "mermaid": {
     "diagrams": 2,
     "parser": "12.2.0",
-    "result": "historical parse passed; source unchanged",
+    "result": "passed",
     "rendered": false,
-    "reexecuted": false,
-    "execution": "Historical 24 October evidence/archive/2026-10-24/document-validation.json; parser not rerun on 1 November"
+    "execution": "Node 22.16.0 with temporary Mermaid + jsdom validator"
   },
   "passed": true
 }

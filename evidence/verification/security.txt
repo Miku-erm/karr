@@ -3,8 +3,8 @@
 > node scripts/secret-scan.mjs
 
 {
-  "checkedAt": "2026-11-01T09:05:48.984Z",
-  "filesScanned": 203,
+  "checkedAt": "2026-10-24T10:57:58.216Z",
+  "filesScanned": 131,
   "productionBundleScanned": true,
   "historyScanned": true,
   "localEnvironmentIgnored": true,
