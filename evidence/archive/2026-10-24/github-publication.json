@@ -1,0 +1,10 @@
+{
+  "repository": "https://github.com/Miku-erm/karr",
+  "branch": "main",
+  "sourceCommit": "6b4af9354c8ea8ef6ae6e27f51c998bafee63236",
+  "verifiedRemoteSha": "6b4af9354c8ea8ef6ae6e27f51c998bafee63236",
+  "verifiedAt": "2026-10-24T11:05:44.887988+00:00",
+  "normalFastForwardPush": true,
+  "forcePush": false,
+  "note": "Source and deliverable commit verified; subsequent report-only commit records this evidence."
+}

@@ -1,10 +1,12 @@
 {
+  "verifiedAt": "2026-11-01T09:08:42.917Z",
   "repository": "https://github.com/Miku-erm/karr",
+  "remote": "origin",
   "branch": "main",
-  "sourceCommit": "6b4af9354c8ea8ef6ae6e27f51c998bafee63236",
-  "verifiedRemoteSha": "6b4af9354c8ea8ef6ae6e27f51c998bafee63236",
-  "verifiedAt": "2026-10-24T11:05:44.887988+00:00",
-  "normalFastForwardPush": true,
+  "sourceCommit": "1d43e9773fa1b67b2cfe50827a4154c2ee754a2a",
+  "remoteCommit": "1d43e9773fa1b67b2cfe50827a4154c2ee754a2a",
+  "normalPush": true,
   "forcePush": false,
-  "note": "Source and deliverable commit verified; subsequent report-only commit records this evidence."
+  "remoteMatches": true,
+  "note": "This record verifies the source/evaluation/video commit. A subsequent evidence-only commit records publication and the post-commit secret scan."
 }
